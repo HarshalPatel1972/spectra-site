@@ -1,0 +1,14 @@
+{
+  "name": "spectra-site",
+  "private": true,
+  "workspaces": [
+    "landing",
+    "docs"
+  ],
+  "scripts": {
+    "dev:landing": "npm run dev --workspace=landing",
+    "dev:docs": "npm run docs:dev --workspace=docs",
+    "build:landing": "npm run build --workspace=landing",
+    "build:docs": "npm run docs:build --workspace=docs"
+  }
+}
