@@ -1,0 +1,233 @@
+'use client'
+
+import { useState } from 'react'
+import CodeMirror from '@uiw/react-codemirror'
+import { go } from '@codemirror/lang-go'
+import { python } from '@codemirror/lang-python'
+import { java } from '@codemirror/lang-java'
+import { Shield, Play, Lock, ChevronDown, CheckCircle, AlertTriangle } from 'lucide-react'
+import Link from 'next/link'
+
+const EXAMPLES = {
+  'go': {
+    name: 'Go JWT Authentication',
+    code: `package auth
+
+import (
+\t"crypto/rsa"
+\t"crypto/sha1"
+\t"github.com/golang-jwt/jwt/v5"
+)
+
+func GenerateToken(key *rsa.PrivateKey) string {
+\t// Legacy token generation
+\th := sha1.New()
+\tt := jwt.New(jwt.SigningMethodRS256)
+\tstr, _ := t.SignedString(key)
+\treturn str
+}
+`
+  },
+  'python': {
+    name: 'Python Cryptography',
+    code: `from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+# Generate ECC key for signing
+private_key = ec.generate_private_key(ec.SECP256R1())
+
+# Symmetric encryption for data payload
+key = b'32_byte_key_here...'
+cipher = Cipher(algorithms.AES(key), modes.GCM(b'iv_here'))
+`
+  },
+  'java': {
+    name: 'Java PKCS',
+    code: `import java.security.KeyPairGenerator;
+import javax.crypto.Cipher;
+
+public class SecurityManager {
+    public void setup() throws Exception {
+        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+        generator.initialize(1024);
+        
+        Cipher desCipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+    }
+}
+`
+  }
+}
+
+export default function PlaygroundPage() {
+  const [language, setLanguage] = useState<'go' | 'python' | 'java'>('go')
+  const [code, setCode] = useState(EXAMPLES.go.code)
+  const [isScanning, setIsScanning] = useState(false)
+  const [result, setResult] = useState<any>(null)
+  const [mode, setMode] = useState<'server' | 'wasm'>('server')
+
+  const handleScan = async () => {
+    setIsScanning(true)
+    try {
+      const res = await fetch('/api/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, language, filename: `test.${language}` })
+      })
+      const data = await res.json()
+      setResult(data)
+    } catch (e) {
+      console.error(e)
+    }
+    setIsScanning(false)
+  }
+
+  const getLangExtension = () => {
+    if (language === 'go') return go()
+    if (language === 'python') return python()
+    return java()
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-300 font-sans">
+      <header className="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-slate-900">
+        <Link href="/" className="flex items-center gap-2 font-bold text-white">
+          <Shield className="w-5 h-5 text-indigo-400" />
+          Spectra Playground
+        </Link>
+        <div className="flex bg-slate-800 rounded-md p-1 border border-white/5">
+          <button 
+            onClick={() => setMode('server')}
+            className={`px-4 py-1.5 text-xs font-bold rounded transition-colors ${mode === 'server' ? 'text-white bg-indigo-600' : 'text-slate-400 hover:text-white'}`}
+          >
+            Server
+          </button>
+          <button 
+            onClick={() => setMode('wasm')}
+            className={`px-4 py-1.5 text-xs font-bold flex items-center gap-1 rounded transition-colors ${mode === 'wasm' ? 'text-white bg-indigo-600' : 'text-slate-400 hover:text-white'}`}
+          >
+            <Lock className="w-3 h-3" /> WASM
+          </button>
+        </div>
+      </header>
+
+      <div className="flex-1 grid lg:grid-cols-2">
+        {/* Editor Panel */}
+        <div className="border-r border-white/10 flex flex-col">
+          <div className="p-4 bg-slate-900 border-b border-white/5 flex justify-between items-center">
+            <div className="relative">
+              <select 
+                className="appearance-none bg-slate-800 border border-slate-700 text-sm rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                value={language}
+                onChange={(e: any) => {
+                  setLanguage(e.target.value)
+                  setCode(EXAMPLES[e.target.value as keyof typeof EXAMPLES].code)
+                }}
+              >
+                <option value="go">Example: Go JWT</option>
+                <option value="python">Example: Python Crypto</option>
+                <option value="java">Example: Java PKCS</option>
+              </select>
+              <ChevronDown className="w-4 h-4 absolute right-3 top-2.5 text-slate-400 pointer-events-none" />
+            </div>
+            <button 
+              onClick={handleScan}
+              disabled={isScanning}
+              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-bold text-sm transition-colors disabled:opacity-50"
+            >
+              {isScanning ? <span className="animate-pulse">Scanning...</span> : <><Play className="w-4 h-4" /> Scan Code</>}
+            </button>
+          </div>
+          <div className="flex-1 overflow-auto bg-[#282c34]">
+            <CodeMirror
+              value={code}
+              height="100%"
+              theme="dark"
+              extensions={[getLangExtension()]}
+              onChange={(val) => setCode(val)}
+              className="h-full text-base"
+            />
+          </div>
+          <div className="p-3 bg-slate-900 text-xs text-slate-500 border-t border-white/5 flex items-center gap-2">
+            {mode === 'server' ? (
+              'Your code is sent to our server, scanned, and immediately deleted. We do not log playground submissions.'
+            ) : (
+              <span className="text-emerald-400 font-medium flex items-center gap-1"><Lock className="w-3 h-3"/> WASM Mode: Code never leaves your browser. Execution happens locally.</span>
+            )}
+          </div>
+        </div>
+
+        {/* Results Panel */}
+        <div className="bg-slate-950 flex flex-col">
+          <div className="p-4 bg-slate-900 border-b border-white/5 font-semibold text-sm">
+            Scan Results
+          </div>
+          <div className="flex-1 p-6 overflow-auto">
+            {!result ? (
+              <div className="h-full flex flex-col items-center justify-center text-slate-600">
+                <Shield className="w-16 h-16 mb-4 opacity-20" />
+                <p>Run a scan to see cryptographic findings.</p>
+              </div>
+            ) : result.error ? (
+              <div className="text-red-400 bg-red-400/10 p-4 rounded border border-red-400/20">
+                {result.error}
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="flex justify-between items-end pb-6 border-b border-white/10">
+                  <div>
+                    <div className="text-sm text-slate-400 uppercase tracking-widest mb-1">Aggregate Risk</div>
+                    <div className="text-4xl font-bold text-white flex items-center gap-3">
+                      {result.aggregate_qrs || 0}<span className="text-lg text-slate-500">/ 100</span>
+                    </div>
+                  </div>
+                  <div className={`px-4 py-1.5 rounded text-sm font-bold ${
+                    (result.aggregate_qrs || 0) >= 80 ? 'bg-red-500/20 text-red-400' :
+                    (result.aggregate_qrs || 0) >= 60 ? 'bg-orange-500/20 text-orange-400' :
+                    (result.aggregate_qrs || 0) >= 40 ? 'bg-yellow-500/20 text-yellow-400' :
+                    'bg-emerald-500/20 text-emerald-400'
+                  }`}>
+                    {(result.aggregate_qrs || 0) >= 80 ? 'CRITICAL' : (result.aggregate_qrs || 0) >= 60 ? 'HIGH' : (result.aggregate_qrs || 0) >= 40 ? 'MEDIUM' : 'SAFE'}
+                  </div>
+                </div>
+
+                {(!result.findings || result.findings.length === 0) ? (
+                  <div className="flex items-center gap-3 text-emerald-400 bg-emerald-400/10 p-4 rounded border border-emerald-400/20">
+                    <CheckCircle className="w-5 h-5" />
+                    No vulnerable cryptography detected!
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {result.findings.map((f: any, i: number) => (
+                      <div key={i} className="bg-slate-900 border border-white/5 rounded-lg p-4">
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-slate-200">{f.algorithm}</span>
+                            {f.key_size > 0 && <span className="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 rounded">{f.key_size}-bit</span>}
+                          </div>
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded ${
+                            f.risk_band === 'CRITICAL' ? 'bg-red-500/20 text-red-400' :
+                            f.risk_band === 'HIGH' ? 'bg-orange-500/20 text-orange-400' :
+                            'bg-yellow-500/20 text-yellow-400'
+                          }`}>
+                            QRS: {f.qrs}
+                          </span>
+                        </div>
+                        <div className="font-mono text-xs text-slate-400 bg-black/40 p-2 rounded mb-2 overflow-x-auto whitespace-pre">
+                          Line {f.line_number}: {f.line_content.trim()}
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-indigo-400">
+                          <AlertTriangle className="w-3 h-3" />
+                          Effort: {f.migration_effort} — {f.effort_rationale}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

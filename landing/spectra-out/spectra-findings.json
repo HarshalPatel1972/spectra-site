@@ -1,0 +1,56 @@
+{
+  "scan_root": "C:\\Users\\HARSHA~1\\AppData\\Local\\Temp\\spectra-playground-4O1uim",
+  "started_at": "2026-06-01T01:31:02.0121754+05:30",
+  "completed_at": "2026-06-01T01:31:02.0239871+05:30",
+  "total_files": 1,
+  "scanned_files": 1,
+  "skipped_files": 0,
+  "findings": [
+    {
+      "id": "82f5c072-1132-4d62-96f0-50c1e96e7d51",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "test.go",
+      "line_number": 2,
+      "line_content": "import \"crypto/md5\"",
+      "language": "go",
+      "qrs": 82,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T01:31:02.0239871+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    }
+  ],
+  "aggregate_qrs": 82,
+  "findings_by_band": {
+    "CRITICAL": 1
+  },
+  "action_plan": [
+    {
+      "rank": 1,
+      "algorithm": "MD5",
+      "risk_band": "CRITICAL",
+      "occurrences": 1,
+      "effort": "EASY",
+      "priority_score": 84.84190344029578,
+      "recommendation": "Migrate to: SHA-256",
+      "replacement": [
+        "SHA-256"
+      ]
+    }
+  ]
+}
