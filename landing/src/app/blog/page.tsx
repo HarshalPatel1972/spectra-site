@@ -33,7 +33,7 @@ export default function BlogIndex() {
         <div className="space-y-12">
           {posts.map(post => (
             <article key={post.slug} className="group">
-              <Link href={\`/blog/\${post.slug}\`}>
+              <Link href={`/blog/${post.slug}`}>
                 <div className="flex items-center gap-4 text-xs font-mono text-slate-500 mb-3">
                   <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
                   <div className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</div>

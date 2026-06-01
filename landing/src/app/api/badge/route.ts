@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   else if (score >= 40) color = 'yellow';
 
   // We redirect to shields.io to dynamically generate the badge SVG
-  const shieldsUrl = \`https://img.shields.io/badge/Spectra_QRS-\${score}-\${color}?logo=shield&style=flat-square\`;
+  const shieldsUrl = `https://img.shields.io/badge/Spectra_QRS-${score}-${color}?logo=shield&style=flat-square`;
   
   return NextResponse.redirect(shieldsUrl, 302);
 }
