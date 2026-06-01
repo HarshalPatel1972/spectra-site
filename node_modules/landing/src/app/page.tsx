@@ -27,7 +27,7 @@ export default function LandingPage() {
         </div>
         <nav className="flex gap-6 text-sm font-medium text-slate-300">
           <Link href="/what-happens" className="hover:text-white transition-colors">The Quantum Threat</Link>
-          <a href="https://docs.spectra.tools" className="hover:text-white transition-colors">Documentation</a>
+          <a href="https://github.com/HarshalPatel1972/spectra/tree/main/docs" className="hover:text-white transition-colors">Documentation</a>
           <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
         </nav>
         <div className="flex gap-4">
