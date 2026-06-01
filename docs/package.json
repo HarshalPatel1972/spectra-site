@@ -2,6 +2,7 @@
   "name": "spectra-docs",
   "version": "1.0.0",
   "description": "Spectra Documentation",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vitepress dev",
