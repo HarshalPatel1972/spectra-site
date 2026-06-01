@@ -4,9 +4,35 @@ import { join } from 'path'
 import { tmpdir } from 'os'
 import { exec } from 'child_process'
 import { promisify } from 'util'
-import { readFile } from 'fs/promises'
+import { readFile, access, chmod } from 'fs/promises'
+import { constants } from 'fs'
 
 const execAsync = promisify(exec)
+
+async function getSpectraBinaryPath() {
+  if (process.env.SPECTRA_BIN_PATH) return process.env.SPECTRA_BIN_PATH;
+  
+  // Local Windows dev fallback
+  if (process.platform === 'win32') {
+    return 'C:\\\\Users\\\\Harshal Patel\\\\Desktop\\\\spectra\\\\spectra.exe';
+  }
+
+  // On Vercel (Linux)
+  const binPath = join(tmpdir(), 'spectra-linux');
+  try {
+    await access(binPath, constants.X_OK);
+    return binPath;
+  } catch {
+    // Download it
+    const releaseUrl = 'https://github.com/HarshalPatel1972/spectra/releases/download/v1.0.0/spectra-linux-amd64';
+    const res = await fetch(releaseUrl);
+    if (!res.ok) throw new Error('Failed to download spectra binary');
+    const buffer = Buffer.from(await res.arrayBuffer());
+    await writeFile(binPath, buffer);
+    await chmod(binPath, 0o755);
+    return binPath;
+  }
+}
 
 export async function POST(req: Request) {
   try {
@@ -32,8 +58,7 @@ export async function POST(req: Request) {
 
     try {
       // Execute Spectra.
-      // Point to the absolute path of the built binary for local development.
-      const spectraBin = process.env.SPECTRA_BIN_PATH || 'C:\\\\Users\\\\Harshal Patel\\\\Desktop\\\\spectra\\\\spectra.exe'
+      const spectraBin = await getSpectraBinaryPath()
       await execAsync(`"${spectraBin}" scan "${tempDir}" --output json --quiet --out-dir "${tempDir}"`)
       
       const jsonContent = await readFile(join(tempDir, 'spectra-findings.json'), 'utf8')
