@@ -211,6 +211,82 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-24 max-w-6xl mx-auto px-8">
+        <h2 className="text-3xl font-bold mb-16 text-center">How It Works</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { step: '1', title: 'Find', cmd: 'spectra scan ./myapp', desc: 'Discovers every algorithm in code, certificates, configs, dependencies' },
+            { step: '2', title: 'Understand', cmd: 'spectra compliance --frameworks cnsa20', desc: 'Shows which findings violate which regulatory requirements, by when' },
+            { step: '3', title: 'Act', cmd: 'spectra simulate --from RSA --to ML-KEM', desc: 'Shows the migration plan in ordered waves with effort estimates' }
+          ].map((item, i) => (
+            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-8 relative overflow-hidden">
+              <div className="text-6xl font-black text-white/5 absolute -top-4 -right-2">{item.step}</div>
+              <h3 className="text-xl font-bold mb-4 relative z-10">Step {item.step}: {item.title}</h3>
+              <div className="font-mono text-sm text-indigo-400 bg-black/50 p-3 rounded mb-4 relative z-10">
+                $ {item.cmd}
+              </div>
+              <p className="text-slate-400 relative z-10">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Output Formats */}
+      <section className="bg-slate-900/50 border-y border-white/10 py-24">
+        <div className="max-w-6xl mx-auto px-8 text-center">
+          <h2 className="text-3xl font-bold mb-6">Output Formats</h2>
+          <p className="text-slate-400 mb-12">Export findings in the format that fits your workflow.</p>
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {['Terminal', 'JSON', 'CycloneDX CBOM', 'HTML Report', 'Executive PDF'].map((format, i) => (
+              <div key={i} className="px-6 py-3 rounded-full bg-slate-800 text-slate-300 border border-slate-700 font-medium">
+                {format}
+              </div>
+            ))}
+          </div>
+          <p className="text-slate-500">
+            Generate CycloneDX 1.7 standard Cryptographic Bill of Materials (CBOM) out of the box.
+          </p>
+        </div>
+      </section>
+
+      {/* Integrations Row */}
+      <section className="py-24 max-w-6xl mx-auto px-8 text-center border-b border-white/10">
+        <h2 className="text-sm font-bold tracking-widest text-slate-500 uppercase mb-8">Works Seamlessly With</h2>
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 text-slate-400 font-semibold text-lg">
+          <span>GitHub Actions</span>
+          <span>•</span>
+          <span>VS Code</span>
+          <span>•</span>
+          <span>Docker</span>
+          <span>•</span>
+          <span>Pre-commit</span>
+          <span>•</span>
+          <span>GitLab CI</span>
+          <span>•</span>
+          <span>JetBrains</span>
+        </div>
+      </section>
+
+      {/* Why Spectra */}
+      <section className="py-24 max-w-6xl mx-auto px-8">
+        <h2 className="text-3xl font-bold mb-16 text-center">Why Spectra?</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="p-8 rounded-xl bg-slate-800/30 border border-slate-700 hover:border-indigo-500/50 transition-colors">
+            <h3 className="text-xl font-bold mb-4 text-white">Not just detection</h3>
+            <p className="text-slate-400">Other tools tell you what algorithm is present. Spectra tells you the risk score, migration effort, regulatory deadline, and action order.</p>
+          </div>
+          <div className="p-8 rounded-xl bg-slate-800/30 border border-slate-700 hover:border-indigo-500/50 transition-colors">
+            <h3 className="text-xl font-bold mb-4 text-white">No data leaves your machine</h3>
+            <p className="text-slate-400">Spectra is a local CLI with no telemetry, no accounts, no cloud backend. Your code never leaves your machine.</p>
+          </div>
+          <div className="p-8 rounded-xl bg-slate-800/30 border border-slate-700 hover:border-indigo-500/50 transition-colors">
+            <h3 className="text-xl font-bold mb-4 text-white">Standards-embedded</h3>
+            <p className="text-slate-400">Every finding is cross-referenced against NIST SP 800-131A, NSA CNSA 2.0, and PCI DSS v4.0 with exact clause citations.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-white/10 py-12 text-center text-slate-500 text-sm">
         <div className="flex justify-center gap-6 mb-6">
