@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  outDir: 'dist',
   title: 'Spectra',
   description: 'Cryptographic asset discovery and quantum risk intelligence',
   themeConfig: {
