@@ -72,8 +72,8 @@ export default function PlaygroundPage() {
       script.src = '/wasm_exec.js'
       script.onload = () => {
         const go = new (window as any).Go()
-        WebAssembly.instantiateStreaming(fetch('/spectra.wasm'), go.importObject).then((result) => {
-          go.run(result.instance)
+        WebAssembly.instantiateStreaming(fetch('/spectra.wasm'), go.importObject).then((res) => {
+          go.run(res.instance)
           setWasmReady(true)
         }).catch(err => console.error('WASM load error:', err))
       }
@@ -124,34 +124,20 @@ export default function PlaygroundPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-void text-surface font-sans">
-      <header className="border-b border-border-dark px-8 h-16 flex items-center justify-between bg-void">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-graphite font-mono text-[14px] ml-4">/ playground</span>
-        </Link>
-        <div className="flex bg-obsidian rounded-sm p-1 border border-border-dark">
-          <button 
-            onClick={() => setMode('server')}
-            className={`px-4 py-1 text-[14px] font-sans transition-colors ${mode === 'server' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}`}
-          >
-            Server
-          </button>
-          <button 
-            onClick={() => setMode('wasm')}
-            className={`px-4 py-1 text-[14px] font-sans transition-colors ${mode === 'wasm' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}`}
-          >
-            WASM
-          </button>
-        </div>
-      </header>
-
-      <div className="flex-1 grid lg:grid-cols-2">
-        {/* Editor Panel */}
-        <div className="border-r border-border-dark flex flex-col">
-          <div className="p-4 bg-void border-b border-border-dark flex justify-between items-center">
+    <div className="min-h-screen flex flex-col bg-void text-text-primary font-sans relative overflow-hidden">
+      
+      {/* Scan Reveal Animation Line */}
+      <div className="scan-reveal-line" />
+      
+      <div className="scan-reveal-content flex flex-col min-h-screen">
+        <header className="border-b border-border h-16 px-8 flex items-center justify-between bg-void shrink-0">
+          <Link href="/" className="flex items-center gap-2">
+            <Logo />
+            <span className="text-text-secondary font-mono text-[14px] ml-4">/ playground</span>
+          </Link>
+          <div className="flex gap-4">
             <select 
-              className="appearance-none bg-obsidian border border-border-dark text-[14px] font-sans text-surface px-4 py-2 focus:outline-none focus:border-calibration transition-colors"
+              className="appearance-none bg-surface-1 border border-border text-[14px] font-sans text-text-primary px-4 py-1 focus:outline-none focus:border-brand transition-colors"
               value={language}
               onChange={(e: any) => {
                 setLanguage(e.target.value)
@@ -162,96 +148,97 @@ export default function PlaygroundPage() {
               <option value="python">Example: Python Crypto</option>
               <option value="java">Example: Java PKCS</option>
             </select>
+            <div className="flex bg-surface-1 border border-border">
+              <button 
+                onClick={() => setMode('server')}
+                className={`px-4 py-1 text-[13px] font-sans transition-colors ${mode === 'server' ? 'bg-surface-2 text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
+              >
+                Server
+              </button>
+              <button 
+                onClick={() => setMode('wasm')}
+                className={`px-4 py-1 text-[13px] font-sans transition-colors ${mode === 'wasm' ? 'bg-surface-2 text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
+              >
+                WASM
+              </button>
+            </div>
             <button 
               onClick={handleScan}
               disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-              className="bg-calibration hover:bg-calibration-light text-surface px-8 py-2 font-sans font-medium text-[14px] transition-colors disabled:opacity-50"
+              className="bg-brand hover:bg-brand-dim text-text-inverse px-6 py-1 font-sans font-medium text-[13px] transition-colors disabled:opacity-50"
             >
               {isScanning ? 'Scanning...' : 'Scan Code'}
             </button>
           </div>
-          <div className="flex-1 overflow-auto bg-[#07080A]">
-            <CodeMirror
-              value={code}
-              height="100%"
-              theme="dark"
-              extensions={[getLangExtension()]}
-              onChange={(val) => setCode(val)}
-              className="h-full text-[14px] font-mono"
-            />
-          </div>
-          <div className="p-4 bg-obsidian text-[14px] text-graphite border-t border-border-dark">
-            {mode === 'server' ? (
-              'Server Mode: Scan executes remotely. No telemetry retained.'
-            ) : (
-              <span className="text-safe">WASM Mode: Cryptographic analysis executes entirely within local browser context.</span>
-            )}
-          </div>
-        </div>
+        </header>
 
-        {/* Results Panel */}
-        <div className="bg-obsidian flex flex-col">
-          <div className="p-4 bg-void border-b border-border-dark text-[14px] text-graphite uppercase tracking-widest font-mono">
-            Analysis Results
+        <div className="flex-1 grid lg:grid-cols-2 min-h-0">
+          {/* Editor Panel */}
+          <div className="border-r border-border flex flex-col min-h-0 bg-surface-0">
+            <div className="flex-1 overflow-auto">
+              <CodeMirror
+                value={code}
+                height="100%"
+                theme="dark"
+                extensions={[getLangExtension()]}
+                onChange={(val) => setCode(val)}
+                className="h-full text-[14px] font-mono"
+              />
+            </div>
           </div>
-          <div className="flex-1 p-8 overflow-auto">
-            {!result ? (
-              <div className="h-full flex flex-col items-center justify-center text-graphite font-mono text-[14px]">
-                <div className="mb-4">Ready to scan.</div>
-              </div>
-            ) : result.error ? (
-              <div className="text-critical border border-critical/30 bg-critical/10 p-4 font-mono text-[14px]">
-                [ERROR] {result.error}
-              </div>
-            ) : (
-              <div className="space-y-12">
-                <div className="flex justify-between items-end pb-8 border-b border-border-dark">
-                  <div>
-                    <div className="text-[14px] text-graphite uppercase tracking-widest mb-2 font-mono">Aggregate QRS</div>
-                    <div className="font-mono text-[61px] leading-none text-surface">
-                      {result.aggregate_qrs || 0}<span className="text-[31px] text-graphite">/100</span>
+
+          {/* Results Panel */}
+          <div className="bg-void flex flex-col min-h-0">
+            <div className="flex-1 p-8 overflow-auto">
+              {!result ? (
+                <div className="h-full flex flex-col items-center justify-center text-text-muted font-mono text-[14px]">
+                  <div className="mb-4">Ready to scan.</div>
+                </div>
+              ) : result.error ? (
+                <div className="text-critical border border-critical/30 bg-critical/10 p-4 font-mono text-[14px]">
+                  [ERROR] {result.error}
+                </div>
+              ) : (
+                <div className="space-y-8">
+                  {(!result.findings || result.findings.length === 0) ? (
+                    <div className="text-safe font-mono text-[14px]">
+                      No vulnerable cryptography detected.
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {result.findings.map((f: any, i: number) => (
+                        <div key={i} className="flex gap-4 font-mono text-[13px] opacity-0 animate-[finding-emerge_300ms_var(--ease-spectra)_forwards]" style={{ animationDelay: `${i * 60}ms` }}>
+                          <div className={`font-bold w-20 shrink-0 ${getRiskColor(f.risk_band)}`}>
+                            {f.risk_band}
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-text-primary font-bold">{f.algorithm} {f.key_size > 0 && `(${f.key_size}-bit)`}</div>
+                            <div className="text-text-secondary whitespace-pre">
+                              {f.line_content.trim()}
+                            </div>
+                          </div>
+                          <div className={`shrink-0 ${getRiskColor(f.risk_band)}`}>
+                            QRS: {f.qrs}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Summary Bar */}
+                  <div className="mt-8 border border-border bg-surface-1 p-4 font-mono text-[13px] flex items-center justify-between opacity-0 animate-[finding-emerge_300ms_var(--ease-spectra)_forwards]" style={{ animationDelay: `${(result.findings?.length || 0) * 60 + 100}ms` }}>
+                    <div className="text-text-primary">
+                      Aggregate QRS: <span className="qrs-materialize font-bold text-critical ml-2">{result.aggregate_qrs || 0}/100</span>
+                    </div>
+                    <div className="flex gap-6 text-text-secondary">
+                      <div><span className="text-critical mr-2">■</span>{result.findings_by_band?.CRITICAL || 0}</div>
+                      <div><span className="text-high mr-2">■</span>{result.findings_by_band?.HIGH || 0}</div>
+                      <div><span className="text-medium mr-2">■</span>{result.findings_by_band?.MEDIUM || 0}</div>
                     </div>
                   </div>
-                  <div className={`font-mono text-[14px] uppercase tracking-widest ${
-                    (result.aggregate_qrs || 0) >= 80 ? 'text-critical' :
-                    (result.aggregate_qrs || 0) >= 60 ? 'text-high' :
-                    (result.aggregate_qrs || 0) >= 40 ? 'text-medium' :
-                    'text-safe'
-                  }`}>
-                    — {(result.aggregate_qrs || 0) >= 80 ? 'CRITICAL' : (result.aggregate_qrs || 0) >= 60 ? 'HIGH' : (result.aggregate_qrs || 0) >= 40 ? 'MEDIUM' : 'SAFE'}
-                  </div>
                 </div>
-
-                {(!result.findings || result.findings.length === 0) ? (
-                  <div className="text-safe font-mono text-[14px]">
-                    No vulnerable cryptography detected. QRS: 0/100.
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    {result.findings.map((f: any, i: number) => (
-                      <div key={i} className="border border-border-dark p-6 bg-void opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_forwards]" style={{ animationDelay: `${i * 60}ms` }}>
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="flex items-center gap-4">
-                            <span className="font-sans font-semibold text-surface text-[16px]">{f.algorithm}</span>
-                            {f.key_size > 0 && <span className="font-mono text-[12px] text-graphite bg-obsidian px-2 py-1">{f.key_size}-bit</span>}
-                          </div>
-                          <span className={`font-mono text-[14px] ${getRiskColor(f.risk_band)}`}>
-                            QRS: {f.qrs}
-                          </span>
-                        </div>
-                        <div className="font-mono text-[14px] text-surface bg-obsidian p-4 mb-4 overflow-x-auto whitespace-pre border border-border-dark">
-                          {f.line_content.trim()}
-                        </div>
-                        <div className="font-sans text-[14px] text-graphite">
-                          <span className="text-calibration mr-2">Migration Effort:</span>
-                          {f.migration_effort} — {f.effort_rationale}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
