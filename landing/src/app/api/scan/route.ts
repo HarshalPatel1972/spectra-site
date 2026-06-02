@@ -12,26 +12,21 @@ const execAsync = promisify(exec)
 async function getSpectraBinaryPath() {
   if (process.env.SPECTRA_BIN_PATH) return process.env.SPECTRA_BIN_PATH;
   
-  // Local Windows dev fallback
+  // Use bundled binaries inside the Next.js app
+  const binDir = join(process.cwd(), 'bin');
+  
   if (process.platform === 'win32') {
-    return 'C:\\Users\\Harshal Patel\\Desktop\\spectra\\spectra.exe';
+    return join(binDir, 'spectra.exe');
   }
 
-  // On Vercel (Linux)
-  const binPath = join(tmpdir(), 'spectra-linux');
+  // Linux / Vercel fallback
+  const binPath = join(binDir, 'spectra-linux');
   try {
-    await access(binPath, constants.X_OK);
-    return binPath;
-  } catch {
-    // Download it
-    const releaseUrl = 'https://github.com/HarshalPatel1972/spectra/releases/download/v1.0.0/spectra-linux-amd64';
-    const res = await fetch(releaseUrl);
-    if (!res.ok) throw new Error('Failed to download spectra binary');
-    const buffer = Buffer.from(await res.arrayBuffer());
-    await writeFile(binPath, buffer);
-    await chmod(binPath, 0o755);
-    return binPath;
+    await chmod(binPath, 0o755); // Ensure executable permissions
+  } catch (e) {
+    // Ignore chmod error if filesystem is read-only (e.g. on Vercel)
   }
+  return binPath;
 }
 
 export async function POST(req: Request) {
