@@ -16,8 +16,8 @@ export default defineConfig({
         {
           text: 'Guide',
           items: [
-            { text: 'Design Manifesto', link: '/about' },
-            { text: 'Known Limitations', link: '/known-limitations' },
+            { text: 'Design Manifesto', link: '/guide/about' },
+            { text: 'Known Limitations', link: '/guide/known-limitations' },
             { text: 'What is Spectra', link: '/guide/' },
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Installation', link: '/guide/installation' },
