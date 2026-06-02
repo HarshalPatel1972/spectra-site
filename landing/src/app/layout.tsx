@@ -23,6 +23,9 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Spectra - Cryptographic Intelligence",
   description: "The forensic instrument that makes an organization's cryptographic landscape visible, scorable, and navigable.",
+  icons: {
+    icon: '/spectra-mark.svg',
+  }
 };
 
 export default function RootLayout({

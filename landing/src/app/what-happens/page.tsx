@@ -70,7 +70,7 @@ export default function WhatHappensPage() {
             <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary">
               <Link href="/what-happens" className="text-brand transition-colors font-semibold">The Quantum Threat</Link>
               <Link href="/playground" className="hover:text-text-primary transition-colors">Playground</Link>
-              <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+              <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
               <Link href="/download" className="hover:text-text-primary transition-colors">Download</Link>
             </nav>
             <div className="flex gap-6 items-center text-[14px]">

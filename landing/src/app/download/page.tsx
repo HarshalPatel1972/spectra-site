@@ -77,7 +77,7 @@ export default function DownloadPage() {
           <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary">
             <Link href="/what-happens" className="hover:text-text-primary transition-colors">The Quantum Threat</Link>
             <Link href="/playground" className="hover:text-text-primary transition-colors">Playground</Link>
-            <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+            <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
             <Link href="/download" className="text-brand transition-colors font-semibold">Download</Link>
           </nav>
           <div className="flex gap-6 items-center text-[14px]">
@@ -141,7 +141,7 @@ export default function DownloadPage() {
             <span className="text-text-secondary text-[14px]">© 2026 Harshal Patel. MIT Licensed.</span>
           </div>
           <div className="flex gap-6 text-[14px] text-text-secondary">
-            <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+            <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
             <a href="https://github.com/HarshalPatel1972/spectra/blob/main/SECURITY.md" className="hover:text-text-primary transition-colors">Security</a>
             <a href="https://github.com/HarshalPatel1972/spectra/blob/main/PRIVACY.md" className="hover:text-text-primary transition-colors">Privacy</a>
             <a href="https://github.com/HarshalPatel1972/spectra" className="hover:text-text-primary transition-colors">GitHub</a>
