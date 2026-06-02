@@ -28,8 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-surface text-ink font-sans">
-      <div className="scan-line" />
+    <div className="min-h-screen bg-surface text-ink font-sans flex flex-col">
       
       {/* Header */}
       <header className="border-b border-border-light bg-surface">
@@ -60,40 +59,35 @@ export default function Home() {
               Spectra scans codebases, certificates, and dependencies for quantum-vulnerable cryptography. It generates CycloneDX 1.7 CBOMs, maps compliance gaps against CNSA 2.0 and NIST SP 800-131A, and produces a prioritized migration plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 text-[14px] font-mono">
-              <div className="bg-void text-surface px-6 py-4 rounded-sm flex items-center">
-                <span className="text-graphite mr-4">$</span> brew install harshalpatel1972/tap/spectra
+              <div className="bg-calibration text-surface px-6 py-4 rounded-sm flex items-center">
+                <span className="text-surface/70 mr-4">$</span> brew install harshalpatel1972/tap/spectra
               </div>
-              <Link href="/playground" className="flex items-center px-6 py-4 border border-border-dark text-ink font-sans font-medium hover:bg-ghost transition-colors">
+              <Link href="/playground" className="flex items-center justify-center px-6 py-4 border border-graphite text-ink font-sans font-medium hover:bg-ghost transition-colors">
                 → Try in Browser
               </Link>
             </div>
           </div>
           
           <div className="lg:w-[60%] w-full rounded-md overflow-hidden shadow-2xl bg-void p-6 font-mono text-[14px] text-graphite leading-relaxed">
-            <div className="flex gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-[#ef4444] opacity-80" />
-              <div className="w-3 h-3 rounded-full bg-[#facc15] opacity-80" />
-              <div className="w-3 h-3 rounded-full bg-[#22c55e] opacity-80" />
-            </div>
             <div>
               <span className="text-graphite">$ </span>
               <span className="text-surface">spectra scan ./myapp</span>
             </div>
             <div className="mt-2 mb-4">▓ Scanning 847 files in 12 packages...</div>
-            <div className="space-y-1 mt-6 opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_1s_forwards]">
+            <div className="space-y-1 mt-6 finding-row">
               <div><span className="text-critical">CRITICAL</span>  <span className="font-bold text-surface">RSA-2048</span>     auth/jwt.go:47              QRS: 90</div>
             </div>
-            <div className="space-y-1 opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_1.1s_forwards]">
+            <div className="space-y-1 finding-row">
               <div><span className="text-critical">CRITICAL</span>  <span className="font-bold text-surface">RSA-2048</span>     pkg/crypto/key.go:12        QRS: 90</div>
             </div>
-            <div className="space-y-1 opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_1.2s_forwards]">
+            <div className="space-y-1 finding-row">
               <div><span className="text-high">HIGH</span>      <span className="font-bold text-surface">SHA-1</span>        legacy/hash_util.go:91      QRS: 70</div>
             </div>
-            <div className="space-y-1 opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_1.3s_forwards]">
+            <div className="space-y-1 finding-row">
               <div><span className="text-high">HIGH</span>      <span className="font-bold text-surface">ECDSA/P-256</span>  certs/api.pem               QRS: 85</div>
             </div>
             
-            <div className="mt-6 border-t border-border-dark pt-4 opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_1.6s_forwards]">
+            <div className="mt-6 border-t border-border-dark pt-4 finding-row">
               <div>Aggregate QRS: <span className="text-surface">83/100 — <span className="text-critical">CRITICAL</span></span></div>
               <div>Compliance: <span className="text-surface">47 gaps with CNSA 2.0</span></div>
               <div className="mt-4 text-surface">Run <span className="text-calibration-light">spectra simulate --from RSA --to ML-KEM</span> to generate your migration plan.</div>
@@ -134,8 +128,8 @@ export default function Home() {
           </div>
           
           {/* Column 3: CBOM JSON */}
-          <div className="bg-void p-8 rounded-sm text-[14px] font-mono text-graphite overflow-x-auto shadow-inner">
-            <pre className="text-calibration-light opacity-80">{`{
+          <div className="bg-void p-8 rounded-sm text-[14px] font-mono text-surface overflow-x-auto shadow-inner">
+            <pre className="opacity-90">{`{
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
   "components": [
