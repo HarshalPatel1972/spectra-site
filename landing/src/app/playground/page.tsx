@@ -5,8 +5,8 @@ import CodeMirror from '@uiw/react-codemirror'
 import { go } from '@codemirror/lang-go'
 import { python } from '@codemirror/lang-python'
 import { java } from '@codemirror/lang-java'
-import { Shield, Play, Lock, ChevronDown, CheckCircle, AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
+import { Logo } from '../../components/Logo'
 
 const EXAMPLES = {
   'go': {
@@ -92,13 +92,13 @@ export default function PlaygroundPage() {
           setIsScanning(false)
           return
         }
-        const jsonStr = (window as any).scanSpectra(code, language, `test.${language}`)
+        const jsonStr = (window as any).scanSpectra(code, language, \`test.\${language}\`)
         setResult(JSON.parse(jsonStr))
       } else {
         const res = await fetch('/api/scan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code, language, filename: `test.${language}` })
+          body: JSON.stringify({ code, language, filename: \`test.\${language}\` })
         })
         const data = await res.json()
         setResult(data)
@@ -115,137 +115,136 @@ export default function PlaygroundPage() {
     return java()
   }
 
+  const getRiskColor = (band: string) => {
+    if (band === 'CRITICAL') return 'text-critical';
+    if (band === 'HIGH') return 'text-high';
+    if (band === 'MEDIUM') return 'text-medium';
+    if (band === 'LOW') return 'text-low';
+    return 'text-safe';
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-300 font-sans">
-      <header className="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-slate-900">
-        <Link href="/" className="flex items-center gap-2 font-bold text-white">
-          <Shield className="w-5 h-5 text-indigo-400" />
-          Spectra Playground
+    <div className="min-h-screen flex flex-col bg-void text-surface font-sans">
+      <header className="border-b border-border-dark px-8 h-16 flex items-center justify-between bg-void">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo />
+          <span className="text-graphite font-mono text-[14px] ml-4">/ playground</span>
         </Link>
-        <div className="flex bg-slate-800 rounded-md p-1 border border-white/5">
+        <div className="flex bg-obsidian rounded-sm p-1 border border-border-dark">
           <button 
             onClick={() => setMode('server')}
-            className={`px-4 py-1.5 text-xs font-bold rounded transition-colors ${mode === 'server' ? 'text-white bg-indigo-600' : 'text-slate-400 hover:text-white'}`}
+            className={\`px-4 py-1 text-[14px] font-sans transition-colors \${mode === 'server' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}\`}
           >
             Server
           </button>
           <button 
             onClick={() => setMode('wasm')}
-            className={`px-4 py-1.5 text-xs font-bold flex items-center gap-1 rounded transition-colors ${mode === 'wasm' ? 'text-white bg-indigo-600' : 'text-slate-400 hover:text-white'}`}
+            className={\`px-4 py-1 text-[14px] font-sans transition-colors \${mode === 'wasm' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}\`}
           >
-            <Lock className="w-3 h-3" /> WASM
+            WASM
           </button>
         </div>
       </header>
 
       <div className="flex-1 grid lg:grid-cols-2">
         {/* Editor Panel */}
-        <div className="border-r border-white/10 flex flex-col">
-          <div className="p-4 bg-slate-900 border-b border-white/5 flex justify-between items-center">
-            <div className="relative">
-              <select 
-                className="appearance-none bg-slate-800 border border-slate-700 text-sm rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                value={language}
-                onChange={(e: any) => {
-                  setLanguage(e.target.value)
-                  setCode(EXAMPLES[e.target.value as keyof typeof EXAMPLES].code)
-                }}
-              >
-                <option value="go">Example: Go JWT</option>
-                <option value="python">Example: Python Crypto</option>
-                <option value="java">Example: Java PKCS</option>
-              </select>
-              <ChevronDown className="w-4 h-4 absolute right-3 top-2.5 text-slate-400 pointer-events-none" />
-            </div>
+        <div className="border-r border-border-dark flex flex-col">
+          <div className="p-4 bg-void border-b border-border-dark flex justify-between items-center">
+            <select 
+              className="appearance-none bg-obsidian border border-border-dark text-[14px] font-sans text-surface px-4 py-2 focus:outline-none focus:border-calibration transition-colors"
+              value={language}
+              onChange={(e: any) => {
+                setLanguage(e.target.value)
+                setCode(EXAMPLES[e.target.value as keyof typeof EXAMPLES].code)
+              }}
+            >
+              <option value="go">Example: Go JWT</option>
+              <option value="python">Example: Python Crypto</option>
+              <option value="java">Example: Java PKCS</option>
+            </select>
             <button 
               onClick={handleScan}
               disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-bold text-sm transition-colors disabled:opacity-50"
+              className="bg-calibration hover:bg-calibration-light text-surface px-8 py-2 font-sans font-medium text-[14px] transition-colors disabled:opacity-50"
             >
-              {isScanning ? <span className="animate-pulse">Scanning...</span> : <><Play className="w-4 h-4" /> Scan Code</>}
+              {isScanning ? 'Scanning...' : 'Scan Code'}
             </button>
           </div>
-          <div className="flex-1 overflow-auto bg-[#282c34]">
+          <div className="flex-1 overflow-auto bg-[#07080A]">
             <CodeMirror
               value={code}
               height="100%"
               theme="dark"
               extensions={[getLangExtension()]}
               onChange={(val) => setCode(val)}
-              className="h-full text-base"
+              className="h-full text-[14px] font-mono"
             />
           </div>
-          <div className="p-3 bg-slate-900 text-xs text-slate-500 border-t border-white/5 flex items-center gap-2">
+          <div className="p-4 bg-obsidian text-[14px] text-graphite border-t border-border-dark">
             {mode === 'server' ? (
-              'Your code is sent to our server, scanned, and immediately deleted. We do not log playground submissions.'
+              'Server Mode: Scan executes remotely. No telemetry retained.'
             ) : (
-              <span className="text-emerald-400 font-medium flex items-center gap-1"><Lock className="w-3 h-3"/> WASM Mode: Code never leaves your browser. Execution happens locally.</span>
+              <span className="text-safe">WASM Mode: Cryptographic analysis executes entirely within local browser context.</span>
             )}
           </div>
         </div>
 
         {/* Results Panel */}
-        <div className="bg-slate-950 flex flex-col">
-          <div className="p-4 bg-slate-900 border-b border-white/5 font-semibold text-sm">
-            Scan Results
+        <div className="bg-obsidian flex flex-col">
+          <div className="p-4 bg-void border-b border-border-dark text-[14px] text-graphite uppercase tracking-widest font-mono">
+            Analysis Results
           </div>
-          <div className="flex-1 p-6 overflow-auto">
+          <div className="flex-1 p-8 overflow-auto">
             {!result ? (
-              <div className="h-full flex flex-col items-center justify-center text-slate-600">
-                <Shield className="w-16 h-16 mb-4 opacity-20" />
-                <p>Run a scan to see cryptographic findings.</p>
+              <div className="h-full flex flex-col items-center justify-center text-graphite font-mono text-[14px]">
+                <div className="mb-4">Ready to scan.</div>
               </div>
             ) : result.error ? (
-              <div className="text-red-400 bg-red-400/10 p-4 rounded border border-red-400/20">
-                {result.error}
+              <div className="text-critical border border-critical/30 bg-critical/10 p-4 font-mono text-[14px]">
+                [ERROR] {result.error}
               </div>
             ) : (
-              <div className="space-y-6">
-                <div className="flex justify-between items-end pb-6 border-b border-white/10">
+              <div className="space-y-12">
+                <div className="flex justify-between items-end pb-8 border-b border-border-dark">
                   <div>
-                    <div className="text-sm text-slate-400 uppercase tracking-widest mb-1">Aggregate Risk</div>
-                    <div className="text-4xl font-bold text-white flex items-center gap-3">
-                      {result.aggregate_qrs || 0}<span className="text-lg text-slate-500">/ 100</span>
+                    <div className="text-[14px] text-graphite uppercase tracking-widest mb-2 font-mono">Aggregate QRS</div>
+                    <div className="font-mono text-[61px] leading-none text-surface">
+                      {result.aggregate_qrs || 0}<span className="text-[31px] text-graphite">/100</span>
                     </div>
                   </div>
-                  <div className={`px-4 py-1.5 rounded text-sm font-bold ${
-                    (result.aggregate_qrs || 0) >= 80 ? 'bg-red-500/20 text-red-400' :
-                    (result.aggregate_qrs || 0) >= 60 ? 'bg-orange-500/20 text-orange-400' :
-                    (result.aggregate_qrs || 0) >= 40 ? 'bg-yellow-500/20 text-yellow-400' :
-                    'bg-emerald-500/20 text-emerald-400'
-                  }`}>
-                    {(result.aggregate_qrs || 0) >= 80 ? 'CRITICAL' : (result.aggregate_qrs || 0) >= 60 ? 'HIGH' : (result.aggregate_qrs || 0) >= 40 ? 'MEDIUM' : 'SAFE'}
+                  <div className={\`font-mono text-[14px] uppercase tracking-widest \${
+                    (result.aggregate_qrs || 0) >= 80 ? 'text-critical' :
+                    (result.aggregate_qrs || 0) >= 60 ? 'text-high' :
+                    (result.aggregate_qrs || 0) >= 40 ? 'text-medium' :
+                    'text-safe'
+                  }\`}>
+                    — {(result.aggregate_qrs || 0) >= 80 ? 'CRITICAL' : (result.aggregate_qrs || 0) >= 60 ? 'HIGH' : (result.aggregate_qrs || 0) >= 40 ? 'MEDIUM' : 'SAFE'}
                   </div>
                 </div>
 
                 {(!result.findings || result.findings.length === 0) ? (
-                  <div className="flex items-center gap-3 text-emerald-400 bg-emerald-400/10 p-4 rounded border border-emerald-400/20">
-                    <CheckCircle className="w-5 h-5" />
-                    No vulnerable cryptography detected!
+                  <div className="text-safe font-mono text-[14px]">
+                    No vulnerable cryptography detected. QRS: 0/100.
                   </div>
                 ) : (
-                  <div className="space-y-3">
+                  <div className="space-y-6">
                     {result.findings.map((f: any, i: number) => (
-                      <div key={i} className="bg-slate-900 border border-white/5 rounded-lg p-4">
-                        <div className="flex justify-between items-start mb-2">
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-slate-200">{f.algorithm}</span>
-                            {f.key_size > 0 && <span className="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 rounded">{f.key_size}-bit</span>}
+                      <div key={i} className="border border-border-dark p-6 bg-void opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_forwards]" style={{ animationDelay: \`\${i * 60}ms\` }}>
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="flex items-center gap-4">
+                            <span className="font-sans font-semibold text-surface text-[16px]">{f.algorithm}</span>
+                            {f.key_size > 0 && <span className="font-mono text-[12px] text-graphite bg-obsidian px-2 py-1">{f.key_size}-bit</span>}
                           </div>
-                          <span className={`text-xs font-bold px-2 py-0.5 rounded ${
-                            f.risk_band === 'CRITICAL' ? 'bg-red-500/20 text-red-400' :
-                            f.risk_band === 'HIGH' ? 'bg-orange-500/20 text-orange-400' :
-                            'bg-yellow-500/20 text-yellow-400'
-                          }`}>
+                          <span className={\`font-mono text-[14px] \${getRiskColor(f.risk_band)}\`}>
                             QRS: {f.qrs}
                           </span>
                         </div>
-                        <div className="font-mono text-xs text-slate-400 bg-black/40 p-2 rounded mb-2 overflow-x-auto whitespace-pre">
-                          Line {f.line_number}: {f.line_content.trim()}
+                        <div className="font-mono text-[14px] text-surface bg-obsidian p-4 mb-4 overflow-x-auto whitespace-pre border border-border-dark">
+                          {f.line_content.trim()}
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-indigo-400">
-                          <AlertTriangle className="w-3 h-3" />
-                          Effort: {f.migration_effort} — {f.effort_rationale}
+                        <div className="font-sans text-[14px] text-graphite">
+                          <span className="text-calibration mr-2">Migration Effort:</span>
+                          {f.migration_effort} — {f.effort_rationale}
                         </div>
                       </div>
                     ))}
