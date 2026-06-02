@@ -92,13 +92,13 @@ export default function PlaygroundPage() {
           setIsScanning(false)
           return
         }
-        const jsonStr = (window as any).scanSpectra(code, language, \`test.\${language}\`)
+        const jsonStr = (window as any).scanSpectra(code, language, `test.${language}`)
         setResult(JSON.parse(jsonStr))
       } else {
         const res = await fetch('/api/scan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code, language, filename: \`test.\${language}\` })
+          body: JSON.stringify({ code, language, filename: `test.${language}` })
         })
         const data = await res.json()
         setResult(data)
@@ -133,13 +133,13 @@ export default function PlaygroundPage() {
         <div className="flex bg-obsidian rounded-sm p-1 border border-border-dark">
           <button 
             onClick={() => setMode('server')}
-            className={\`px-4 py-1 text-[14px] font-sans transition-colors \${mode === 'server' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}\`}
+            className={`px-4 py-1 text-[14px] font-sans transition-colors ${mode === 'server' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}`}
           >
             Server
           </button>
           <button 
             onClick={() => setMode('wasm')}
-            className={\`px-4 py-1 text-[14px] font-sans transition-colors \${mode === 'wasm' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}\`}
+            className={`px-4 py-1 text-[14px] font-sans transition-colors ${mode === 'wasm' ? 'bg-calibration text-surface' : 'text-graphite hover:text-surface'}`}
           >
             WASM
           </button>
@@ -212,12 +212,12 @@ export default function PlaygroundPage() {
                       {result.aggregate_qrs || 0}<span className="text-[31px] text-graphite">/100</span>
                     </div>
                   </div>
-                  <div className={\`font-mono text-[14px] uppercase tracking-widest \${
+                  <div className={`font-mono text-[14px] uppercase tracking-widest ${
                     (result.aggregate_qrs || 0) >= 80 ? 'text-critical' :
                     (result.aggregate_qrs || 0) >= 60 ? 'text-high' :
                     (result.aggregate_qrs || 0) >= 40 ? 'text-medium' :
                     'text-safe'
-                  }\`}>
+                  }`}>
                     — {(result.aggregate_qrs || 0) >= 80 ? 'CRITICAL' : (result.aggregate_qrs || 0) >= 60 ? 'HIGH' : (result.aggregate_qrs || 0) >= 40 ? 'MEDIUM' : 'SAFE'}
                   </div>
                 </div>
@@ -229,13 +229,13 @@ export default function PlaygroundPage() {
                 ) : (
                   <div className="space-y-6">
                     {result.findings.map((f: any, i: number) => (
-                      <div key={i} className="border border-border-dark p-6 bg-void opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_forwards]" style={{ animationDelay: \`\${i * 60}ms\` }}>
+                      <div key={i} className="border border-border-dark p-6 bg-void opacity-0 animate-[finding-emerge_300ms_cubic-bezier(0,0,0.2,1)_forwards]" style={{ animationDelay: `${i * 60}ms` }}>
                         <div className="flex justify-between items-start mb-4">
                           <div className="flex items-center gap-4">
                             <span className="font-sans font-semibold text-surface text-[16px]">{f.algorithm}</span>
                             {f.key_size > 0 && <span className="font-mono text-[12px] text-graphite bg-obsidian px-2 py-1">{f.key_size}-bit</span>}
                           </div>
-                          <span className={\`font-mono text-[14px] \${getRiskColor(f.risk_band)}\`}>
+                          <span className={`font-mono text-[14px] ${getRiskColor(f.risk_band)}`}>
                             QRS: {f.qrs}
                           </span>
                         </div>

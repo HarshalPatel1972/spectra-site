@@ -76,7 +76,7 @@ export default function TimelinePage() {
                 <div className="absolute bottom-full mb-2 h-6 w-px bg-border-dark group-hover:bg-surface transition-colors" />
 
                 {/* Node Point */}
-                <div className={\`w-3 h-3 rounded-full transition-transform duration-300 \${getStatusColor(node.risk)} \${hoveredNode === index ? 'scale-150' : ''}\`} />
+                <div className={`w-3 h-3 rounded-full transition-transform duration-300 ${getStatusColor(node.risk)} ${hoveredNode === index ? 'scale-150' : ''}`} />
 
                 {/* Connecting Line (Bottom) */}
                 <div className="absolute top-full mt-2 h-6 w-px bg-border-dark group-hover:bg-surface transition-colors" />
@@ -88,7 +88,7 @@ export default function TimelinePage() {
 
                 {/* Tooltip / Info Card */}
                 {hoveredNode === index && (
-                  <div className={\`absolute top-full mt-20 w-64 p-4 border text-left z-50 backdrop-blur-md \${getRiskColor(node.risk)}\`}>
+                  <div className={`absolute top-full mt-20 w-64 p-4 border text-left z-50 backdrop-blur-md ${getRiskColor(node.risk)}`}>
                     <div className="flex justify-between items-center font-mono text-[12px] mb-2 uppercase tracking-widest">
                       <span>{node.status}</span>
                       <span>QRS: {node.risk}</span>

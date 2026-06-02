@@ -65,10 +65,10 @@ export default function AssessmentPage() {
       doc.text('1. Risk Profile Assessment', 20, 60)
 
       doc.setFontSize(11)
-      doc.text(\`Industry: \${answers.industry || 'Unknown'}\`, 25, 70)
-      doc.text(\`Data Secrecy Lifespan: \${answers.data_lifespan || 'Unknown'}\`, 25, 80)
-      doc.text(\`Primary Cryptography: \${answers.crypto_usage || 'Unknown'}\`, 25, 90)
-      doc.text(\`Migration Timeline: \${answers.timeline || 'Unknown'}\`, 25, 100)
+      doc.text(`Industry: ${answers.industry || 'Unknown'}`, 25, 70)
+      doc.text(`Data Secrecy Lifespan: ${answers.data_lifespan || 'Unknown'}`, 25, 80)
+      doc.text(`Primary Cryptography: ${answers.crypto_usage || 'Unknown'}`, 25, 90)
+      doc.text(`Migration Timeline: ${answers.timeline || 'Unknown'}`, 25, 100)
 
       doc.setFontSize(16)
       doc.text("2. Mosca's Theorem Analysis", 20, 120)
@@ -85,8 +85,8 @@ export default function AssessmentPage() {
       const totalRiskYears = lifespanYears + migrationYears
 
       doc.setFontSize(11)
-      doc.text(\`Migration Time (y) + Data Shelf-life (x) = \${totalRiskYears} years\`, 25, 130)
-      doc.text(\`Estimated Time to Q-Day (z) = \${qDayEstimate} years\`, 25, 140)
+      doc.text(`Migration Time (y) + Data Shelf-life (x) = ${totalRiskYears} years`, 25, 130)
+      doc.text(`Estimated Time to Q-Day (z) = ${qDayEstimate} years`, 25, 140)
 
       if (totalRiskYears > qDayEstimate) {
         doc.setTextColor(239, 68, 68) // critical
@@ -146,10 +146,10 @@ export default function AssessmentPage() {
                     <button
                       key={i}
                       onClick={() => handleSelect(opt)}
-                      className={\`w-full text-left px-8 py-5 border transition-colors font-sans text-[16px] group
-                        \${answers[questions[currentStep].id] === opt 
+                      className={`w-full text-left px-8 py-5 border transition-colors font-sans text-[16px] group
+                        ${answers[questions[currentStep].id] === opt 
                           ? 'border-calibration bg-calibration/10 text-surface' 
-                          : 'border-border-dark bg-obsidian text-graphite hover:border-graphite'}\`}
+                          : 'border-border-dark bg-obsidian text-graphite hover:border-graphite'}`}
                     >
                       {opt}
                     </button>

@@ -92,11 +92,11 @@ export default function QRSCalculator() {
                 <button
                   key={algo}
                   onClick={() => toggleAlgo(algo)}
-                  className={\`p-4 border font-sans text-[14px] text-left transition-colors \${
+                  className={`p-4 border font-sans text-[14px] text-left transition-colors ${
                     algorithms.includes(algo) 
                       ? 'bg-calibration/20 border-calibration text-surface' 
                       : 'bg-obsidian border-border-dark text-graphite hover:border-graphite'
-                  }\`}
+                  }`}
                 >
                   {algo}
                 </button>
@@ -140,11 +140,11 @@ export default function QRSCalculator() {
                 <button
                   key={exp.id}
                   onClick={() => toggleExposure(exp.id)}
-                  className={\`p-4 border font-sans text-[14px] text-left transition-colors \${
+                  className={`p-4 border font-sans text-[14px] text-left transition-colors ${
                     exposure.includes(exp.id)
                       ? 'bg-calibration/20 border-calibration text-surface' 
                       : 'bg-obsidian border-border-dark text-graphite hover:border-graphite'
-                  }\`}
+                  }`}
                 >
                   {exp.label}
                 </button>
@@ -159,12 +159,12 @@ export default function QRSCalculator() {
             <div className="font-mono text-[12px] text-graphite uppercase tracking-widest mb-8">Estimated QRS</div>
             
             <div className="flex justify-center mb-12">
-              <div className={\`font-mono text-[96px] leading-none tabular-nums \${
+              <div className={`font-mono text-[96px] leading-none tabular-nums ${
                 qrs >= 80 ? 'text-critical' :
                 qrs >= 60 ? 'text-high' :
                 qrs >= 40 ? 'text-medium' :
                 'text-safe'
-              }\`}>
+              }`}>
                 {qrs}<span className="text-[31px] text-graphite align-bottom ml-2">/100</span>
               </div>
             </div>

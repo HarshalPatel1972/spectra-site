@@ -65,25 +65,25 @@ export default function SimulatorPage() {
               <div className="space-y-2">
                 <button 
                   onClick={() => setWave(0)}
-                  className={\`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors \${wave === 0 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}\`}
+                  className={`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors ${wave === 0 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}`}
                 >
                   Current State (QRS: 83)
                 </button>
                 <button 
                   onClick={() => setWave(1)}
-                  className={\`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors \${wave === 1 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}\`}
+                  className={`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors ${wave === 1 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}`}
                 >
                   Wave 1: Edge Certificates (QRS: 45)
                 </button>
                 <button 
                   onClick={() => setWave(2)}
-                  className={\`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors \${wave === 2 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}\`}
+                  className={`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors ${wave === 2 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}`}
                 >
                   Wave 2: Identity/Auth (QRS: 12)
                 </button>
                 <button 
                   onClick={() => setWave(3)}
-                  className={\`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors \${wave === 3 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}\`}
+                  className={`w-full text-left px-4 py-3 border font-sans text-[14px] transition-colors ${wave === 3 ? 'bg-calibration/20 border-calibration text-surface' : 'border-border-dark text-graphite hover:border-graphite'}`}
                 >
                   Wave 3: Dependencies (QRS: 0)
                 </button>
@@ -99,31 +99,31 @@ export default function SimulatorPage() {
         {/* Graph Area */}
         <div className="col-span-2 relative p-12 overflow-hidden flex items-center justify-center bg-[#07080A]">
           {/* Node 1: api.cert */}
-          <div className={\`absolute top-1/4 left-1/4 p-4 border w-48 transition-colors duration-1000 \${getRiskColor(GRAPH_NODES[0].risk, 1)}\`}>
+          <div className={`absolute top-1/4 left-1/4 p-4 border w-48 transition-colors duration-1000 ${getRiskColor(GRAPH_NODES[0].risk, 1)}`}>
             <div className="font-mono text-[12px] mb-2">{GRAPH_NODES[0].id}</div>
             <div className="font-sans font-medium text-[16px] text-surface">{getAlgo(GRAPH_NODES[0].algo, 1)}</div>
           </div>
 
           {/* Node 2: auth.go */}
-          <div className={\`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 border w-48 transition-colors duration-1000 \${getRiskColor(GRAPH_NODES[1].risk, 2)}\`}>
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 border w-48 transition-colors duration-1000 ${getRiskColor(GRAPH_NODES[1].risk, 2)}`}>
             <div className="font-mono text-[12px] mb-2">{GRAPH_NODES[1].id}</div>
             <div className="font-sans font-medium text-[16px] text-surface">{getAlgo(GRAPH_NODES[1].algo, 2)}</div>
           </div>
 
           {/* Node 3: tls.go */}
-          <div className={\`absolute top-1/4 right-1/4 p-4 border w-48 transition-colors duration-1000 \${getRiskColor(GRAPH_NODES[2].risk, 2)}\`}>
+          <div className={`absolute top-1/4 right-1/4 p-4 border w-48 transition-colors duration-1000 ${getRiskColor(GRAPH_NODES[2].risk, 2)}`}>
             <div className="font-mono text-[12px] mb-2">{GRAPH_NODES[2].id}</div>
             <div className="font-sans font-medium text-[16px] text-surface">{GRAPH_NODES[2].algo}</div>
           </div>
 
           {/* Node 4: jwt.go */}
-          <div className={\`absolute bottom-1/4 left-1/2 p-4 border w-48 transition-colors duration-1000 \${getRiskColor(GRAPH_NODES[3].risk, 2)}\`}>
+          <div className={`absolute bottom-1/4 left-1/2 p-4 border w-48 transition-colors duration-1000 ${getRiskColor(GRAPH_NODES[3].risk, 2)}`}>
             <div className="font-mono text-[12px] mb-2">{GRAPH_NODES[3].id}</div>
             <div className="font-sans font-medium text-[16px] text-surface">{getAlgo(GRAPH_NODES[3].algo, 2)}</div>
           </div>
 
           {/* Node 5: package.json */}
-          <div className={\`absolute bottom-1/4 right-1/4 p-4 border w-48 transition-colors duration-1000 \${getRiskColor(GRAPH_NODES[4].risk, 3)}\`}>
+          <div className={`absolute bottom-1/4 right-1/4 p-4 border w-48 transition-colors duration-1000 ${getRiskColor(GRAPH_NODES[4].risk, 3)}`}>
             <div className="font-mono text-[12px] mb-2">{GRAPH_NODES[4].id}</div>
             <div className="font-sans font-medium text-[16px] text-surface">{getAlgo(GRAPH_NODES[4].algo, 3)}</div>
           </div>
