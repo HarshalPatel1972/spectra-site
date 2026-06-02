@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { Logo } from '../components/Logo'
+import { HeroHolograms } from '../components/HeroHolograms'
 import { useEffect, useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const [qrsCount, setQrsCount] = useState(0);
@@ -72,8 +74,9 @@ export default function Home() {
         <main className="max-w-[1400px] mx-auto px-8 py-24 space-y-40 flex-1 w-full">
           
           {/* HERO SECTION */}
-          <section className="flex flex-col xl:flex-row gap-16 items-start">
-            <div className="xl:w-[45%] flex flex-col pt-12">
+          <section className="flex flex-col xl:flex-row gap-16 items-start relative">
+            <HeroHolograms />
+            <div className="xl:w-[45%] flex flex-col pt-12 z-10">
               <div className="text-[11px] font-sans font-semibold tracking-[0.12em] text-brand mb-6 uppercase flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-brand/50"></span>
                 Cryptographic Intelligence Platform
@@ -107,7 +110,12 @@ export default function Home() {
             </div>
             
             {/* TERMINAL UI */}
-            <div className="xl:w-[55%] w-full rounded-xl overflow-hidden terminal-shadow bg-surface-0 border border-border/80 backdrop-blur-xl flex flex-col">
+            <motion.div 
+              initial={{ y: 40, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.2 }}
+              className="xl:w-[55%] w-full rounded-xl overflow-hidden terminal-shadow bg-surface-0 border border-border/80 backdrop-blur-xl flex flex-col z-10"
+            >
               {/* Terminal Header */}
               <div className="h-10 bg-surface-1 border-b border-border/50 flex items-center px-4 justify-between shrink-0">
                 <div className="flex gap-2">
@@ -178,11 +186,19 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </section>
 
+          {/* DYNAMIC WAVE DIVIDER */}
+          <div className="w-full overflow-hidden leading-none rotate-180 -mb-20">
+            <svg className="relative block w-[calc(100%+1.3px)] h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-surface-1/50"></path>
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3" className="fill-none stroke-brand/30" strokeWidth="2"></path>
+            </svg>
+          </div>
+
           {/* THE TOOLCHAIN */}
-          <section className="pt-24 border-t border-border/50">
+          <section className="pt-32 relative">
             <div className="text-center mb-16">
               <h2 className="font-serif text-[clamp(2rem,3vw,3rem)] font-bold text-text-primary mb-4">The Spectra Toolchain</h2>
               <p className="text-text-secondary text-[1.125rem] max-w-2xl mx-auto">A unified suite designed to map, score, and remediate cryptographic risk across the entire software development lifecycle.</p>
