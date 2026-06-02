@@ -139,3 +139,22 @@ body {
 .terminal-shadow {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(46, 196, 196, 0.05);
 }
+
+/* Duolingo-Inspired 3D Push Buttons */
+.btn-push {
+  @apply relative inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-150 active:translate-y-[4px] active:border-b-0 cursor-pointer select-none;
+  border-bottom-width: 4px;
+  border-radius: 1rem;
+}
+
+.btn-push-primary {
+  @apply bg-[#58CC02] border-[#58A700] text-white hover:brightness-110 shadow-[0_4px_15px_rgba(88,204,2,0.2)];
+}
+
+.btn-push-secondary {
+  @apply bg-transparent border-border text-[#1CB0F6] border-2 border-b-4 hover:bg-surface-0;
+}
+
+.btn-push-brand {
+  @apply bg-brand border-brand-dim text-void hover:brightness-110 shadow-[0_4px_15px_rgba(46,196,196,0.2)];
+}

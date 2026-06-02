@@ -171,7 +171,7 @@ export default function PlaygroundPage() {
             <button 
               onClick={handleScan}
               disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-              className="bg-brand/10 border border-brand/30 hover:bg-brand/20 hover:border-brand/50 text-brand px-6 py-1.5 rounded font-sans font-semibold text-[13px] transition-all disabled:opacity-50 shadow-[0_0_15px_rgba(46,196,196,0.1)] flex items-center gap-2"
+              className="btn-push btn-push-brand px-8 py-2 text-[13px] disabled:opacity-50 flex items-center gap-2"
             >
               {isScanning ? (
                 <><span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Scanning</>
