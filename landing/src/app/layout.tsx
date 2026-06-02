@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Spectral, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { Syne, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spectral = Spectral({
-  variable: "--font-spectral",
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
+const syne = Syne({
+  variable: "--font-syne",
+  weight: ["700", "800"],
   subsets: ["latin"],
 });
 
@@ -34,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spectral.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
       </body>

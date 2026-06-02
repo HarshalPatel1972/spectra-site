@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" width="160" height="32">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&amp;display=swap');
+      .wordmark {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        fill: #E8EAF6;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </defs>
+  <text x="0" y="24" class="wordmark">SPECTRA</text>
+</svg>

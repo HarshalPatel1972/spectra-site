@@ -1,61 +1,59 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #07080A;
-  --color-obsidian: #0F1015;
-  --color-midnight: #1A1B25;
-  --color-ink: #1A1B25;
-  --color-surface: #F5F4F0;
-  --color-paper: #FAFAF8;
-  --color-ghost: #F0EFE9;
+  --color-void: #060810;
+  --color-surface-0: #0C0F1E;
+  --color-surface-1: #131728;
+  --color-surface-2: #1C2038;
+  --color-border: #1F2444;
+  --color-border-muted: #151830;
   
-  --color-calibration: #2563EB;
-  --color-calibration-light: #3B82F6;
-  --color-calibration-dim: #1D4ED8;
+  --color-text-primary: #E8EAF6;
+  --color-text-secondary: #7A80AA;
+  --color-text-muted: #4A4F6F;
+  --color-text-inverse: #060810;
   
-  --color-safe: #16A34A;
-  --color-low: #22C55E;
-  --color-medium: #FACC15;
-  --color-high: #F97316;
-  --color-critical: #EF4444;
-  --color-blocked: #9CA3AF;
+  --color-brand: #2EC4C4;
+  --color-brand-dim: #1A7A7A;
   
-  --color-graphite: #6B7280;
-  --color-slate: #9CA3AF;
-  --color-border-light: #E5E5E0;
-  --color-border-dark: #2A2B35;
+  --color-critical: #FF4560;
+  --color-critical-dim: #7D1525;
+  --color-high: #FF8F40;
+  --color-high-dim: #7D3D12;
+  --color-medium: #F5C842;
+  --color-medium-dim: #7A5E0E;
+  --color-low: #4ADEA8;
+  --color-low-dim: #1A6644;
+  --color-safe: #2EC4C4;
+  --color-safe-dim: #1A7A7A;
+
+  --color-overdue: #FF4560;
+  --color-red: #FF8F40;
+  --color-amber: #F5C842;
+  --color-green: #4ADEA8;
 
   --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-spectral), ui-serif, Georgia, serif;
+  --font-display: var(--font-syne), var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-syne), ui-serif, Georgia, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  /* Motion Easing */
-  --ease-scan: cubic-bezier(0.0, 0.0, 1.0, 1.0);
-  --ease-emerge: cubic-bezier(0.0, 0.0, 0.2, 1.0);
-  --ease-collapse: cubic-bezier(0.8, 0.0, 1.0, 1.0);
-  --ease-count: cubic-bezier(0.0, 0.0, 0.4, 1.0);
-
-  /* Motion Durations */
-  --duration-instant: 50ms;
-  --duration-fast: 120ms;
-  --duration-default: 200ms;
-  --duration-scan: 300ms;
-  --duration-sweep: 400ms;
-  --duration-count: 800ms;
-  --duration-diagram: 1200ms;
-  --duration-story: 2000ms;
-
-  --background: var(--color-surface);
-  --foreground: var(--color-ink);
+  --ease-spectra: cubic-bezier(0.16, 1, 0.3, 1);
+  --scan-duration: 600ms;
+  --background: var(--color-void);
+  --foreground: var(--color-text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-void);
-    --foreground: var(--color-surface);
-  }
+.spectra-light {
+  --color-void:         #FAFBFC;
+  --color-surface-0:    #FFFFFF;
+  --color-surface-1:    #F3F4F8;
+  --color-surface-2:    #E8EAF4;
+  --color-border:       #D4D7E8;
+  --color-text-primary: #0C0F1E;
+  --color-text-secondary:#4A4F6F;
+  --color-brand:        #1A9B9B;
 }
 
 body {
@@ -64,40 +62,48 @@ body {
   font-family: var(--font-sans);
 }
 
-.qrs-bar {
-  background: linear-gradient(
-    to right,
-    var(--color-safe)     0%,
-    var(--color-low)      25%,
-    var(--color-medium)   45%,
-    var(--color-high)     65%,
-    var(--color-critical) 100%
-  );
-}
-
-@keyframes spectra-scan {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  2%   { opacity: 1; }
-  98%  { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-
-.scan-line {
+/* Phase 4 Scan-Reveal Animation */
+.scan-reveal-line {
   position: fixed;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    var(--color-calibration) 20%,
-    var(--color-calibration) 80%,
-    transparent 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(37, 99, 235, 0.3);
-  animation: spectra-scan var(--duration-story) var(--ease-scan) forwards;
+  background: var(--color-brand);
+  opacity: 0.3;
+  animation: scan var(--scan-duration) var(--ease-spectra) forwards;
   pointer-events: none;
+  z-index: 9999;
 }
 
+@keyframes scan {
+  from { transform: translateY(0); opacity: 0.3; }
+  to   { transform: translateY(100vh); opacity: 0; }
+}
+
+.scan-reveal-content {
+  /* Using global ease-spectra so the animation doesn't fail */
+  clip-path: inset(0 0 100% 0);
+  animation: reveal var(--scan-duration) var(--ease-spectra) forwards;
+}
+
+@keyframes reveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+
+/* Phase 4 QRS Materializer */
+@keyframes qrs-materialize {
+  0% { opacity: 0.2; filter: brightness(1); }
+  30% { filter: brightness(1.2); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+.qrs-materialize {
+  animation: qrs-materialize 400ms var(--ease-spectra) forwards;
+}
+
+/* Fallback for finding emerge */
 @keyframes finding-emerge {
   from {
     opacity: 0;
@@ -110,18 +116,3 @@ body {
     clip-path: inset(0 0% 0 0);
   }
 }
-
-.finding-row {
-  opacity: 0; /* Default invisible before animation */
-}
-
-.finding-row:nth-child(1) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 60ms; }
-.finding-row:nth-child(2) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 120ms; }
-.finding-row:nth-child(3) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 180ms; }
-.finding-row:nth-child(4) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 240ms; }
-.finding-row:nth-child(5) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 300ms; }
-.finding-row:nth-child(6) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 360ms; }
-.finding-row:nth-child(7) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 420ms; }
-.finding-row:nth-child(8) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 480ms; }
-.finding-row:nth-child(9) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 540ms; }
-.finding-row:nth-child(10) { animation: finding-emerge var(--duration-scan) var(--ease-emerge) forwards 600ms; }
