@@ -85,12 +85,19 @@ export default function Home() {
                 Not "do you use SHA-1?" Most engineers know they do. The harder question: which commit introduced it, who owns it, and what does replacing it cost? Spectra answers that question.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                <Link href="/download" className="btn-push btn-push-primary px-10 py-4 w-full sm:w-auto text-[15px]">
-                  Get Started
-                </Link>
-                <Link href="/playground" className="btn-push btn-push-secondary px-10 py-4 w-full sm:w-auto text-[15px]">
-                  Try Playground
+              <div className="flex flex-col sm:flex-row gap-4 text-[14px]">
+                <div 
+                  className="bg-surface-0/50 backdrop-blur-sm border border-border/80 hover:border-brand/40 text-text-primary px-6 py-4 rounded-md flex items-center font-mono cursor-copy transition-all group"
+                  onClick={() => navigator.clipboard.writeText('brew install harshalpatel1972/tap/spectra')}
+                >
+                  <span className="text-brand mr-4 group-hover:text-brand-dim transition-colors">$</span> 
+                  <span>brew install harshalpatel1972/tap/spectra</span>
+                  <div className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity text-text-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  </div>
+                </div>
+                <Link href="/download" className="btn-push btn-push-brand px-8 py-4 w-full sm:w-auto text-[15px]">
+                  Download Tools →
                 </Link>
               </div>
               <div className="mt-8 text-center sm:text-left text-[0.875rem] text-text-muted font-sans flex items-center gap-2">
@@ -216,7 +223,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-10">
               <Link href="/download" className="btn-push btn-push-brand px-10 py-4 text-[15px]">
-                View Installation Instructions
+                View installation instructions →
               </Link>
             </div>
           </section>
