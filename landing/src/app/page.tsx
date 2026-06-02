@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Logo } from '../components/Logo'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function Home() {
   const [qrsCount, setQrsCount] = useState(0);
@@ -29,10 +29,10 @@ export default function Home() {
     // Terminal Staggered Reveal
     const steps = [
       setTimeout(() => setTerminalStep(1), 500),  // scanning...
-      setTimeout(() => setTerminalStep(2), 1000), // critical finding
-      setTimeout(() => setTerminalStep(3), 1500), // high finding
-      setTimeout(() => setTerminalStep(4), 2000), // medium finding
-      setTimeout(() => setTerminalStep(5), 2500)  // summary
+      setTimeout(() => setTerminalStep(2), 1200), // critical finding
+      setTimeout(() => setTerminalStep(3), 1900), // high finding
+      setTimeout(() => setTerminalStep(4), 2600), // medium finding
+      setTimeout(() => setTerminalStep(5), 3300)  // summary
     ];
 
     return () => {
@@ -57,10 +57,11 @@ export default function Home() {
         <header className="border-b border-border/50 bg-void/80 backdrop-blur-md sticky top-0 z-50">
           <div className="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between">
             <Logo />
-            <nav className="flex gap-8 text-[14px] font-medium text-text-secondary">
+            <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary">
               <Link href="/what-happens" className="hover:text-text-primary transition-colors">The Quantum Threat</Link>
               <Link href="/playground" className="hover:text-text-primary transition-colors">Playground</Link>
               <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+              <Link href="/download" className="hover:text-brand transition-colors text-text-primary">Download</Link>
             </nav>
             <div className="flex gap-6 items-center text-[14px]">
               <a href="https://github.com/HarshalPatel1972/spectra" className="text-text-secondary hover:text-text-primary transition-colors font-medium">GitHub ↗</a>
@@ -68,11 +69,11 @@ export default function Home() {
           </div>
         </header>
 
-        <main className="max-w-[1400px] mx-auto px-8 py-24 space-y-32 flex-1 w-full">
+        <main className="max-w-[1400px] mx-auto px-8 py-24 space-y-40 flex-1 w-full">
           
           {/* HERO SECTION */}
-          <section className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-[45%] flex flex-col">
+          <section className="flex flex-col xl:flex-row gap-16 items-start">
+            <div className="xl:w-[45%] flex flex-col pt-12">
               <div className="text-[11px] font-sans font-semibold tracking-[0.12em] text-brand mb-6 uppercase flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-brand/50"></span>
                 Cryptographic Intelligence Platform
@@ -95,8 +96,8 @@ export default function Home() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                   </div>
                 </div>
-                <Link href="/playground" className="flex items-center justify-center px-8 py-4 rounded-md bg-brand/10 border border-brand/30 text-brand font-sans font-semibold hover:bg-brand/20 hover:border-brand/50 transition-all shadow-[0_0_20px_rgba(46,196,196,0.15)]">
-                  Try in Browser →
+                <Link href="/download" className="flex items-center justify-center px-8 py-4 rounded-md bg-brand/10 border border-brand/30 text-brand font-sans font-semibold hover:bg-brand/20 hover:border-brand/50 transition-all shadow-[0_0_20px_rgba(46,196,196,0.15)]">
+                  Download Tools →
                 </Link>
               </div>
               <div className="mt-8 text-center sm:text-left text-[0.875rem] text-text-muted font-sans flex items-center gap-2">
@@ -106,9 +107,9 @@ export default function Home() {
             </div>
             
             {/* TERMINAL UI */}
-            <div className="lg:w-[55%] w-full rounded-xl overflow-hidden terminal-shadow bg-surface-0 border border-border/80 backdrop-blur-xl">
+            <div className="xl:w-[55%] w-full rounded-xl overflow-hidden terminal-shadow bg-surface-0 border border-border/80 backdrop-blur-xl flex flex-col">
               {/* Terminal Header */}
-              <div className="h-10 bg-surface-1 border-b border-border/50 flex items-center px-4 justify-between">
+              <div className="h-10 bg-surface-1 border-b border-border/50 flex items-center px-4 justify-between shrink-0">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
                   <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
@@ -120,21 +121,21 @@ export default function Home() {
                 <div></div>
               </div>
 
-              {/* Terminal Content */}
-              <div className="p-6 font-mono text-[13px] text-text-secondary leading-[1.6] h-[480px] overflow-hidden">
+              {/* Terminal Content - Set to h-auto so it grows with the content, no clipping */}
+              <div className="p-6 font-mono text-[13px] text-text-secondary leading-[1.6] h-auto min-h-[400px]">
                 <div className="mb-4">
                   <span className="text-brand">$ </span>
                   <span className="text-text-primary">spectra scan .</span>
                 </div>
                 
-                <div className={`transition-opacity duration-300 ${terminalStep >= 1 ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`transition-opacity duration-300 ${terminalStep >= 1 ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
                   <div className="mb-6 flex items-center gap-2">
                     <span className="animate-pulse text-brand">▓▓░</span> 
                     Mapping cryptographic landscape...
                   </div>
                 </div>
                 
-                <div className={`transition-all duration-500 transform ${terminalStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} flex gap-4 mb-6`}>
+                <div className={`transition-all duration-500 transform ${terminalStep >= 2 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
                   <div className="text-critical font-bold w-20 shrink-0">CRITICAL</div>
                   <div className="flex-1">
                     <div className="text-text-primary font-bold">RSA-2048 (×14)</div>
@@ -145,7 +146,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className={`transition-all duration-500 transform ${terminalStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} flex gap-4 mb-6`}>
+                <div className={`transition-all duration-500 transform ${terminalStep >= 3 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
                   <div className="text-high font-bold w-20 shrink-0">HIGH</div>
                   <div className="flex-1">
                     <div className="text-text-primary font-bold">ECDSA/P-256 (×7)</div>
@@ -155,7 +156,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className={`transition-all duration-500 transform ${terminalStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} flex gap-4 mb-6`}>
+                <div className={`transition-all duration-500 transform ${terminalStep >= 4 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
                   <div className="text-medium font-bold w-20 shrink-0">MEDIUM</div>
                   <div className="flex-1">
                     <div className="text-text-primary font-bold">AES-128 (×3)</div>
@@ -164,11 +165,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className={`transition-all duration-500 transform ${terminalStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <div className={`transition-all duration-500 transform ${terminalStep >= 5 ? 'opacity-100 translate-y-0 h-auto' : 'opacity-0 translate-y-4 h-0 overflow-hidden'}`}>
                   <div className="text-border/50 mb-3 border-t border-dashed w-full"></div>
-                  <div className="bg-surface-1/50 p-3 rounded-md border border-border/50">
+                  <div className="bg-surface-1/50 p-4 rounded-md border border-border/50">
                     <div className="flex items-center justify-between mb-2">
-                      <div>QRS: <span className="qrs-materialize font-bold text-critical text-[14px]">{qrsCount}/100</span></div>
+                      <div>QRS: <span className="qrs-materialize font-bold text-critical text-[15px]">{qrsCount}/100</span></div>
                       <div className="text-text-muted">CPS: 31/100</div>
                       <div className="text-text-muted">CAI: 34/100</div>
                     </div>
@@ -177,6 +178,53 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* THE TOOLCHAIN */}
+          <section className="pt-24 border-t border-border/50">
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-[clamp(2rem,3vw,3rem)] font-bold text-text-primary mb-4">The Spectra Toolchain</h2>
+              <p className="text-text-secondary text-[1.125rem] max-w-2xl mx-auto">A unified suite designed to map, score, and remediate cryptographic risk across the entire software development lifecycle.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
+                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                </div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra CLI</h3>
+                <p className="text-text-secondary mb-6 leading-relaxed">The core scanning engine. Runs locally in milliseconds. Generates CBOMs, calculates QRS, and integrates seamlessly into shell scripts and local dev environments.</p>
+              </div>
+
+              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
+                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                </div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra CI (GitHub App)</h3>
+                <p className="text-text-secondary mb-6 leading-relaxed">Automated pull request scanning. Blocks the merging of new vulnerable cryptographic primitives and provides inline code reviews directly in GitHub.</p>
+              </div>
+
+              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
+                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra VS Code</h3>
+                <p className="text-text-secondary mb-6 leading-relaxed">Inline cryptographic risk analysis as you type. Get immediate feedback and migration recommendations before you even commit the code.</p>
+              </div>
+
+              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
+                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra Action</h3>
+                <p className="text-text-secondary mb-6 leading-relaxed">The official GitHub Action. Perfect for dropping into existing CI/CD pipelines to generate CBOM artifacts and enforce compliance gates on every build.</p>
+              </div>
+            </div>
+            <div className="text-center mt-10">
+              <Link href="/download" className="inline-flex items-center text-brand font-medium hover:text-brand-dim transition-colors">
+                View installation instructions →
+              </Link>
             </div>
           </section>
 
@@ -201,7 +249,7 @@ export default function Home() {
           </section>
 
           {/* TRUST SECTION */}
-          <section className="border-t border-border/50 pt-24 pb-32">
+          <section className="border-t border-border/50 pt-24 pb-24">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 font-sans text-[1rem] leading-[1.6] text-text-secondary">
               <div className="flex flex-col gap-6">
                 <div className="inline-flex w-12 h-12 bg-brand/10 border border-brand/20 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
@@ -225,6 +273,23 @@ export default function Home() {
           </section>
 
         </main>
+        
+        {/* GLOBAL FOOTER */}
+        <footer className="bg-surface-0 border-t border-border py-12">
+          <div className="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-4">
+              <Logo />
+              <span className="text-text-secondary text-[14px]">© 2026 Harshal Patel. MIT Licensed.</span>
+            </div>
+            <div className="flex gap-6 text-[14px] text-text-secondary">
+              <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+              <a href="https://github.com/HarshalPatel1972/spectra/blob/main/SECURITY.md" className="hover:text-text-primary transition-colors">Security</a>
+              <a href="https://github.com/HarshalPatel1972/spectra/blob/main/PRIVACY.md" className="hover:text-text-primary transition-colors">Privacy</a>
+              <a href="https://github.com/HarshalPatel1972/spectra" className="hover:text-text-primary transition-colors">GitHub</a>
+            </div>
+          </div>
+        </footer>
+
       </div>
     </div>
   )

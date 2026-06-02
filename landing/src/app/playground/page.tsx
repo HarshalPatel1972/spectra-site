@@ -133,8 +133,14 @@ export default function PlaygroundPage() {
         <header className="border-b border-border h-16 px-8 flex items-center justify-between bg-void shrink-0">
           <Link href="/" className="flex items-center gap-2">
             <Logo />
-            <span className="text-text-secondary font-mono text-[14px] ml-4">/ playground</span>
+            <span className="text-text-secondary font-mono text-[14px] ml-4 hidden md:inline">/ playground</span>
           </Link>
+          <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary mx-4">
+            <Link href="/what-happens" className="hover:text-text-primary transition-colors">The Quantum Threat</Link>
+            <Link href="/playground" className="text-brand transition-colors font-semibold">Playground</Link>
+            <a href="/docs" className="hover:text-text-primary transition-colors">Documentation</a>
+            <Link href="/download" className="hover:text-text-primary transition-colors">Download</Link>
+          </nav>
           <div className="flex gap-4">
             <select 
               className="appearance-none bg-surface-1 border border-border text-[14px] font-sans text-text-primary px-4 py-1 focus:outline-none focus:border-brand transition-colors"
