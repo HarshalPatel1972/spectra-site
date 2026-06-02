@@ -31,39 +31,27 @@ export function Logo({ className = "", withText = true }: { className?: string, 
       initial="animate"
       animate="animate"
     >
-      {/* The Emission Spectrum Mark */}
-      <svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
-        {/* Background bounding rect removed to let bars float freely */}
-        
-        {/* SAFE */}
-        <motion.rect x="4" y="2" width="1" height="16" fill="#16A34A" 
+      {/* Enterprise Cyan & White Mark (matches spectra-mark.svg) */}
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
+        {/* Bar 1 */}
+        <motion.rect x="2" y="9.6" width="2" height="12.8" fill="currentColor" 
           custom={1} variants={barVariants} style={{ originY: 0.5 }} />
         
-        {/* LOW */}
-        <motion.rect x="10" y="2" width="1" height="16" fill="#22C55E" 
+        {/* Bar 2 */}
+        <motion.rect x="8" y="6.4" width="2" height="19.2" fill="currentColor" 
           custom={2} variants={barVariants} style={{ originY: 0.5 }} />
         
-        {/* MEDIUM */}
-        <motion.rect x="20" y="2" width="2" height="16" fill="#FACC15" 
+        {/* Bar 3 (Brand Cyan) */}
+        <motion.rect x="14" y="0" width="2" height="32" fill="#2EC4C4" 
           custom={3} variants={barVariants} style={{ originY: 0.5 }} />
         
-        {/* HIGH */}
-        <motion.rect x="28" y="2" width="2" height="16" fill="#F97316" 
+        {/* Bar 4 */}
+        <motion.rect x="20" y="4" width="2" height="24" fill="currentColor" 
           custom={4} variants={barVariants} style={{ originY: 0.5 }} />
         
-        {/* HIGH-CRITICAL boundary (Gradient) */}
-        <defs>
-          <linearGradient id="hc-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#F97316" />
-            <stop offset="100%" stopColor="#EF4444" />
-          </linearGradient>
-        </defs>
-        <motion.rect x="36" y="2" width="3" height="16" fill="url(#hc-grad)" 
-          custom={5} variants={barVariants} style={{ originY: 0.5, color: '#EF4444' }} />
-        
-        {/* CRITICAL */}
-        <motion.rect x="43" y="2" width="3" height="16" fill="#EF4444" 
-          custom={6} variants={barVariants} style={{ originY: 0.5 }} />
+        {/* Bar 5 */}
+        <motion.rect x="26" y="8" width="2" height="16" fill="currentColor" 
+          custom={5} variants={barVariants} style={{ originY: 0.5 }} />
       </svg>
       
       {/* The Wordmark */}
