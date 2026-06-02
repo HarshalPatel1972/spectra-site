@@ -61,23 +61,7 @@ export default function WhatHappensPage() {
       <div className="scan-reveal-line" />
       
       <div className="scan-reveal-content flex flex-col min-h-screen">
-        <header className="border-b border-border bg-void">
-          <div className="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Logo />
-              <span className="text-text-secondary font-mono text-[14px] ml-4">/ the-quantum-threat</span>
-            </Link>
-            <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary">
-              <Link href="/what-happens" className="text-brand transition-colors font-semibold">The Quantum Threat</Link>
-              <Link href="/playground" className="hover:text-text-primary transition-colors">Playground</Link>
-              <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
-              <Link href="/download" className="hover:text-text-primary transition-colors">Download</Link>
-            </nav>
-            <div className="flex gap-6 items-center text-[14px]">
-              <a href="https://github.com/HarshalPatel1972/spectra" className="text-text-secondary hover:text-text-primary transition-colors font-medium">GitHub ↗</a>
-            </div>
-          </div>
-        </header>
+        
 
         <main className="flex-1 flex flex-col lg:flex-row relative">
           

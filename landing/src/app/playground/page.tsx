@@ -128,57 +128,7 @@ export default function PlaygroundPage() {
       
       {/* Enterprise Background Layer */}
       <div className="flex flex-col min-h-screen z-10 relative">
-        <header className="border-b border-border/50 h-16 px-8 flex items-center justify-between bg-void/80 backdrop-blur-md shrink-0 sticky top-0 z-50">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo />
-            <span className="text-text-secondary font-mono text-[14px] ml-4 hidden md:inline">/ playground</span>
-          </Link>
-          <nav className="hidden lg:flex gap-8 text-[14px] font-medium text-text-secondary mx-4">
-            <Link href="/what-happens" className="hover:text-text-primary transition-colors">The Quantum Threat</Link>
-            <Link href="/playground" className="text-brand transition-colors font-semibold">Playground</Link>
-            <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
-            <Link href="/download" className="hover:text-text-primary transition-colors">Download</Link>
-          </nav>
-          <div className="flex gap-4 items-center">
-            <select 
-              className="appearance-none bg-surface-1 border border-border/80 text-[13px] font-sans text-text-primary px-4 py-1.5 rounded focus:outline-none focus:border-brand/50 transition-colors shadow-sm"
-              value={language}
-              onChange={(e: any) => {
-                setLanguage(e.target.value)
-                setCode(EXAMPLES[e.target.value as keyof typeof EXAMPLES].code)
-              }}
-            >
-              <option value="go">Example: Go JWT</option>
-              <option value="python">Example: Python Crypto</option>
-              <option value="java">Example: Java PKCS</option>
-            </select>
-            <div className="flex bg-surface-1 border border-border/80 rounded overflow-hidden shadow-sm">
-              <button 
-                onClick={() => setMode('server')}
-                className={`px-4 py-1.5 text-[12px] font-sans font-medium transition-colors ${mode === 'server' ? 'bg-surface-2 text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
-              >
-                Server
-              </button>
-              <button 
-                onClick={() => setMode('wasm')}
-                className={`px-4 py-1.5 text-[12px] font-sans font-medium transition-colors ${mode === 'wasm' ? 'bg-surface-2 text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
-              >
-                WASM
-              </button>
-            </div>
-            <button 
-              onClick={handleScan}
-              disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-              className="btn-push btn-push-brand px-8 py-2 text-[13px] disabled:opacity-50 flex items-center gap-2"
-            >
-              {isScanning ? (
-                <><span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Scanning</>
-              ) : (
-                <><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Scan Code</>
-              )}
-            </button>
-          </div>
-        </header>
+        
 
         <div className="flex-1 max-w-[1600px] w-full mx-auto p-6 md:p-8 flex flex-col min-h-0">
           

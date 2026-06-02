@@ -4,10 +4,7 @@ import Link from 'next/link'
 export default function LegacyAlgorithmsPage() {
   return (
     <div className="min-h-screen bg-void text-surface font-sans">
-      <header className="max-w-[1000px] mx-auto px-8 h-24 flex items-center justify-between border-b border-border-dark">
-        <Logo />
-        <Link href="/" className="text-graphite hover:text-surface transition-colors font-medium">← Return</Link>
-      </header>
+      
 
       <main className="max-w-[800px] mx-auto px-8 py-24">
         <h1 className="font-serif text-[48px] font-light tracking-widest text-graphite text-center mb-24 opacity-60">

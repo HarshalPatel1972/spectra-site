@@ -115,15 +115,7 @@ export default function AssessmentPage() {
 
   return (
     <div className="min-h-screen bg-void text-surface font-sans flex flex-col">
-      <header className="border-b border-border-dark px-8 h-16 flex items-center justify-between shrink-0">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-graphite font-mono text-[14px] ml-4">/ assessment</span>
-        </Link>
-        <div className="font-mono text-[14px] text-graphite uppercase tracking-widest tabular-nums">
-          Step {Math.min(currentStep + 1, questions.length)} of {questions.length}
-        </div>
-      </header>
+      
 
       <main className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-[800px]">

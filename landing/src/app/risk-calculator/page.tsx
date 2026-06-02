@@ -68,15 +68,7 @@ export default function QRSCalculator() {
 
   return (
     <div className="min-h-screen bg-void text-surface font-sans flex flex-col">
-      <header className="border-b border-border-dark px-8 h-16 flex items-center justify-between shrink-0">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-graphite font-mono text-[14px] ml-4">/ risk-calculator</span>
-        </Link>
-        <div className="font-mono text-[14px] text-graphite uppercase tracking-widest">
-          Spectra Grade
-        </div>
-      </header>
+      
 
       <main className="max-w-[1200px] mx-auto px-8 py-24 grid md:grid-cols-3 gap-16 flex-1 w-full">
         <div className="md:col-span-2 space-y-16">

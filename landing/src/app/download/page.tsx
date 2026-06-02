@@ -69,22 +69,7 @@ export default function DownloadPage() {
     <div className="min-h-screen bg-void text-text-primary font-sans flex flex-col relative overflow-hidden">
       
       {/* Header */}
-      <header className="border-b border-border/50 bg-void/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between">
-          <Link href="/">
-            <Logo />
-          </Link>
-          <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary">
-            <Link href="/what-happens" className="hover:text-text-primary transition-colors">The Quantum Threat</Link>
-            <Link href="/playground" className="hover:text-text-primary transition-colors">Playground</Link>
-            <a href="https://spectra-security-docs.vercel.app" className="hover:text-text-primary transition-colors">Documentation</a>
-            <Link href="/download" className="text-brand transition-colors font-semibold">Download</Link>
-          </nav>
-          <div className="flex gap-6 items-center text-[14px]">
-            <a href="https://github.com/HarshalPatel1972/spectra" className="text-text-secondary hover:text-text-primary transition-colors font-medium">GitHub ↗</a>
-          </div>
-        </div>
-      </header>
+      
 
       <main className="flex-1 w-full relative min-h-[800px] flex flex-col items-center justify-center py-20">
         

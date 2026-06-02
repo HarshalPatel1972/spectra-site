@@ -2,57 +2,37 @@
 
 import { motion } from 'framer-motion';
 
-export function Logo({ className = "", withText = true }: { className?: string, withText?: boolean }) {
-  // Define variants for the continuous pulse animation
-  const barVariants = {
-    animate: (custom: number) => ({
-      height: [16, 8, 16, 12, 16],
-      opacity: [0.8, 1, 0.7, 1, 0.8],
-      transition: {
-        duration: 2 + custom * 0.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: custom * 0.2,
-      }
-    }),
-    hover: {
-      height: 16,
-      opacity: 1,
-      scaleY: 1.2,
-      filter: "brightness(1.5) drop-shadow(0 0 4px currentColor)",
-      transition: { duration: 0.2 }
-    }
-  };
+export function Logo({ className = "", withText = true, isHovered = false }: { className?: string, withText?: boolean, isHovered?: boolean }) {
+  
+  const bars = [
+    { id: 'bar-1', x: 2, y: 9.6, w: 2, h: 12.8, color: 'currentColor' },
+    { id: 'bar-2', x: 8, y: 6.4, w: 2, h: 19.2, color: 'currentColor' },
+    { id: 'bar-3', x: 14, y: 0, w: 2, h: 32, color: '#2EC4C4' },
+    { id: 'bar-4', x: 20, y: 4, w: 2, h: 24, color: 'currentColor' },
+    { id: 'bar-5', x: 26, y: 8, w: 2, h: 16, color: 'currentColor' },
+  ];
 
   return (
-    <motion.div 
-      className={`flex items-center gap-3 cursor-pointer group ${className}`}
-      whileHover="hover"
-      initial="animate"
-      animate="animate"
-    >
-      {/* Enterprise Cyan & White Mark (matches spectra-mark.svg) */}
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
-        {/* Bar 1 */}
-        <motion.rect x="2" y="9.6" width="2" height="12.8" fill="currentColor" 
-          custom={1} variants={barVariants} style={{ originY: 0.5 }} />
-        
-        {/* Bar 2 */}
-        <motion.rect x="8" y="6.4" width="2" height="19.2" fill="currentColor" 
-          custom={2} variants={barVariants} style={{ originY: 0.5 }} />
-        
-        {/* Bar 3 (Brand Cyan) */}
-        <motion.rect x="14" y="0" width="2" height="32" fill="#2EC4C4" 
-          custom={3} variants={barVariants} style={{ originY: 0.5 }} />
-        
-        {/* Bar 4 */}
-        <motion.rect x="20" y="4" width="2" height="24" fill="currentColor" 
-          custom={4} variants={barVariants} style={{ originY: 0.5 }} />
-        
-        {/* Bar 5 */}
-        <motion.rect x="26" y="8" width="2" height="16" fill="currentColor" 
-          custom={5} variants={barVariants} style={{ originY: 0.5 }} />
-      </svg>
+    <div className={`flex items-center gap-3 cursor-pointer group ${className}`}>
+      
+      {/* HTML-based Logo for LayoutId Animation */}
+      <div className="relative w-[32px] h-[32px] overflow-visible">
+        {!isHovered && bars.map((bar) => (
+          <motion.div 
+            key={bar.id}
+            layoutId={bar.id}
+            className="absolute rounded-sm"
+            style={{ 
+              left: bar.x, 
+              top: bar.y, 
+              width: bar.w, 
+              height: bar.h, 
+              backgroundColor: bar.color === 'currentColor' ? '#E8EAF6' : bar.color 
+            }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          />
+        ))}
+      </div>
       
       {/* The Wordmark */}
       {withText && (
@@ -60,6 +40,6 @@ export function Logo({ className = "", withText = true }: { className?: string, 
           SPECTRA
         </span>
       )}
-    </motion.div>
+    </div>
   );
 }

@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   }
 };
 
+import { Header } from "@/components/Header";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +40,7 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
