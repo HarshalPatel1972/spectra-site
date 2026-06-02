@@ -4,6 +4,7 @@ export default defineConfig({
   title: 'Spectra',
   description: 'Cryptographic asset discovery and quantum risk intelligence',
   appearance: 'force-dark',
+  head: [['link', { rel: 'icon', href: '/spectra-mark.svg' }]],
   themeConfig: {
     logo: '/spectra-mark.svg',
     nav: [
