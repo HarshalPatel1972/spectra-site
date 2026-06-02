@@ -1,70 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Spectral:ital,wght@0,300;0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&display=swap');
 
 :root {
-  --vp-font-family-base: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  
-  --vp-c-brand: #2563EB;
-  --vp-c-brand-light: #3B82F6;
-  --vp-c-brand-dark: #1D4ED8;
-  
-  --vp-custom-block-warning-bg: rgba(239, 68, 68, 0.1);
-  --vp-custom-block-warning-border: rgba(239, 68, 68, 0.3);
-  --vp-custom-block-warning-text: #EF4444;
-  
-  --vp-custom-block-note-bg: rgba(26, 27, 37, 0.5);
-  --vp-custom-block-note-border: #2A2B35;
-  --vp-custom-block-note-text: #F5F4F0;
+  /* Override VitePress defaults with Spectra Phase 4 tokens */
+  --color-void:        #060810;
+  --color-surface-0:   #0C0F1E;
+  --color-surface-1:   #131728;
+  --color-brand:       #2EC4C4;
+  --color-brand-dim:   #1A7A7A;
+  --color-text-primary:#E8EAF6;
+  --color-text-secondary:#7A80AA;
+  --color-border:      #1F2444;
+
+  --vp-c-bg:          var(--color-void);
+  --vp-c-bg-soft:     var(--color-surface-0);
+  --vp-c-bg-muted:    var(--color-surface-1);
+  --vp-c-brand-1:     var(--color-brand);
+  --vp-c-brand-2:     var(--color-brand-dim);
+  --vp-c-text-1:      var(--color-text-primary);
+  --vp-c-text-2:      var(--color-text-secondary);
+  --vp-c-divider:     var(--color-border);
+
+  /* Typography overrides */
+  --vp-font-family-base: 'IBM Plex Sans', system-ui, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Code block colors */
+  --vp-code-bg:    var(--color-surface-0);
+  --vp-code-color: var(--color-text-primary);
 }
 
-.VPDoc {
-  font-size: 16px;
-  line-height: 1.75;
+/* Load Syne for headings */
+h1, h2, h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
+
+h1 { font-weight: 800; }
 
 .vp-doc {
-  /* Restrict line-length to 68 characters for optimal reading as per blueprint */
+  /* Restrict line-length to 68 characters for optimal reading */
   max-width: 68ch;
   margin: 0 auto;
 }
 
-.vp-doc h2 {
-  font-family: var(--vp-font-family-base);
-  font-weight: 600;
-  font-size: 24px;
-}
-
-.vp-doc h3 {
-  font-family: var(--vp-font-family-base);
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.vp-doc h4 {
-  font-family: var(--vp-font-family-base);
-  font-weight: 600;
-  font-size: 16px;
-}
-
 /* Callout Styling Overrides */
 .custom-block.warning {
-  border-color: var(--vp-custom-block-warning-border);
-  background-color: var(--vp-custom-block-warning-bg);
-  color: var(--vp-custom-block-warning-text);
+  border-color: rgba(255, 69, 96, 0.3); /* CRITICAL dim */
+  background-color: rgba(255, 69, 96, 0.08); /* CRITICAL bg */
+  color: #FF4560; /* CRITICAL */
   border-radius: 0;
   border-left-width: 4px;
 }
 
 .custom-block.warning .custom-block-title {
-  color: var(--vp-custom-block-warning-text);
+  color: #FF4560;
   font-family: var(--vp-font-family-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .custom-block.info {
-  border-color: var(--vp-custom-block-note-border);
-  background-color: var(--vp-custom-block-note-bg);
+  border-color: var(--color-border);
+  background-color: var(--color-surface-0);
   border-radius: 0;
   border-left-width: 4px;
 }
@@ -74,18 +72,3 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
-/* Algorithm Reference Block styling */
-.algo-ref {
-  display: block;
-  font-family: var(--vp-font-family-mono);
-  background-color: #0F1015;
-  border: 1px solid #2A2B35;
-  padding: 1rem;
-  margin: 1rem 0;
-  color: #F5F4F0;
-  border-left: 4px solid #F97316; /* High Risk by default */
-}
-.algo-ref.critical { border-left-color: #EF4444; }
-.algo-ref.medium { border-left-color: #FACC15; }
-.algo-ref.safe { border-left-color: #16A34A; }

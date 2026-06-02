@@ -4,19 +4,20 @@ export default defineConfig({
   title: 'Spectra',
   description: 'Cryptographic asset discovery and quantum risk intelligence',
   themeConfig: {
-    logo: '/spectra-logo.svg',
+    logo: '/spectra-mark.svg',
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'Reference', link: '/reference/cli' },
       { text: 'Compliance', link: '/compliance/cnsa-20' },
-      { text: 'Integrations', link: '/integrations/github-actions' },
-      { text: 'Blog', link: 'https://spectra.tools/blog' },
+      { text: 'Integrations', link: '/integrations/github-actions' }
     ],
     sidebar: {
       '/guide/': [
         {
           text: 'Guide',
           items: [
+            { text: 'Design Manifesto', link: '/about' },
+            { text: 'Known Limitations', link: '/known-limitations' },
             { text: 'What is Spectra', link: '/guide/' },
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Installation', link: '/guide/installation' },
