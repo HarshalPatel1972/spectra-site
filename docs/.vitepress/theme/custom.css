@@ -28,6 +28,24 @@
   margin: 0 auto;
 }
 
+.vp-doc h2 {
+  font-family: var(--vp-font-family-base);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.vp-doc h3 {
+  font-family: var(--vp-font-family-base);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.vp-doc h4 {
+  font-family: var(--vp-font-family-base);
+  font-weight: 600;
+  font-size: 16px;
+}
+
 /* Callout Styling Overrides */
 .custom-block.warning {
   border-color: var(--vp-custom-block-warning-border);
