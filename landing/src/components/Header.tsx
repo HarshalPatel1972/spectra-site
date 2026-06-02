@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 export function Header() {
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const navItems = [
     { text: 'The Quantum Threat', href: '/what-happens', layoutId: 'bar-1', color: 'currentColor' },
@@ -22,12 +22,11 @@ export function Header() {
         
         {/* Logo Section */}
         <div 
-          onMouseEnter={() => setIsLogoHovered(true)} 
-          onMouseLeave={() => setIsLogoHovered(false)}
+          onMouseEnter={() => setHasAnimated(true)} 
           className="relative z-20 flex items-center"
         >
           <Link href="/">
-            <Logo isHovered={isLogoHovered} />
+            <Logo isHovered={hasAnimated} />
           </Link>
         </div>
 
@@ -36,23 +35,37 @@ export function Header() {
           {navItems.map((item) => (
             <div key={item.text} className="relative flex items-center h-full">
               {item.href.startsWith('http') ? (
-                <a href={item.href} className="hover:text-text-primary transition-colors py-4 relative group">
-                  {item.text}
+                <a href={item.href} className="hover:text-text-primary transition-colors py-4 flex items-center group">
+                  <span className="relative">
+                    {item.text}
+                    {/* The flying underline with spiral animation */}
+                    {hasAnimated && (
+                      <motion.div 
+                        layoutId={item.layoutId}
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
+                        style={{ backgroundColor: item.color === 'currentColor' ? '#E8EAF6' : item.color }}
+                        animate={{ rotate: 720 }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
+                      />
+                    )}
+                  </span>
                 </a>
               ) : (
-                <Link href={item.href} className="hover:text-text-primary transition-colors py-4 relative group">
-                  {item.text}
+                <Link href={item.href} className="hover:text-text-primary transition-colors py-4 flex items-center group">
+                  <span className="relative">
+                    {item.text}
+                    {/* The flying underline with spiral animation */}
+                    {hasAnimated && (
+                      <motion.div 
+                        layoutId={item.layoutId}
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
+                        style={{ backgroundColor: item.color === 'currentColor' ? '#E8EAF6' : item.color }}
+                        animate={{ rotate: 720 }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
+                      />
+                    )}
+                  </span>
                 </Link>
-              )}
-              
-              {/* The flying underline */}
-              {isLogoHovered && (
-                <motion.div 
-                  layoutId={item.layoutId}
-                  className="absolute bottom-[2px] left-0 right-0 h-[2px] rounded-full"
-                  style={{ backgroundColor: item.color === 'currentColor' ? '#E8EAF6' : item.color }}
-                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                />
               )}
             </div>
           ))}
