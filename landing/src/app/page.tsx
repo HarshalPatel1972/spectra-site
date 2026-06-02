@@ -47,7 +47,6 @@ export default function Home() {
     <div className="min-h-screen bg-void text-text-primary font-sans flex flex-col relative overflow-hidden">
       
       {/* Enterprise Background Layer */}
-      <div className="bg-grid absolute inset-0 z-0 pointer-events-none" />
       <div className="hero-glow z-0 pointer-events-none" />
 
       {/* Scan Reveal Line */}
@@ -75,7 +74,6 @@ export default function Home() {
           
           {/* HERO SECTION */}
           <section className="flex flex-col xl:flex-row gap-16 items-start relative">
-            <HeroHolograms />
             <div className="xl:w-[45%] flex flex-col pt-12 z-10">
               <div className="text-[11px] font-sans font-semibold tracking-[0.12em] text-brand mb-6 uppercase flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-brand/50"></span>
@@ -189,14 +187,6 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* DYNAMIC WAVE DIVIDER */}
-          <div className="w-full overflow-hidden leading-none rotate-180 -mb-20">
-            <svg className="relative block w-[calc(100%+1.3px)] h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-surface-1/50"></path>
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3" className="fill-none stroke-brand/30" strokeWidth="2"></path>
-            </svg>
-          </div>
-
           {/* THE TOOLCHAIN */}
           <section className="pt-32 relative">
             <div className="text-center mb-16">
@@ -287,9 +277,32 @@ export default function Home() {
               </div>
             </div>
           </section>
-
         </main>
         
+        {/* DYNAMIC WAVE DIVIDER */}
+        <div className="w-full overflow-hidden leading-none rotate-180 -mb-1 relative z-20">
+          <svg className="relative block w-[calc(100%+1.3px)] h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-void"></path>
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3" className="fill-none stroke-brand/30" strokeWidth="2"></path>
+          </svg>
+        </div>
+        
+        {/* BOTTOM CTA SECTION (GAMIFIED FLOATING DESIGN) */}
+        <section className="bg-surface-0 border-t border-brand/20 relative py-32 flex flex-col items-center justify-center overflow-hidden">
+          <HeroHolograms />
+          <div className="z-10 text-center relative max-w-2xl mx-auto px-8">
+            <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-text-primary mb-6 drop-shadow-sm">
+              Ready to secure your cryptography?
+            </h2>
+            <p className="font-sans text-[1.125rem] text-text-secondary leading-[1.6] mb-10">
+              Join the teams using Spectra to map, score, and remediate cryptographic risk across their entire software development lifecycle.
+            </p>
+            <Link href="/download" className="btn-push btn-push-solid px-14 py-5 text-[16px]">
+              GET STARTED
+            </Link>
+          </div>
+        </section>
+
         {/* GLOBAL FOOTER */}
         <footer className="bg-surface-0 border-t border-border py-12">
           <div className="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">

@@ -127,8 +127,6 @@ export default function PlaygroundPage() {
     <div className="min-h-screen flex flex-col bg-void text-text-primary font-sans relative overflow-hidden">
       
       {/* Enterprise Background Layer */}
-      <div className="bg-grid absolute inset-0 z-0 pointer-events-none" />
-      
       <div className="flex flex-col min-h-screen z-10 relative">
         <header className="border-b border-border/50 h-16 px-8 flex items-center justify-between bg-void/80 backdrop-blur-md shrink-0 sticky top-0 z-50">
           <Link href="/" className="flex items-center gap-2">
