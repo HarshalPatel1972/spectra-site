@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Spectra',
   description: 'Cryptographic asset discovery and quantum risk intelligence',
+  appearance: 'force-dark',
   themeConfig: {
     logo: '/spectra-mark.svg',
     nav: [

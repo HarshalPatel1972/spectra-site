@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&display=swap');
 
-:root {
+:root, .dark {
   /* Override VitePress defaults with Spectra Phase 4 tokens */
   --color-void:        #060810;
   --color-surface-0:   #0C0F1E;
