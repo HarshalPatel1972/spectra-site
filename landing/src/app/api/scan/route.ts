@@ -14,7 +14,7 @@ async function getSpectraBinaryPath() {
   
   // Local Windows dev fallback
   if (process.platform === 'win32') {
-    return 'C:\\\\Users\\\\Harshal Patel\\\\Desktop\\\\spectra\\\\spectra.exe';
+    return 'C:\\Users\\Harshal Patel\\Desktop\\spectra\\spectra.exe';
   }
 
   // On Vercel (Linux)
@@ -77,11 +77,12 @@ export async function POST(req: Request) {
       } catch (e) {
         // Cleanup on error
         await rm(tempDir, { recursive: true, force: true })
-        return NextResponse.json({ error: 'Failed to execute spectra' }, { status: 500 })
+        const errorMsg = execError.stderr || execError.message || 'Failed to execute spectra engine'
+        return NextResponse.json({ error: `Engine Error: ${errorMsg}` }, { status: 400 })
       }
     }
 
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+  } catch (error: any) {
+    return NextResponse.json({ error: `Internal Server Error: ${error.message}` }, { status: 500 })
   }
 }
