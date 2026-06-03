@@ -4,83 +4,49 @@ import Link from 'next/link'
 import { Logo } from '../components/Logo'
 import { HeroHolograms } from '../components/HeroHolograms'
 import { useEffect, useState, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 
 export default function Home() {
   const [qrsCount, setQrsCount] = useState(0);
   const [terminalStep, setTerminalStep] = useState(0);
-  const [typedCommand, setTypedCommand] = useState("");
-  const [scanProgress, setScanProgress] = useState(0);
+  
+  const terminalRef = useRef(null);
+  const isTerminalInView = useInView(terminalRef, { once: true, margin: "-20% 0px" });
 
   useEffect(() => {
-    // Stage 1: Type the command
-    const command = "spectra scan .";
-    let i = 0;
-    const typeInterval = setInterval(() => {
-      setTypedCommand(command.slice(0, i + 1));
-      i++;
-      if (i >= command.length) {
-        clearInterval(typeInterval);
-        setTimeout(() => setTerminalStep(1), 300); // Move to scanning
-      }
-    }, 50);
+    if (!isTerminalInView) return;
 
-    // Stage 2: Scanning Progress
-    let progressInterval: NodeJS.Timeout;
-    const startScanning = () => {
-      let p = 0;
-      progressInterval = setInterval(() => {
-        p += Math.floor(Math.random() * 15) + 5;
-        if (p > 100) p = 100;
-        setScanProgress(p);
-        if (p === 100) {
-          clearInterval(progressInterval);
-          setTimeout(() => setTerminalStep(2), 200); // Show Critical
-          setTimeout(() => setTerminalStep(3), 800); // Show High
-          setTimeout(() => setTerminalStep(4), 1400); // Show Medium
-          setTimeout(() => setTerminalStep(5), 2000); // Show Summary
-        }
-      }, 100);
-    };
-
-    // Stage 3: QRS Materializer (Triggers at step 5)
-    let qrsFrame: number;
-    const startQrs = () => {
-      const duration = 800; 
-      const target = 83;
-      const start = performance.now();
-      const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
-      
-      function update(now: number) {
-        const progress = Math.min((now - start) / duration, 1);
-        const current = Math.round(easeOut(progress) * target);
-        setQrsCount(current);
-        if (progress < 1) qrsFrame = requestAnimationFrame(update);
-      }
-      qrsFrame = requestAnimationFrame(update);
-    };
-
-    // Observers
-    const observer = new MutationObserver(() => {
-       if (terminalStep === 5 && qrsCount === 0) startQrs();
-    });
+    // QRS Materializer
+    const duration = 400; 
+    const target = 83;
+    const start = performance.now();
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
     
-    // Start sequence
-    const initTimer = setTimeout(() => {
-      // type command starts automatically due to interval above
-    }, 500);
+    function update(now: number) {
+      const progress = Math.min((now - start) / duration, 1);
+      const current = Math.round(easeOut(progress) * target);
+      setQrsCount(current);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    
+    const timer = setTimeout(() => {
+      requestAnimationFrame(update);
+    }, 1200);
 
-    // Watch for step 1 to start progress
-    if (terminalStep === 1) startScanning();
-    if (terminalStep === 5 && qrsCount === 0) startQrs();
+    // Terminal Staggered Reveal
+    const steps = [
+      setTimeout(() => setTerminalStep(1), 500),  // scanning...
+      setTimeout(() => setTerminalStep(2), 1200), // critical finding
+      setTimeout(() => setTerminalStep(3), 1900), // high finding
+      setTimeout(() => setTerminalStep(4), 2600), // medium finding
+      setTimeout(() => setTerminalStep(5), 3300)  // summary
+    ];
 
     return () => {
-      clearInterval(typeInterval);
-      clearInterval(progressInterval);
-      clearTimeout(initTimer);
-      if (qrsFrame) cancelAnimationFrame(qrsFrame);
+      clearTimeout(timer);
+      steps.forEach(clearTimeout);
     };
-  }, [terminalStep, qrsCount]);
+  }, [isTerminalInView]);
 
   return (
     <div className="min-h-screen bg-void text-text-primary font-sans flex flex-col relative overflow-hidden">
@@ -155,11 +121,11 @@ export default function Home() {
           </section>
 
           {/* V2 TERMINAL UI (Glassmorphic) */}
-          <section className="relative z-10 w-full mt-24">
+          <section ref={terminalRef} className="relative z-10 w-full mt-24">
             <motion.div 
               initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 150, damping: 25, delay: 0.5 }}
+              animate={isTerminalInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 150, damping: 25, delay: 0.2 }}
               className="glass-panel rounded-2xl overflow-hidden terminal-shadow relative"
             >
               {/* Glossy Mac-like Header */}
@@ -177,18 +143,16 @@ export default function Home() {
               </div>
 
               {/* Terminal Content - Gradient fade at bottom using mask-image */}
-              <div className="p-8 font-mono text-[14px] text-text-secondary leading-[1.7] h-[500px] overflow-hidden" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}>
+              <div className="p-8 font-mono text-[14px] text-text-secondary leading-[1.7] min-h-[500px] h-auto overflow-hidden pb-12" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }}>
                 <div className="mb-6">
                   <span className="text-brand">$ </span>
-                  <span className="text-white font-medium">{typedCommand}</span>
-                  {terminalStep === 0 && <span className="animate-pulse w-2 h-4 bg-brand inline-block ml-1 align-middle"></span>}
+                  <span className="text-white font-medium">spectra scan .</span>
                 </div>
                 
                 <div className={`transition-opacity duration-300 ${terminalStep >= 1 ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
                   <div className="mb-8 flex items-center gap-3">
-                    <span className="text-brand font-bold">[{'='.repeat(Math.floor(scanProgress / 10)).padEnd(10, ' ')}]</span>
-                    <span className="text-brand font-mono min-w-[4ch]">{scanProgress}%</span>
-                    <span>Mapping cryptographic landscape...</span>
+                    <span className="animate-pulse text-brand">▓▓░</span> 
+                    Mapping cryptographic landscape...
                   </div>
                 </div>
                 
