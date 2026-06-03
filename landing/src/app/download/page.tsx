@@ -115,7 +115,7 @@ export default function DownloadPage() {
 
         {/* Detailed Installation Guide */}
         <section className="mt-32 max-w-4xl mx-auto px-8 w-full z-20 relative">
-          <div className="bg-surface-0 border border-border/50 rounded-xl p-10 shadow-2xl">
+          <div className="glass-panel rounded-xl p-10 shadow-2xl">
             <h2 className="text-2xl font-bold font-serif mb-8 text-text-primary">Detailed Installation Guide</h2>
             
             <div className="space-y-12">
