@@ -92,13 +92,13 @@ export default function PlaygroundPage() {
           setIsScanning(false)
           return
         }
-        const jsonStr = (window as any).scanSpectra(code, language, \`test.\${language}\`)
+        const jsonStr = (window as any).scanSpectra(code, language, `test.${language}`)
         setResult(JSON.parse(jsonStr))
       } else {
         const res = await fetch('/api/scan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code, language, filename: \`test.\${language}\` })
+          body: JSON.stringify({ code, language, filename: `test.${language}` })
         })
         const data = await res.json()
         setResult(data)
@@ -245,18 +245,18 @@ export default function PlaygroundPage() {
                         if (f.risk_band === 'LOW') badgeBg = 'bg-[rgba(16,185,129,0.15)] text-safe';
                         
                         return (
-                          <div key={i} className="flex gap-4 opacity-0 animate-[float_1s_ease-out_forwards]" style={{ animationDelay: \`\${i * 100}ms\` }}>
+                          <div key={i} className="flex gap-4 opacity-0 animate-[float_1s_ease-out_forwards]" style={{ animationDelay: `${i * 100}ms` }}>
                             <div className="flex-1 bg-raised p-4 rounded-[var(--radius-md)] border border-border">
                               <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                                 <div className="flex items-center gap-3">
-                                  <span className={\`inline-block px-[10px] py-[3px] rounded-[var(--radius-pill)] font-mono text-[0.65rem] font-bold tracking-[0.06em] uppercase \${badgeBg}\`}>
+                                  <span className={`inline-block px-[10px] py-[3px] rounded-[var(--radius-pill)] font-mono text-[0.65rem] font-bold tracking-[0.06em] uppercase ${badgeBg}`}>
                                     {f.risk_band}
                                   </span>
                                   <span className="font-mono text-[var(--code-sm)] text-text-primary font-bold">
-                                    {f.algorithm} {f.key_size > 0 && \`(\${f.key_size}-bit)\`}
+                                    {f.algorithm} {f.key_size > 0 && `(${f.key_size}-bit)`}
                                   </span>
                                 </div>
-                                <span className={\`font-mono text-[var(--code-sm)] font-bold \${badgeBg.split(' ')[1]}\`}>
+                                <span className={`font-mono text-[var(--code-sm)] font-bold ${badgeBg.split(' ')[1]}`}>
                                   QRS: {f.qrs}
                                 </span>
                               </div>
@@ -272,7 +272,7 @@ export default function PlaygroundPage() {
 
                   {/* Summary Bar */}
                   {result.findings && result.findings.length > 0 && (
-                    <div className="mt-8 border border-border bg-high p-6 rounded-[var(--radius-lg)] opacity-0 animate-[float_1s_ease-out_forwards]" style={{ animationDelay: \`\${(result.findings?.length || 0) * 100 + 200}ms\` }}>
+                    <div className="mt-8 border border-border bg-high p-6 rounded-[var(--radius-lg)] opacity-0 animate-[float_1s_ease-out_forwards]" style={{ animationDelay: `${(result.findings?.length || 0) * 100 + 200}ms` }}>
                       <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
                         <div className="font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] uppercase text-text-secondary">
                           Aggregate Risk Score

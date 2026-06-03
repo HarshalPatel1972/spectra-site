@@ -76,15 +76,7 @@ export default function CBOMViewerPage() {
 
   return (
     <div className="min-h-screen bg-void text-surface font-sans flex flex-col">
-      <header className="border-b border-border-dark px-8 h-16 flex items-center justify-between shrink-0 bg-void">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-graphite font-mono text-[14px] ml-4">/ cbom-viewer</span>
-        </Link>
-        <div className="font-mono text-[14px] text-graphite uppercase tracking-widest">
-          CycloneDX 1.7
-        </div>
-      </header>
+      
 
       <main className="flex-1 flex flex-col p-8 max-w-[1200px] mx-auto w-full">
         {!cbom ? (
