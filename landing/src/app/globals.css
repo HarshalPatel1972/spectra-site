@@ -77,9 +77,6 @@
 
   /* ── Layout ── */
   --max-width: 1280px;
-  --content-width: 1100px;
-  --section-padding-y: clamp(64px, 8vw, 120px);
-  --section-padding-x: clamp(20px, 5vw, 64px);
 
   /* ── Structural ── */
   --accent-glow: rgba(46, 196, 196, 0.15);
@@ -122,13 +119,7 @@ body {
   background-size: 24px 24px;
 }
 
-/* ── Container ── */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding-left: var(--section-padding-x);
-  padding-right: var(--section-padding-x);
-}
+/* ── Container classes removed in favor of Tailwind utility classes ── */
 
 /* ── Display headline (Barlow Condensed 900 ALL CAPS) ── */
 .display-headline {

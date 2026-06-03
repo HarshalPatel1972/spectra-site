@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[100] h-[60px] flex items-center px-[var(--section-padding-x)] bg-[rgba(6,8,16,0.85)] backdrop-blur-[16px] border-b border-border-subtle">
+      <nav className="fixed top-0 left-0 right-0 z-[100] h-[60px] flex items-center px-6 md:px-12 bg-[rgba(6,8,16,0.85)] backdrop-blur-[16px] border-b border-border-subtle">
         <div className="max-w-[var(--max-width)] mx-auto w-full flex items-center justify-between gap-8">
           
           {/* Logo */}

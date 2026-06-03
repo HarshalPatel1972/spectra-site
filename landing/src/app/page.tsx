@@ -139,7 +139,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-[2] max-w-[900px] px-[var(--section-padding-x)]">
+        <div className="relative z-[2] max-w-[900px] w-full px-6 md:px-12 mx-auto">
           <p className="overline mb-6">Cryptographic Intelligence Platform</p>
 
           <h1 className="display-headline mb-8">
@@ -168,7 +168,7 @@ export default function Home() {
         </div>
 
         {/* Terminal peeking below */}
-        <div className="relative z-[3] mt-20 mx-auto max-w-[720px] w-full px-[var(--section-padding-x)]">
+        <div className="relative z-[3] mt-20 mx-auto max-w-[720px] w-full px-6 md:px-12">
           <div className="terminal">
             <div className="terminal-titlebar">
               <div className="traffic-lights">
@@ -200,7 +200,7 @@ export default function Home() {
           SECTION 2 — TRUST BAR
           ═══════════════════════════════════════════════════════════ */}
       <section className="py-12 border-t border-border-subtle border-b border-b-border-subtle bg-deep">
-        <div className="container flex items-center gap-12 flex-wrap">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 flex items-center gap-12 flex-wrap">
           <span className="font-mono text-[var(--body-xs)] font-medium tracking-[var(--tracking-overline)] uppercase text-text-muted whitespace-nowrap shrink-0">Trusted foundation</span>
           <div className="flex items-center gap-8 flex-wrap flex-1">
             {['MIT License', 'No Telemetry', 'CycloneDX 1.7', 'CNSA 2.0', 'Open Source', 'NIST SP 800-131A'].map(badge => (
@@ -215,8 +215,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 3 — SCANNER CARDS (4-column)
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <p className="overline">What Spectra Scans</p>
             <h2 className="display-xl text-text-primary">FOUR SCANNERS.<br/><span className="text-accent">ONE COMMAND.</span></h2>
@@ -241,9 +241,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 4 — TAB FEATURE SECTION
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void relative overflow-hidden fade-up">
+      <section className="py-20 md:py-28 lg:py-32 bg-void relative overflow-hidden fade-up">
         <div className="absolute inset-0 section-grid-bg-fine pointer-events-none opacity-50" />
-        <div className="container relative z-[1]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <div className="text-center mb-12">
             <p className="overline">Built For Every Role</p>
             <h2 className="display-xl text-text-primary mb-8">SPECTRA<br/>WORKS FOR</h2>
@@ -293,7 +293,7 @@ export default function Home() {
           SECTION 5 — STATS BAR
           ═══════════════════════════════════════════════════════════ */}
       <section className="py-12 bg-deep fade-up">
-        <div className="container">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="bg-raised border border-border rounded-[var(--radius-xl)] p-10 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-8 md:gap-0">
             {[
               { num: '8', label: 'Languages Supported' },
@@ -316,8 +316,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 6 — INTEGRATIONS
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-20 items-center">
             <div>
               <p className="overline">Integrations</p>
@@ -339,9 +339,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 7 — TESTIMONIALS
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void relative overflow-hidden fade-up">
+      <section className="py-20 md:py-28 lg:py-32 bg-void relative overflow-hidden fade-up">
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.05] pointer-events-none text-text-primary" />
-        <div className="container relative z-[1]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <p className="overline text-center mb-10">What Our Users Say</p>
           <div className="font-display font-[900] text-[clamp(1.75rem,3.5vw,3.25rem)] uppercase leading-[1.05] text-text-primary text-center max-w-[860px] mx-auto mb-10">
             {testimonials[activeTestimonial].quote}
@@ -368,8 +368,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 8 — FEATURE GRID (Output Formats)
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-deep fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-deep fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <p className="overline">Capabilities</p>
             <h2 className="display-xl text-text-primary mb-4">EVERYTHING IN<br/><span className="text-accent">ONE SCAN</span></h2>
@@ -404,8 +404,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 9 — COMPLIANCE LIST
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <p className="overline mb-12">Compliance Coverage</p>
           <div className="flex flex-col border border-border rounded-[var(--radius-lg)] overflow-hidden">
             {[
@@ -431,8 +431,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 10 — PRICING
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-deep fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-deep fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <p className="overline">Pricing</p>
             <h2 className="display-xl text-text-primary">START FREE.<br/><span className="text-accent">SCALE WHEN READY.</span></h2>
@@ -479,8 +479,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 11 — BLOG / CHANGELOG
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void fade-up">
-        <div className="container">
+      <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <p className="overline">Changelog</p>
             <h2 className="display-xl text-text-primary">LATEST FROM<br/><span className="text-accent">SPECTRA</span></h2>
@@ -516,9 +516,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 12 — CTA
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-[var(--section-padding-y)] bg-void text-center relative overflow-hidden">
+      <section className="py-20 md:py-28 lg:py-32 bg-void text-center relative overflow-hidden">
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.06] pointer-events-none text-text-primary" />
-        <div className="container relative z-[1]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <h2 className="display-xl text-text-primary max-w-[700px] mx-auto mb-10">KNOW YOUR<br/>CRYPTOGRAPHY<br/>BEFORE <span className="text-accent">QUANTUM</span><br/>KNOWS IT FOR YOU</h2>
           <div className="flex justify-center gap-4 flex-wrap">
             <Link href="/download" className="btn-primary">Get Started</Link>
@@ -534,7 +534,7 @@ export default function Home() {
         {/* Subtle noise texture */}
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`}} />
         
-        <div className="container relative z-[1]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           {/* Footer top */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[280px_1fr_1fr_1fr] gap-12 pb-12 border-b border-[rgba(6,8,16,0.15)] mb-10">
             {/* Brand */}
