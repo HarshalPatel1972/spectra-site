@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Syne, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { Syne, IBM_Plex_Sans, JetBrains_Mono, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  weight: ["700", "800", "900"],
+  subsets: ["latin"],
+});
 
 const syne = Syne({
   variable: "--font-syne",
@@ -29,7 +35,6 @@ export const metadata: Metadata = {
 };
 
 import { Header } from "@/components/Header";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -37,14 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${barlowCondensed.variable} ${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          {children}
-        </ThemeProvider>
+        <Header />
+        {children}
       </body>
     </html>
   );
