@@ -86,7 +86,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-[clamp(3rem,6vw,6.5rem)] leading-[1.05] tracking-[-0.03em] font-serif font-extrabold text-gradient mb-6 max-w-5xl"
+              className="text-[clamp(2.5rem,5.5vw,6rem)] leading-[1.05] tracking-[-0.03em] font-serif font-extrabold text-gradient mb-6 w-full max-w-[1200px]"
             >
               When did SHA-1 appear in your <span className="text-gradient-brand">repository?</span>
             </motion.h1>
