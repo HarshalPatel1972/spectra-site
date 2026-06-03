@@ -134,52 +134,54 @@ export default function PlaygroundPage() {
           
           <div className="mb-6">
             <h1 className="font-serif text-[2rem] font-bold text-text-primary mb-2">Interactive Analysis Environment</h1>
-            <p className="text-text-secondary text-[15px] max-w-3xl mb-6">
+            <p className="text-text-secondary text-[15px] max-w-3xl">
               Write, paste, or select an example implementation below. The Spectra engine will parse the AST, identify cryptographic primitives, and calculate the exact Quantum Risk Score in milliseconds.
             </p>
-            
-            <div className="flex items-center gap-4">
-              <select 
-                value={language}
-                onChange={(e) => {
-                  const lang = e.target.value as 'go' | 'python' | 'java';
-                  setLanguage(lang);
-                  setCode(EXAMPLES[lang].code);
-                  setResult(null);
-                }}
-                className="bg-surface-1 border border-border/80 text-text-primary text-[14px] px-4 py-2 rounded-md outline-none focus:border-brand transition-colors cursor-pointer"
-              >
-                <option value="go">Go</option>
-                <option value="python">Python</option>
-                <option value="java">Java</option>
-              </select>
-              
-              <button 
-                onClick={handleScan}
-                disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-                className="btn-push btn-push-brand px-6 py-2 text-[14px] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isScanning ? (
-                  <>
-                    <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-void"></span>
-                    Scanning...
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    Run Scan
-                  </>
-                )}
-              </button>
-            </div>
           </div>
 
           <div className="flex-1 grid lg:grid-cols-2 gap-6 min-h-[500px]">
             {/* Editor Window */}
             <div className="flex flex-col bg-surface-0 border border-border/80 rounded-xl overflow-hidden shadow-2xl backdrop-blur-xl">
-              <div className="h-11 bg-surface-1/80 border-b border-border/50 flex items-center px-4 gap-3 shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                <span className="text-[12px] font-mono text-text-secondary">main.{language}</span>
+              <div className="h-11 bg-surface-1/80 border-b border-border/50 flex items-center justify-between px-4 shrink-0">
+                <div className="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span className="text-[12px] font-mono text-text-secondary">main.{language}</span>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <select 
+                    value={language}
+                    onChange={(e) => {
+                      const lang = e.target.value as 'go' | 'python' | 'java';
+                      setLanguage(lang);
+                      setCode(EXAMPLES[lang].code);
+                      setResult(null);
+                    }}
+                    className="bg-void border border-border/50 text-text-secondary text-[12px] px-2 py-1 rounded outline-none focus:border-brand transition-colors cursor-pointer"
+                  >
+                    <option value="go">Go</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                  </select>
+                  
+                  <button 
+                    onClick={handleScan}
+                    disabled={isScanning || (mode === 'wasm' && !wasmReady)}
+                    className="bg-brand/10 hover:bg-brand/20 text-brand border border-brand/20 px-3 py-1 rounded text-[12px] font-bold flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {isScanning ? (
+                      <>
+                        <span className="animate-spin rounded-full h-3 w-3 border-b-2 border-brand"></span>
+                        Scanning...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Run Scan
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="flex-1 overflow-auto bg-surface-0">
                 <CodeMirror
