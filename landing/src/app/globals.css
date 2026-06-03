@@ -164,7 +164,7 @@ body {
 }
 
 .btn-premium-brand {
-  @apply bg-text-primary text-void hover:bg-white shadow-[0_4px_0_#B0B4C8,0_0_30px_rgba(46,196,196,0.3)] active:shadow-[0_0px_0_#B0B4C8,0_0_15px_rgba(46,196,196,0.3)];
+  @apply bg-brand text-void hover:brightness-110 shadow-[0_4px_0_var(--color-brand-dim),0_0_30px_rgba(46,196,196,0.3)] active:shadow-[0_0px_0_var(--color-brand-dim),0_0_15px_rgba(46,196,196,0.3)];
 }
 
 .btn-premium-outline {
