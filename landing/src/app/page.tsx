@@ -114,7 +114,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-[60px] text-center overflow-hidden bg-deep section-grid-bg">
+      <section className="relative pt-32 pb-20 flex flex-col items-center text-center overflow-hidden bg-deep section-grid-bg">
         {/* Globe wireframe bg */}
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,90vw)] h-[min(900px,90vw)] opacity-[0.06] pointer-events-none z-0 text-text-primary" />
 

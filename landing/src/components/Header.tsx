@@ -27,7 +27,7 @@ export function Header() {
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-1 list-none">
+          <div className="hidden md:flex items-center gap-4 list-none">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               const isExternal = item.href.startsWith('http');
