@@ -147,6 +147,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-right: 0.1em;
+  display: inline-block;
 }
 
 .text-gradient-brand {
@@ -154,6 +156,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-right: 0.1em;
+  display: inline-block;
 }
 
 /* Sleek Premium Buttons */
