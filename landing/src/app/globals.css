@@ -1,17 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #f4f4f5;
-  --color-surface-0: #e4e4e7;
-  --color-surface-1: #d4d4d8;
-  --color-surface-2: #a1a1aa;
-  --color-border: #d4d4d8;
-  --color-border-muted: #e4e4e7;
+  --color-void: var(--sys-void);
+  --color-surface-0: var(--sys-surface-0);
+  --color-surface-1: var(--sys-surface-1);
+  --color-surface-2: var(--sys-surface-2);
+  --color-border: var(--sys-border);
+  --color-border-muted: var(--sys-border-muted);
   
-  --color-text-primary: #09090b;
-  --color-text-secondary: #3f3f46;
-  --color-text-muted: #71717a;
-  --color-text-inverse: #f4f4f5;
+  --color-text-primary: var(--sys-text-primary);
+  --color-text-secondary: var(--sys-text-secondary);
+  --color-text-muted: var(--sys-text-muted);
+  --color-text-inverse: var(--sys-text-inverse);
+}
+
+:root {
+  --sys-void: #f4f4f5;
+  --sys-surface-0: #e4e4e7;
+  --sys-surface-1: #d4d4d8;
+  --sys-surface-2: #a1a1aa;
+  --sys-border: #d4d4d8;
+  --sys-border-muted: #e4e4e7;
+  
+  --sys-text-primary: #09090b;
+  --sys-text-secondary: #3f3f46;
+  --sys-text-muted: #71717a;
+  --sys-text-inverse: #f4f4f5;
+}
+
+.dark {
+  --sys-void: #060810;
+  --sys-surface-0: #0C0F1E;
+  --sys-surface-1: #131728;
+  --sys-surface-2: #1C2038;
+  --sys-border: #1F2444;
+  --sys-border-muted: #151830;
+  
+  --sys-text-primary: #E8EAF6;
+  --sys-text-secondary: #7A80AA;
+  --sys-text-muted: #4A4F6F;
+  --sys-text-inverse: #060810;
   
   --color-brand: #2EC4C4;
   --color-brand-dim: #1A7A7A;
