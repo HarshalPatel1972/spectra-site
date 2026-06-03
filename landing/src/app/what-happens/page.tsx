@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { Logo } from '../../components/Logo'
+import { Footer } from '@/components/Footer'
 
 // Minimal custom SVGs matching Lucide stroke style (1.5px)
 const Icons = {
@@ -40,139 +39,139 @@ export default function WhatHappensPage() {
   }, [stage]);
 
   const getLineColor = () => {
-    if (stage === 1) return 'var(--color-brand)';
+    if (stage === 1) return 'var(--color-accent)';
     if (stage === 2) return 'var(--color-critical)';
-    if (stage >= 3) return 'var(--color-brand)';
-    return 'var(--color-brand)';
+    if (stage >= 3) return 'var(--color-accent)';
+    return 'var(--color-accent)';
   };
 
   const getLineClasses = () => {
-    // Stage 1: Static
-    // Stage 2: Danger (animates color)
-    // Stage 3: Danger (static)
-    // Stage 4: Safe (animates back to safe)
     return "transition-colors duration-[400ms] ease-in-out";
   };
 
   return (
-    <div className="min-h-screen bg-void text-text-primary font-sans flex flex-col relative overflow-hidden">
-      
-      {/* Scan Reveal Animation Line */}
-      <div className="scan-reveal-line" />
-      
-      <div className="scan-reveal-content flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-void text-text-primary">
+      <main className="flex-1 pt-[60px] flex flex-col lg:flex-row relative z-10">
         
-
-        <main className="flex-1 flex flex-col lg:flex-row relative">
-          
-          {/* Left panel: Narrative Text */}
-          <div className="lg:w-1/3 p-12 lg:p-24 border-r border-border bg-surface-0 flex flex-col justify-center z-10">
-            <div className="space-y-16">
-              
-              <div className={`transition-opacity duration-1000 ${stage >= 1 ? 'opacity-100' : 'opacity-0'}`}>
-                <h2 className="text-[11px] font-sans font-bold tracking-[0.12em] text-brand mb-4 uppercase">Act I — The World Changed</h2>
-                <h3 className="font-serif text-[2rem] font-bold mb-4">The Cryptographic Foundation</h3>
-                <p className="text-text-secondary text-[1rem] leading-relaxed">
-                  RSA and ECC secure the world's infrastructure. Payments, VPNs, certificates, and APIs trust these math problems because classical computers cannot solve them in a human lifetime.
-                </p>
-              </div>
-
-              <div className={`transition-opacity duration-1000 ${stage >= 2 ? 'opacity-100' : 'opacity-20'}`}>
-                <h2 className="text-[11px] font-sans font-bold tracking-[0.12em] text-critical mb-4 uppercase">Act II — And Nobody Noticed</h2>
-                <h3 className="font-serif text-[2rem] font-bold mb-4">Shor's Algorithm</h3>
-                <p className="text-text-secondary text-[1rem] leading-relaxed">
-                  A cryptographically relevant quantum computer (CRQC) collapses the timeline. What took a billion years takes hours. The connections immediately turn hostile. The problem: nobody knows where all their RSA is deployed.
-                </p>
-              </div>
-
-              <div className={`transition-opacity duration-1000 ${stage >= 3 ? 'opacity-100' : 'opacity-20'}`}>
-                <h2 className="text-[11px] font-sans font-bold tracking-[0.12em] text-brand mb-4 uppercase">Act III — The Instrument</h2>
-                <h3 className="font-serif text-[2rem] font-bold mb-4">Discovery & Mapping</h3>
-                <p className="text-text-secondary text-[1rem] leading-relaxed">
-                  Spectra isolates and identifies every vulnerable primitive. It does not panic; it calculates. It generates a CycloneDX CBOM and assigns a precise Quantum Risk Score (QRS).
-                </p>
-              </div>
-
-              <div className={`transition-opacity duration-1000 ${stage >= 4 ? 'opacity-100' : 'opacity-20'}`}>
-                <h2 className="text-[11px] font-sans font-bold tracking-[0.12em] text-safe mb-4 uppercase">Act IV — The Path Forward</h2>
-                <h3 className="font-serif text-[2rem] font-bold mb-4">PQC Migration</h3>
-                <p className="text-text-secondary text-[1rem] leading-relaxed">
-                  With full visibility, migration waves replace RSA with ML-KEM and ML-DSA, restoring cryptographic integrity ahead of the CNSA 2.0 mandate.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Right panel: Visualization */}
-          <div className="lg:w-2/3 bg-void relative flex items-center justify-center p-12 overflow-hidden">
+        {/* Left panel: Narrative Text */}
+        <div className="w-full lg:w-[45%] lg:min-h-[calc(100vh-60px)] p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-border bg-deep flex flex-col justify-center">
+          <div className="space-y-20 max-w-[600px] mx-auto w-full">
             
-            {/* The Network SVG */}
-            <div className="relative w-full max-w-[800px] aspect-square">
-              
-              {/* Connecting Paths */}
-              <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
-                {/* Center to nodes */}
-                <line x1="50%" y1="50%" x2="20%" y2="20%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-                <line x1="50%" y1="50%" x2="80%" y2="20%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-                <line x1="50%" y1="50%" x2="20%" y2="80%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-                <line x1="50%" y1="50%" x2="80%" y2="80%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-                <line x1="50%" y1="50%" x2="10%" y2="50%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-                <line x1="50%" y1="50%" x2="90%" y2="50%" stroke={getLineColor()} strokeWidth="1.5" className={getLineClasses()} />
-              </svg>
-
-              {/* Nodes */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-1 p-6 border border-border text-text-primary z-10 shadow-2xl">
-                <Icons.Bank />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">Core API</div>
-              </div>
-
-              <div className="absolute top-[20%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.Payment />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">Payments</div>
-              </div>
-
-              <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.VPN />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">Gateway</div>
-              </div>
-
-              <div className="absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.Cert />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">x509</div>
-              </div>
-
-              <div className="absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.Auth />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">JWT Auth</div>
-              </div>
-
-              <div className="absolute top-[50%] left-[10%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.API />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">Microservice</div>
-              </div>
-
-              <div className="absolute top-[50%] left-[90%] -translate-x-1/2 -translate-y-1/2 bg-void p-4 border border-border text-text-primary z-10">
-                <Icons.API />
-                <div className="text-center mt-2 font-mono text-[10px] text-text-secondary uppercase">Microservice</div>
-              </div>
-              
-              {/* Stage 3 Terminal Overlay */}
-              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] bg-surface-0 border border-border p-6 shadow-2xl z-20 font-mono text-[12px] transition-all duration-700 ${stage === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-                <div className="text-text-muted mb-2">$ spectra scan .</div>
-                <div className="text-critical mb-1">CRITICAL  RSA-2048 (×14)</div>
-                <div className="text-text-primary mb-4 ml-24">Key size: 2048 bits · QRS: 90/100</div>
-                <div className="text-high mb-1">HIGH      ECDSA/P-256 (×7)</div>
-                <div className="text-text-primary mb-4 ml-24">QRS: 85/100</div>
-                <div className="text-text-muted mt-4">──────────────────────────────</div>
-                <div className="text-text-primary">QRS: <span className="qrs-materialize font-bold text-critical">83/100</span></div>
-                <div className="text-text-primary mt-2">Generating migration plan: spectra simulate --to ML-KEM</div>
-              </div>
-
+            <div className={`transition-all duration-1000 ${stage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-text-secondary mb-4 uppercase">Act I — The World Changed</h2>
+              <h3 className="display-xl mb-6">THE CRYPTOGRAPHIC<br/><span className="text-accent">FOUNDATION</span></h3>
+              <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+                RSA and ECC secure the world's infrastructure. Payments, VPNs, certificates, and APIs trust these math problems because classical computers cannot solve them in a human lifetime.
+              </p>
             </div>
+
+            <div className={`transition-all duration-1000 ${stage >= 2 ? 'opacity-100 translate-y-0' : 'opacity-20 translate-y-8'}`}>
+              <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-critical mb-4 uppercase">Act II — And Nobody Noticed</h2>
+              <h3 className="display-xl mb-6 text-critical">SHOR'S<br/>ALGORITHM</h3>
+              <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+                A cryptographically relevant quantum computer (CRQC) collapses the timeline. What took a billion years takes hours. The connections immediately turn hostile. The problem: nobody knows where all their RSA is deployed.
+              </p>
+            </div>
+
+            <div className={`transition-all duration-1000 ${stage >= 3 ? 'opacity-100 translate-y-0' : 'opacity-20 translate-y-8'}`}>
+              <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-accent mb-4 uppercase">Act III — The Instrument</h2>
+              <h3 className="display-xl mb-6">DISCOVERY<br/>& MAPPING</h3>
+              <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+                Spectra isolates and identifies every vulnerable primitive. It does not panic; it calculates. It generates a CycloneDX CBOM and assigns a precise Quantum Risk Score (QRS).
+              </p>
+            </div>
+
+            <div className={`transition-all duration-1000 ${stage >= 4 ? 'opacity-100 translate-y-0' : 'opacity-20 translate-y-8'}`}>
+              <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-safe mb-4 uppercase">Act IV — The Path Forward</h2>
+              <h3 className="display-xl mb-6 text-safe">PQC<br/>MIGRATION</h3>
+              <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+                With full visibility, migration waves replace RSA with ML-KEM and ML-DSA, restoring cryptographic integrity ahead of the CNSA 2.0 mandate.
+              </p>
+            </div>
+
           </div>
-        </main>
-      </div>
+        </div>
+
+        {/* Right panel: Visualization */}
+        <div className="w-full lg:w-[55%] lg:min-h-[calc(100vh-60px)] bg-void relative flex flex-col items-center justify-center p-8 lg:p-20 overflow-hidden section-grid-bg">
+          
+          {/* The Network SVG */}
+          <div className="relative w-full max-w-[800px] aspect-square lg:aspect-auto lg:h-[800px]">
+            
+            {/* Connecting Paths */}
+            <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+              {/* Center to nodes */}
+              <line x1="50%" y1="50%" x2="20%" y2="20%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+              <line x1="50%" y1="50%" x2="80%" y2="20%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+              <line x1="50%" y1="50%" x2="20%" y2="80%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+              <line x1="50%" y1="50%" x2="80%" y2="80%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+              <line x1="50%" y1="50%" x2="10%" y2="50%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+              <line x1="50%" y1="50%" x2="90%" y2="50%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
+            </svg>
+
+            {/* Nodes */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-high p-6 border border-border text-text-primary z-10 shadow-[var(--shadow-float)] rounded-[var(--radius-lg)]">
+              <Icons.Bank />
+              <div className="text-center mt-3 font-mono text-[10px] text-accent uppercase tracking-widest font-bold">Core API</div>
+            </div>
+
+            <div className="absolute top-[20%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.Payment />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Payments</div>
+            </div>
+
+            <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.VPN />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Gateway</div>
+            </div>
+
+            <div className="absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.Cert />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">x509</div>
+            </div>
+
+            <div className="absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.Auth />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">JWT Auth</div>
+            </div>
+
+            <div className="absolute top-[50%] left-[10%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.API />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Service A</div>
+            </div>
+
+            <div className="absolute top-[50%] left-[90%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary hover:text-text-primary transition-colors z-10 rounded-[var(--radius-md)]">
+              <Icons.API />
+              <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Service B</div>
+            </div>
+            
+            {/* Stage 3 Terminal Overlay */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-40px)] max-w-[500px] z-20 transition-all duration-700 ${stage === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+              <div className="terminal !mx-0">
+                <div className="terminal-titlebar">
+                  <div className="traffic-lights">
+                    <div className="traffic-light red" />
+                    <div className="traffic-light amber" />
+                    <div className="traffic-light green" />
+                  </div>
+                  <span className="terminal-filename">spectra — bash</span>
+                </div>
+                <div className="terminal-body">
+                  <div className="line"><span className="t-cmd">$</span> <span className="t-path">spectra scan</span> <span className="t-flag">.</span></div>
+                  <div className="line"><span className="t-crit">CRITICAL</span>  <span className="t-file">RSA-2048</span>  <span className="t-file">(×14)</span>          <span className="t-label">QRS:</span> <span className="t-num">90</span></div>
+                  <div className="line"><span className="t-high">HIGH    </span>  <span className="t-file">ECDSA/P-256</span> <span className="t-file">(×7)</span>         <span className="t-label">QRS:</span> <span className="t-num">85</span></div>
+                  <div className="line t-sep">──────────────────────────────────────────────────────────────</div>
+                  <div className="line"><span className="t-label">QRS:</span> <span className="t-crit">83/100</span></div>
+                  <div className="line mt-2 text-text-secondary">Generating migration plan: spectra simulate --to ML-KEM</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   )
 }
