@@ -1,43 +1,22 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-
-export function Logo({ className = "", withText = true }: { className?: string, withText?: boolean }) {
-  
-  const bars = [
-    { id: 'bar-1', x: 2, y: 9.6, w: 2, h: 12.8, color: 'currentColor' },
-    { id: 'bar-2', x: 8, y: 6.4, w: 2, h: 19.2, color: 'currentColor' },
-    { id: 'bar-3', x: 14, y: 0, w: 2, h: 32, color: '#2EC4C4' },
-    { id: 'bar-4', x: 20, y: 4, w: 2, h: 24, color: 'currentColor' },
-    { id: 'bar-5', x: 26, y: 8, w: 2, h: 16, color: 'currentColor' },
-  ];
-
+export function Logo({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-3 cursor-pointer ${className}`}>
-      
-      {/* HTML-based Logo */}
-      <div className="relative w-[32px] h-[32px] overflow-visible">
-        {bars.map((bar) => (
-          <div 
-            key={bar.id}
-            className="absolute rounded-sm"
-            style={{ 
-              left: bar.x, 
-              top: bar.y, 
-              width: bar.w, 
-              height: bar.h, 
-              backgroundColor: bar.color === 'currentColor' ? '#E8EAF6' : bar.color 
-            }}
-          />
-        ))}
+    <div className={`flex items-center gap-3 ${className}`}>
+      {/* 5-bar spectrograph mark */}
+      <div className="flex items-end gap-[3px] h-[20px]">
+        <span className="block w-[2px] h-[8px] rounded-[1px] bg-text-secondary" />
+        <span className="block w-[2px] h-[12px] rounded-[1px] bg-text-secondary" />
+        <span className="block w-[2px] h-[20px] rounded-[1px] bg-accent animate-[pulse_3s_ease-in-out_infinite]" />
+        <span className="block w-[2px] h-[15px] rounded-[1px] bg-text-secondary" />
+        <span className="block w-[2px] h-[10px] rounded-[1px] bg-text-secondary" />
       </div>
-      
-      {/* The Wordmark */}
-      {withText && (
-        <span className="font-serif text-[18px] tracking-[0.05em] text-ink uppercase">
-          SPECTRA
-        </span>
-      )}
+      {/* Wordmark */}
+      <span
+        className="font-heading font-[800] text-[1.1rem] tracking-[0.06em] uppercase text-text-primary"
+      >
+        SPECTRA
+      </span>
     </div>
-  );
+  )
 }

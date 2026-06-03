@@ -3,59 +3,98 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 
 export function Header() {
   const pathname = usePathname();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const navItems = [
     { text: 'The Quantum Threat', href: '/what-happens' },
     { text: 'Playground', href: '/playground' },
-    { text: 'Documentation', href: 'https://spectra-security-docs.vercel.app' },
+    { text: 'Docs', href: 'https://spectra-security-docs.vercel.app' },
     { text: 'Download', href: '/download' },
   ];
 
   return (
-    <header className="border-b border-border/50 bg-void/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between relative">
-        
-        {/* Logo Section */}
-        <div className="relative z-20 flex items-center">
-          <Link href="/">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-[100] h-[60px] flex items-center px-[var(--section-padding-x)] bg-[rgba(6,8,16,0.85)] backdrop-blur-[16px] border-b border-border-subtle">
+        <div className="max-w-[var(--max-width)] mx-auto w-full flex items-center justify-between gap-8">
+          
+          {/* Logo */}
+          <Link href="/" className="relative z-20 flex items-center no-underline">
             <Logo />
           </Link>
-        </div>
 
-        {/* Navigation Section */}
-        <nav className="hidden md:flex gap-8 text-[14px] font-medium text-text-secondary items-center h-full relative z-10">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            const isExternal = item.href.startsWith('http');
-            return (
-              <div key={item.text} className="relative flex items-center h-full">
-                {isExternal ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className={`hover:text-brand transition-colors py-4 flex items-center group ${isActive ? 'text-brand' : 'text-text-secondary'}`}>
-                    <span className="relative">
-                      {item.text}
-                    </span>
-                  </a>
-                ) : (
-                  <Link href={item.href} className={`hover:text-brand transition-colors py-4 flex items-center group ${isActive ? 'text-brand' : 'text-text-secondary'}`}>
-                    <span className="relative">
-                      {item.text}
-                    </span>
-                  </Link>
-                )}
-              </div>
-            );
-          })}
-          
-          <a href="https://github.com/HarshalPatel1972/spectra" target="_blank" rel="noopener noreferrer" className="ml-4 flex items-center gap-2 bg-surface-1 hover:bg-surface-2 border border-border/80 shadow-[0_3px_0_var(--color-border)] active:shadow-[0_0px_0_var(--color-border)] active:translate-y-[3px] px-4 py-2 rounded-full text-[13px] font-bold text-text-primary transition-all duration-150">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            Star us on GitHub
-          </a>
-        </nav>
-        
-      </div>
-    </header>
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-center gap-1 list-none">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              const isExternal = item.href.startsWith('http');
+              const linkClass = `block px-[14px] py-[6px] font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] uppercase no-underline rounded-[var(--radius-pill)] transition-colors duration-[120ms] ${
+                isActive ? 'text-accent bg-raised' : 'text-text-secondary hover:text-text-primary hover:bg-raised'
+              }`;
+
+              return isExternal ? (
+                <a key={item.text} href={item.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  {item.text}
+                </a>
+              ) : (
+                <Link key={item.text} href={item.href} className={linkClass}>
+                  {item.text}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Right actions */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <a href="https://github.com/HarshalPatel1972/spectra" target="_blank" rel="noopener noreferrer"
+              className="btn-secondary !py-[8px] !px-[16px] !text-[var(--body-xs)] !rounded-[var(--radius-sm)] !border-[1px]"
+            >
+              Star on GitHub
+            </a>
+            <Link href="/download" className="btn-primary !py-[8px] !px-[16px] !text-[var(--body-xs)] !rounded-[var(--radius-sm)] !border-[1px]">
+              Get Started
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="flex md:hidden flex-col gap-[5px] cursor-pointer p-2 bg-transparent border-none"
+            onClick={() => setDrawerOpen(!drawerOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-transform duration-200 ${drawerOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
+            <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-opacity duration-200 ${drawerOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-transform duration-200 ${drawerOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
+      {drawerOpen && (
+        <div className="fixed top-[60px] left-0 right-0 bottom-0 bg-void z-[99] p-8 flex flex-col gap-6 md:hidden">
+          <div className="flex flex-col items-start gap-2">
+            {navItems.map((item) => {
+              const isExternal = item.href.startsWith('http');
+              const linkClass = "font-mono text-[var(--body-md)] font-medium tracking-[0.04em] uppercase no-underline text-text-secondary hover:text-text-primary py-3 px-4 w-full";
+              return isExternal ? (
+                <a key={item.text} href={item.href} target="_blank" rel="noopener noreferrer" className={linkClass} onClick={() => setDrawerOpen(false)}>
+                  {item.text}
+                </a>
+              ) : (
+                <Link key={item.text} href={item.href} className={linkClass} onClick={() => setDrawerOpen(false)}>
+                  {item.text}
+                </Link>
+              );
+            })}
+          </div>
+          <Link href="/download" className="btn-primary w-full justify-center" onClick={() => setDrawerOpen(false)}>
+            Get Started
+          </Link>
+        </div>
+      )}
+    </>
   )
 }
