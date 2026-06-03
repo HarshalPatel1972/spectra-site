@@ -12,6 +12,29 @@
   --color-text-secondary: var(--sys-text-secondary);
   --color-text-muted: var(--sys-text-muted);
   --color-text-inverse: var(--sys-text-inverse);
+  --color-brand: #2EC4C4;
+  --color-brand-dim: #1A7A7A;
+  
+  --color-critical: #FF4560;
+  --color-critical-dim: #7D1525;
+  --color-high: #FF8F40;
+  --color-high-dim: #7D3D12;
+  --color-medium: #F5C842;
+  --color-medium-dim: #7A5E0E;
+  --color-low: #4ADEA8;
+  --color-low-dim: #1A6644;
+  --color-safe: #2EC4C4;
+  --color-safe-dim: #1A7A7A;
+
+  --color-overdue: #FF4560;
+  --color-red: #FF8F40;
+  --color-amber: #F5C842;
+  --color-green: #4ADEA8;
+
+  --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-syne), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
@@ -40,30 +63,6 @@
   --sys-text-secondary: #7A80AA;
   --sys-text-muted: #4A4F6F;
   --sys-text-inverse: #060810;
-  
-  --color-brand: #2EC4C4;
-  --color-brand-dim: #1A7A7A;
-  
-  --color-critical: #FF4560;
-  --color-critical-dim: #7D1525;
-  --color-high: #FF8F40;
-  --color-high-dim: #7D3D12;
-  --color-medium: #F5C842;
-  --color-medium-dim: #7A5E0E;
-  --color-low: #4ADEA8;
-  --color-low-dim: #1A6644;
-  --color-safe: #2EC4C4;
-  --color-safe-dim: #1A7A7A;
-
-  --color-overdue: #FF4560;
-  --color-red: #FF8F40;
-  --color-amber: #F5C842;
-  --color-green: #4ADEA8;
-
-  --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-syne), var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-syne), ui-serif, Georgia, serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
