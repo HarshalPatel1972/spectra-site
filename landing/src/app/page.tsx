@@ -184,6 +184,38 @@ export default function Home() {
                   </div>
                 </div>
 
+                <div className={`transition-all duration-500 transform ${terminalStep >= 4 ? 'opacity-100 translate-y-0 h-auto mb-8' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-6`}>
+                  <div className="text-medium font-bold w-24 shrink-0 flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-1"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    MEDIUM
+                  </div>
+                  <div className="flex-1 bg-white/[0.02] border border-white/5 p-4 rounded-lg">
+                    <div className="text-white font-bold text-[15px] mb-1">AES-128 (×3)</div>
+                    <div className="text-text-muted mb-3 text-[13px] bg-black/20 p-2 rounded">config/tls.yaml:14 +2 more</div>
+                    <div className="flex justify-between items-center text-[13px]">
+                      <span>Key size: 128 bits</span>
+                      <span className="text-medium font-bold bg-medium/10 px-2 py-0.5 rounded">QRS: 25/100</span>
+                    </div>
+                    <div className="mt-2 text-white/60">Warning: Grover's algorithm halves effective key strength</div>
+                  </div>
+                </div>
+
+                <div className={`transition-all duration-700 transform ${terminalStep >= 5 ? 'opacity-100 translate-y-0 h-auto' : 'opacity-0 translate-y-8 h-0 overflow-hidden'}`}>
+                  <div className="text-white/20 mb-6 border-t border-dashed w-full"></div>
+                  <div className="bg-surface-0/60 backdrop-blur-md p-6 rounded-xl border border-brand/30 shadow-[0_0_30px_rgba(46,196,196,0.1)] relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="flex items-center justify-between mb-4 relative z-10">
+                      <div className="text-white font-bold text-[16px]">Spectra QRS Score: <span className="qrs-materialize text-critical text-[24px] ml-2">{qrsCount}/100</span></div>
+                      <div className="text-text-secondary text-[13px] flex gap-4">
+                        <span>CPS: 31/100</span>
+                        <span>CAI: 34/100</span>
+                      </div>
+                    </div>
+                    <div className="text-[14px] text-white/80 relative z-10">Compliance gaps: <span className="text-white font-bold">47</span> (CNSA 2.0)</div>
+                    <div className="text-[13px] text-brand mt-4 relative z-10 font-bold bg-brand/10 inline-block px-3 py-1 rounded">Report saved → ./spectra-out/spectra-cbom.json</div>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           </section>
