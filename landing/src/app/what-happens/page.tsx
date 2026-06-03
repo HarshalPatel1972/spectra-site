@@ -164,47 +164,47 @@ export default function WhatHappensPage() {
       </div>
 
       {/* 2. SCROLLING FOREGROUND NARRATIVE */}
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-12 -mt-[100vh] pb-32 pointer-events-none">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-12 -mt-[100vh] pointer-events-none">
         
         {/* Act 1 */}
-        <div data-stage="1" className="act-section min-h-[120vh] flex items-center">
-          <div className={`w-full max-w-[540px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-10 md:p-14 rounded-[var(--radius-xl)] border border-border/50 shadow-[var(--shadow-float)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-text-secondary mb-4 uppercase">Act I — The World Changed</h2>
-            <h3 className="display-xl mb-6 leading-[1.05]">THE CRYPTOGRAPHIC<br/><span className="text-accent">FOUNDATION</span></h3>
-            <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+        <div data-stage="1" className="act-section min-h-[120vh] flex flex-col justify-end items-start pb-[10vh]">
+          <div className={`w-full max-w-[420px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] border border-border/50 shadow-2xl transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-text-secondary mb-3 uppercase">Act I — The World Changed</h2>
+            <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05]">THE CRYPTOGRAPHIC<br/><span className="text-accent">FOUNDATION</span></h3>
+            <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
               RSA and ECC secure the world's infrastructure. Payments, VPNs, certificates, and APIs trust these math problems because classical computers cannot solve them in a human lifetime.
             </p>
           </div>
         </div>
 
         {/* Act 2 */}
-        <div data-stage="2" className="act-section min-h-[120vh] flex items-center justify-end">
-          <div className={`w-full max-w-[540px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-10 md:p-14 rounded-[var(--radius-xl)] border border-border/50 shadow-[var(--shadow-float)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-critical mb-4 uppercase">Act II — And Nobody Noticed</h2>
-            <h3 className="display-xl mb-6 leading-[1.05] text-critical">SHOR'S<br/>ALGORITHM</h3>
-            <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+        <div data-stage="2" className="act-section min-h-[120vh] flex flex-col justify-end items-start pb-[10vh]">
+          <div className={`w-full max-w-[420px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] border border-border/50 shadow-2xl transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-critical mb-3 uppercase">Act II — And Nobody Noticed</h2>
+            <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05] text-critical">SHOR'S<br/>ALGORITHM</h3>
+            <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
               A cryptographically relevant quantum computer (CRQC) collapses the timeline. What took a billion years takes hours. The connections immediately turn hostile. The problem: nobody knows where all their RSA is deployed.
             </p>
           </div>
         </div>
 
         {/* Act 3 */}
-        <div data-stage="3" className="act-section min-h-[120vh] flex items-center">
-          <div className={`w-full max-w-[540px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-10 md:p-14 rounded-[var(--radius-xl)] border border-border/50 shadow-[var(--shadow-float)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-accent mb-4 uppercase">Act III — The Instrument</h2>
-            <h3 className="display-xl mb-6 leading-[1.05]">DISCOVERY<br/>& MAPPING</h3>
-            <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+        <div data-stage="3" className="act-section min-h-[120vh] flex flex-col justify-end items-start pb-[10vh]">
+          <div className={`w-full max-w-[420px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] border border-border/50 shadow-2xl transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-accent mb-3 uppercase">Act III — The Instrument</h2>
+            <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05]">DISCOVERY<br/>& MAPPING</h3>
+            <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
               Spectra isolates and identifies every vulnerable primitive. It does not panic; it calculates. It generates a CycloneDX CBOM and assigns a precise Quantum Risk Score (QRS).
             </p>
           </div>
         </div>
 
         {/* Act 4 */}
-        <div data-stage="4" className="act-section min-h-[100vh] flex items-center justify-end">
-          <div className={`w-full max-w-[540px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-10 md:p-14 rounded-[var(--radius-xl)] border border-border/50 shadow-[var(--shadow-float)] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-safe mb-4 uppercase">Act IV — The Path Forward</h2>
-            <h3 className="display-xl mb-6 leading-[1.05] text-safe">PQC<br/>MIGRATION</h3>
-            <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
+        <div data-stage="4" className="act-section min-h-[100vh] flex flex-col justify-end items-start pb-[10vh]">
+          <div className={`w-full max-w-[420px] pointer-events-auto bg-deep/80 backdrop-blur-xl p-8 rounded-[var(--radius-lg)] border border-border/50 shadow-2xl transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${stage === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-safe mb-3 uppercase">Act IV — The Path Forward</h2>
+            <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05] text-safe">PQC<br/>MIGRATION</h3>
+            <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
               With full visibility, migration waves replace RSA with ML-KEM and ML-DSA, restoring cryptographic integrity ahead of the CNSA 2.0 mandate.
             </p>
           </div>
