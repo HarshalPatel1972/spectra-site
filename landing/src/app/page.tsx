@@ -71,7 +71,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative mb-8 group"
+              className="relative mb-10 group"
             >
               <div className="absolute inset-0 bg-brand/20 blur-xl rounded-full group-hover:bg-brand/30 transition-colors duration-500"></div>
               <div className="relative flex items-center px-6 py-2 rounded-full bg-surface-0/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
@@ -85,7 +85,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-[clamp(2.5rem,5.5vw,6rem)] leading-[1.05] tracking-[-0.03em] font-serif font-extrabold text-gradient mb-6 w-full max-w-[1200px]"
+              className="text-[clamp(2.5rem,5.5vw,6rem)] leading-[1.05] tracking-[-0.03em] font-serif font-extrabold text-gradient mb-10 w-full max-w-[1200px]"
             >
               When did SHA-1 appear in your <span className="text-gradient-brand">repository?</span>
             </motion.h1>
@@ -94,7 +94,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="font-sans text-[1.25rem] text-text-secondary leading-[1.6] mb-10 max-w-3xl"
+              className="font-sans text-[1.25rem] text-text-secondary leading-[1.6] mb-14 max-w-3xl"
             >
               Not "do you use SHA-1?" Most engineers know they do. The harder question: which commit introduced it, who owns it, and what does replacing it cost? Spectra answers that question in milliseconds.
             </motion.p>
