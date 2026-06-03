@@ -66,10 +66,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-[12px] font-sans font-bold tracking-[0.2em] text-brand mb-8 uppercase flex items-center gap-4 bg-brand/5 border border-brand/20 px-6 py-2 rounded-full backdrop-blur-md"
+              className="relative mb-10 group"
             >
-              <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-              The Standard in Cryptographic Intelligence
+              <div className="absolute inset-0 bg-brand/20 blur-xl rounded-full group-hover:bg-brand/30 transition-colors duration-500"></div>
+              <div className="relative flex items-center gap-3 px-6 py-2 rounded-full bg-surface-0/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span className="text-[12px] font-sans font-semibold tracking-[0.2em] uppercase text-white/90">
+                  The Standard in Cryptographic Intelligence
+                </span>
+              </div>
             </motion.div>
             
             <motion.h1 
