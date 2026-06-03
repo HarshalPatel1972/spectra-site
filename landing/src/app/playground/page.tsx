@@ -134,9 +134,44 @@ export default function PlaygroundPage() {
           
           <div className="mb-6">
             <h1 className="font-serif text-[2rem] font-bold text-text-primary mb-2">Interactive Analysis Environment</h1>
-            <p className="text-text-secondary text-[15px] max-w-3xl">
+            <p className="text-text-secondary text-[15px] max-w-3xl mb-6">
               Write, paste, or select an example implementation below. The Spectra engine will parse the AST, identify cryptographic primitives, and calculate the exact Quantum Risk Score in milliseconds.
             </p>
+            
+            <div className="flex items-center gap-4">
+              <select 
+                value={language}
+                onChange={(e) => {
+                  const lang = e.target.value as 'go' | 'python' | 'java';
+                  setLanguage(lang);
+                  setCode(EXAMPLES[lang].code);
+                  setResult(null);
+                }}
+                className="bg-surface-1 border border-border/80 text-text-primary text-[14px] px-4 py-2 rounded-md outline-none focus:border-brand transition-colors cursor-pointer"
+              >
+                <option value="go">Go</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+              </select>
+              
+              <button 
+                onClick={handleScan}
+                disabled={isScanning || (mode === 'wasm' && !wasmReady)}
+                className="btn-push btn-push-brand px-6 py-2 text-[14px] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isScanning ? (
+                  <>
+                    <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-void"></span>
+                    Scanning...
+                  </>
+                ) : (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Run Scan
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="flex-1 grid lg:grid-cols-2 gap-6 min-h-[500px]">
