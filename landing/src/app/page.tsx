@@ -57,167 +57,191 @@ export default function Home() {
         {/* Header */}
         
 
-        <main className="max-w-[1400px] mx-auto px-8 py-24 space-y-40 flex-1 w-full">
+        <main className="max-w-[1200px] mx-auto px-8 py-32 space-y-40 flex-1 w-full z-10 relative">
           
-          {/* HERO SECTION */}
-          <section className="flex flex-col xl:flex-row gap-16 items-start relative">
-            <div className="xl:w-[45%] flex flex-col pt-12 z-10">
-              <div className="text-[11px] font-sans font-semibold tracking-[0.12em] text-brand mb-6 uppercase flex items-center gap-3">
-                <span className="w-8 h-[1px] bg-brand/50"></span>
-                Cryptographic Intelligence Platform
-              </div>
-              <h1 className="flex flex-col text-[clamp(3rem,5vw,5.5rem)] leading-[1.05] tracking-[-0.02em] font-serif font-extrabold text-text-primary mb-6 drop-shadow-sm">
-                When did SHA-1 appear in your repository?
-              </h1>
-              <p className="font-sans text-[1.125rem] text-text-secondary leading-[1.6] mb-10 max-w-lg">
-                Not "do you use SHA-1?" Most engineers know they do. The harder question: which commit introduced it, who owns it, and what does replacing it cost? Spectra answers that question.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 text-[14px]">
-                <div 
-                  className="bg-surface-0/50 backdrop-blur-sm border border-border/80 hover:border-brand/40 text-text-primary px-6 py-4 rounded-md flex items-center font-mono cursor-copy transition-all group"
-                  onClick={() => navigator.clipboard.writeText('brew install harshalpatel1972/tap/spectra')}
-                >
-                  <span className="text-brand mr-4 group-hover:text-brand-dim transition-colors">$</span> 
-                  <span>brew install harshalpatel1972/tap/spectra</span>
-                  <div className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity text-text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  </div>
-                </div>
-                <Link href="/download" className="btn-push btn-push-brand px-8 py-4 w-full sm:w-auto text-[15px]">
-                  Download Tools →
-                </Link>
-              </div>
-              <div className="mt-8 text-center sm:text-left text-[0.875rem] text-text-muted font-sans flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                No account. No telemetry. Open source under MIT.
-              </div>
-            </div>
+          {/* V2 HERO SECTION (Centered) */}
+          <section className="flex flex-col items-center text-center relative z-20">
             
-            {/* TERMINAL UI */}
             <motion.div 
-              initial={{ y: 40, opacity: 0, scale: 0.98 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.2 }}
-              className="xl:w-[55%] w-full rounded-xl overflow-hidden terminal-shadow bg-surface-0 border border-border/80 backdrop-blur-xl flex flex-col z-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-[12px] font-sans font-bold tracking-[0.2em] text-brand mb-8 uppercase flex items-center gap-4 bg-brand/5 border border-brand/20 px-6 py-2 rounded-full backdrop-blur-md"
             >
-              {/* Terminal Header */}
-              <div className="h-10 bg-surface-1 border-b border-border/50 flex items-center px-4 justify-between shrink-0">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
+              <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+              The Standard in Cryptographic Intelligence
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+              className="text-[clamp(3rem,6vw,6.5rem)] leading-[1.05] tracking-[-0.03em] font-serif font-extrabold text-gradient mb-8 max-w-5xl"
+            >
+              When did SHA-1 appear in your <span className="text-gradient-brand">repository?</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="font-sans text-[1.25rem] text-text-secondary leading-[1.6] mb-12 max-w-3xl"
+            >
+              Not "do you use SHA-1?" Most engineers know they do. The harder question: which commit introduced it, who owns it, and what does replacing it cost? Spectra answers that question in milliseconds.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-center gap-6"
+            >
+              <Link href="/download" className="btn-premium btn-premium-brand w-full sm:w-auto">
+                Download Spectra
+              </Link>
+              <div 
+                className="btn-premium btn-premium-outline font-mono cursor-copy group w-full sm:w-auto"
+                onClick={() => navigator.clipboard.writeText('brew install harshalpatel1972/tap/spectra')}
+              >
+                <span className="text-brand mr-3 group-hover:text-brand-dim transition-colors">$</span> 
+                brew install harshalpatel1972/tap/spectra
+              </div>
+            </motion.div>
+            
+          </section>
+
+          {/* V2 TERMINAL UI (Glassmorphic) */}
+          <section className="relative z-10 w-full mt-24">
+            <motion.div 
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 150, damping: 25, delay: 0.5 }}
+              className="glass-panel rounded-2xl overflow-hidden terminal-shadow relative"
+            >
+              {/* Glossy Mac-like Header */}
+              <div className="h-12 bg-white/[0.03] border-b border-white/5 flex items-center px-6 justify-between shrink-0 relative backdrop-blur-sm">
+                <div className="flex gap-2.5">
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
                 </div>
-                <div className="font-mono text-[11px] text-text-muted absolute left-1/2 -translate-x-1/2">
-                  spectra — bash — 80x24
+                <div className="font-mono text-[12px] text-text-muted absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  spectra-scan
                 </div>
                 <div></div>
               </div>
 
-              {/* Terminal Content - Set to h-auto so it grows with the content, no clipping */}
-              <div className="p-6 font-mono text-[13px] text-text-secondary leading-[1.6] h-auto min-h-[400px]">
-                <div className="mb-4">
+              {/* Terminal Content - Gradient fade at bottom using mask-image */}
+              <div className="p-8 font-mono text-[14px] text-text-secondary leading-[1.7] h-[500px] overflow-hidden" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}>
+                <div className="mb-6">
                   <span className="text-brand">$ </span>
-                  <span className="text-text-primary">spectra scan .</span>
+                  <span className="text-white font-medium">spectra scan .</span>
                 </div>
                 
                 <div className={`transition-opacity duration-300 ${terminalStep >= 1 ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
-                  <div className="mb-6 flex items-center gap-2">
+                  <div className="mb-8 flex items-center gap-3">
                     <span className="animate-pulse text-brand">▓▓░</span> 
                     Mapping cryptographic landscape...
                   </div>
                 </div>
                 
-                <div className={`transition-all duration-500 transform ${terminalStep >= 2 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
-                  <div className="text-critical font-bold w-20 shrink-0">CRITICAL</div>
-                  <div className="flex-1">
-                    <div className="text-text-primary font-bold">RSA-2048 (×14)</div>
-                    <div className="text-text-muted mb-1 text-[12px]">src/auth/jwt.go:47 · pkg/crypto/sign.go:12 +12 more</div>
-                    <div>Key size: 2048 bits · QRS: 90/100</div>
-                    <div>Migration: MEDIUM → ML-KEM-1024 (FIPS 203)</div>
-                    <div className="text-text-muted">Introduced: commit a4f2c81 · Mar 14, 2023</div>
+                <div className={`transition-all duration-500 transform ${terminalStep >= 2 ? 'opacity-100 translate-y-0 h-auto mb-8' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-6`}>
+                  <div className="text-critical font-bold w-24 shrink-0 flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-1"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    CRITICAL
                   </div>
-                </div>
-
-                <div className={`transition-all duration-500 transform ${terminalStep >= 3 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
-                  <div className="text-high font-bold w-20 shrink-0">HIGH</div>
-                  <div className="flex-1">
-                    <div className="text-text-primary font-bold">ECDSA/P-256 (×7)</div>
-                    <div className="text-text-muted mb-1 text-[12px]">certs/api-server.pem +6 more</div>
-                    <div>QRS: 85/100</div>
-                    <div>Migration: HARD → Certificate chain re-issuance</div>
-                  </div>
-                </div>
-
-                <div className={`transition-all duration-500 transform ${terminalStep >= 4 ? 'opacity-100 translate-y-0 h-auto mb-6' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-4`}>
-                  <div className="text-medium font-bold w-20 shrink-0">MEDIUM</div>
-                  <div className="flex-1">
-                    <div className="text-text-primary font-bold">AES-128 (×3)</div>
-                    <div className="text-text-muted mb-1 text-[12px]">config/tls.yaml:14 +2 more</div>
-                    <div>QRS: 25/100 — Grover halves effective key</div>
-                  </div>
-                </div>
-
-                <div className={`transition-all duration-500 transform ${terminalStep >= 5 ? 'opacity-100 translate-y-0 h-auto' : 'opacity-0 translate-y-4 h-0 overflow-hidden'}`}>
-                  <div className="text-border/50 mb-3 border-t border-dashed w-full"></div>
-                  <div className="bg-surface-1/50 p-4 rounded-md border border-border/50">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>QRS: <span className="qrs-materialize font-bold text-critical text-[15px]">{qrsCount}/100</span></div>
-                      <div className="text-text-muted">CPS: 31/100</div>
-                      <div className="text-text-muted">CAI: 34/100</div>
+                  <div className="flex-1 bg-white/[0.02] border border-white/5 p-4 rounded-lg">
+                    <div className="text-white font-bold text-[15px] mb-1">RSA-2048 (×14)</div>
+                    <div className="text-text-muted mb-3 text-[13px] bg-black/20 p-2 rounded">src/auth/jwt.go:47 · pkg/crypto/sign.go:12 +12 more</div>
+                    <div className="flex justify-between items-center text-[13px]">
+                      <span>Key size: 2048 bits</span>
+                      <span className="text-critical font-bold bg-critical/10 px-2 py-0.5 rounded">QRS: 90/100</span>
                     </div>
-                    <div>Compliance gaps: <span className="text-text-primary font-medium">47</span> (CNSA 2.0)</div>
-                    <div className="text-[12px] text-text-muted mt-2">CBOM → ./spectra-out/spectra-cbom.json</div>
+                    <div className="mt-2 text-white/60">Migration: MEDIUM → ML-KEM-1024 (FIPS 203)</div>
+                    <div className="text-text-muted mt-1">Introduced: commit a4f2c81 · Mar 14, 2023</div>
                   </div>
                 </div>
+
+                <div className={`transition-all duration-500 transform ${terminalStep >= 3 ? 'opacity-100 translate-y-0 h-auto mb-8' : 'opacity-0 translate-y-4 h-0 mb-0 overflow-hidden'} flex gap-6`}>
+                  <div className="text-high font-bold w-24 shrink-0 flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-1"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    HIGH
+                  </div>
+                  <div className="flex-1 bg-white/[0.02] border border-white/5 p-4 rounded-lg">
+                    <div className="text-white font-bold text-[15px] mb-1">ECDSA/P-256 (×7)</div>
+                    <div className="text-text-muted mb-3 text-[13px] bg-black/20 p-2 rounded">certs/api-server.pem +6 more</div>
+                    <div className="flex justify-between items-center text-[13px]">
+                      <span>Algorithm Type: Elliptic Curve</span>
+                      <span className="text-high font-bold bg-high/10 px-2 py-0.5 rounded">QRS: 85/100</span>
+                    </div>
+                    <div className="mt-2 text-white/60">Migration: HARD → Certificate chain re-issuance</div>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           </section>
 
-          {/* THE TOOLCHAIN */}
-          <section className="pt-32 relative">
+          {/* THE TOOLCHAIN (Bento Box Grid) */}
+          <section className="pt-32 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="font-serif text-[clamp(2rem,3vw,3rem)] font-bold text-text-primary mb-4">The Spectra Toolchain</h2>
-              <p className="text-text-secondary text-[1.125rem] max-w-2xl mx-auto">A unified suite designed to map, score, and remediate cryptographic risk across the entire software development lifecycle.</p>
+              <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-gradient mb-6">The Spectra Toolchain</h2>
+              <p className="text-text-secondary text-[1.25rem] max-w-2xl mx-auto">A unified suite designed to map, score, and remediate cryptographic risk across the entire software development lifecycle.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
-                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              {/* CLI (Spans 2 columns) */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-2 flex flex-col justify-between overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
+                <div>
+                  <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Spectra CLI</h3>
+                  <p className="text-text-secondary text-[16px] leading-relaxed max-w-md">The core scanning engine. Runs locally in milliseconds. Generates CBOMs, calculates QRS, and integrates seamlessly into shell scripts and local dev environments.</p>
                 </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra CLI</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">The core scanning engine. Runs locally in milliseconds. Generates CBOMs, calculates QRS, and integrates seamlessly into shell scripts and local dev environments.</p>
+                <div className="mt-8 font-mono text-[13px] text-text-muted bg-black/30 p-3 rounded-lg border border-white/5 inline-block self-start">
+                  $ spectra scan ./src
+                </div>
               </div>
 
-              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
-                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+              {/* CI (Spans 1 column) */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-1 flex flex-col relative overflow-hidden">
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand/5 rounded-full blur-2xl translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
+                <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                 </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra CI (GitHub App)</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">Automated pull request scanning. Blocks the merging of new vulnerable cryptographic primitives and provides inline code reviews directly in GitHub.</p>
+                <h3 className="text-2xl font-bold text-white mb-4">Spectra CI</h3>
+                <p className="text-text-secondary text-[16px] leading-relaxed">Automated pull request scanning. Blocks the merging of new vulnerable cryptographic primitives natively in GitHub.</p>
               </div>
 
-              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
-                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              {/* VS Code (Spans 1 column) */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-1 flex flex-col relative overflow-hidden">
+                <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                 </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra VS Code</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">Inline cryptographic risk analysis as you type. Get immediate feedback and migration recommendations before you even commit the code.</p>
+                <h3 className="text-2xl font-bold text-white mb-4">VS Code</h3>
+                <p className="text-text-secondary text-[16px] leading-relaxed">Inline cryptographic risk analysis as you type. Get immediate feedback and migration recommendations before you commit.</p>
               </div>
 
-              <div className="bg-surface-0 border border-border/50 p-8 rounded-xl hover:border-brand/30 transition-colors group">
-                <div className="w-10 h-10 bg-brand/10 text-brand rounded-lg flex items-center justify-center mb-6 border border-brand/20 group-hover:bg-brand group-hover:text-void transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              {/* Action (Spans 2 columns) */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-2 flex flex-col justify-between overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
+                <div>
+                  <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Spectra Action</h3>
+                  <p className="text-text-secondary text-[16px] leading-relaxed max-w-md">The official GitHub Action. Perfect for dropping into existing CI/CD pipelines to generate CBOM artifacts and enforce compliance gates on every build.</p>
                 </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">Spectra Action</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">The official GitHub Action. Perfect for dropping into existing CI/CD pipelines to generate CBOM artifacts and enforce compliance gates on every build.</p>
+                <div className="mt-8">
+                  <Link href="/download" className="text-brand hover:text-white transition-colors font-bold flex items-center gap-2 text-[15px]">
+                    Install Action <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="text-center mt-10">
-              <Link href="/download" className="btn-push btn-push-brand px-10 py-4 text-[15px]">
-                View installation instructions →
-              </Link>
             </div>
           </section>
 

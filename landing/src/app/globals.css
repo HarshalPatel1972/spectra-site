@@ -117,33 +117,54 @@ body {
   }
 }
 
-/* Enterprise Aesthetics */
+/* Premium V2 Redesign Elements */
 .hero-glow {
   position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, rgba(46, 196, 196, 0.08) 0%, transparent 60%);
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at top, rgba(46, 196, 196, 0.15) 0%, rgba(12, 15, 30, 0) 70%);
   pointer-events: none;
   z-index: -1;
+  filter: blur(100px);
 }
 
 .terminal-shadow {
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(46, 196, 196, 0.05);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 40px 0 rgba(46, 196, 196, 0.1);
 }
 
-/* 3D Push Buttons (Enterprise Brand Colors) */
-.btn-push {
-  @apply relative inline-flex items-center justify-center font-bold tracking-wider transition-all duration-150 active:translate-y-[4px] active:border-b-0 cursor-pointer select-none;
-  border-bottom-width: 4px;
-  border-radius: 0.5rem; /* Less playful, more enterprise */
+/* Glassmorphism Panels */
+.glass-panel {
+  @apply bg-surface-0/40 backdrop-blur-2xl border border-white/5;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.btn-push-brand {
-  @apply bg-brand/10 border-brand/40 text-brand hover:bg-brand/20 hover:border-brand/60 shadow-[0_4px_15px_rgba(46,196,196,0.1)];
+/* Premium Gradients */
+.text-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.btn-push-solid {
-  @apply bg-brand border-brand-dim text-void hover:brightness-110 shadow-[0_4px_15px_rgba(46,196,196,0.2)];
+.text-gradient-brand {
+  background: linear-gradient(90deg, var(--color-brand) 0%, #70E1E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sleek Premium Buttons */
+.btn-premium {
+  @apply relative inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full px-8 py-3 text-[15px];
+}
+
+.btn-premium-brand {
+  @apply bg-text-primary text-void hover:bg-white hover:scale-105 shadow-[0_0_30px_rgba(46,196,196,0.3)];
+}
+
+.btn-premium-outline {
+  @apply bg-transparent border border-border/80 text-text-primary hover:bg-surface-1 hover:border-brand/50 backdrop-blur-sm;
 }
