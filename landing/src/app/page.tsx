@@ -330,7 +330,7 @@ export default function Home() {
           <HeroHolograms />
           <div className="absolute inset-0 bg-brand/10 blur-[120px] rounded-full w-[800px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           
-          <div className="z-10 text-center relative max-w-3xl mx-auto px-8 glass-panel p-16 rounded-3xl border border-white/10">
+          <div className="z-10 text-center relative max-w-3xl mx-auto px-8">
             <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-white mb-6 drop-shadow-sm">
               Ready to secure your cryptography?
             </h2>
