@@ -111,11 +111,61 @@ export default function DownloadPage() {
               command="code --install-extension harshalpatel1972.spectra-vscode" 
             />
           </div>
-          
-          <div className="mt-16 text-[14px] text-text-muted font-mono bg-surface-1/50 px-6 py-2 rounded-full border border-border/50">
-            For source compilation: <span className="text-text-primary">go install github.com/HarshalPatel1972/spectra/cmd/spectra@latest</span>
-          </div>
         </div>
+
+        {/* Detailed Installation Guide */}
+        <section className="mt-32 max-w-4xl mx-auto px-8 w-full z-20 relative">
+          <div className="bg-surface-0 border border-border/50 rounded-xl p-10 shadow-2xl">
+            <h2 className="text-2xl font-bold font-serif mb-8 text-text-primary">Detailed Installation Guide</h2>
+            
+            <div className="space-y-12">
+              {/* macOS / Linux */}
+              <div>
+                <h3 className="text-lg font-bold text-text-primary mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                  macOS / Linux
+                </h3>
+                <p className="text-text-secondary mb-4 text-[14px]">The easiest way to install Spectra on macOS or Linux is via Homebrew. This will download the latest pre-compiled binary and add it to your PATH.</p>
+                <div className="bg-void border border-border/80 rounded-md p-4 font-mono text-[14px] flex items-center justify-between group">
+                  <span className="text-text-primary">brew install harshalpatel1972/tap/spectra</span>
+                  <button onClick={() => handleCopy('brew install harshalpatel1972/tap/spectra')} className="text-text-muted hover:text-brand transition-colors">
+                    {copiedCode === 'brew install harshalpatel1972/tap/spectra' ? 'Copied!' : 'Copy'}
+                  </button>
+                </div>
+              </div>
+
+              {/* Windows */}
+              <div>
+                <h3 className="text-lg font-bold text-text-primary mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  Windows
+                </h3>
+                <p className="text-text-secondary mb-4 text-[14px]">For Windows users, we recommend using Docker to run the Spectra container against your local workspace.</p>
+                <div className="bg-void border border-border/80 rounded-md p-4 font-mono text-[14px] flex items-center justify-between group">
+                  <span className="text-text-primary">docker run --rm -v %cd%:/w ghcr.io/harshalpatel1972/spectra scan /w</span>
+                  <button onClick={() => handleCopy('docker run --rm -v %cd%:/w ghcr.io/harshalpatel1972/spectra scan /w')} className="text-text-muted hover:text-brand transition-colors">
+                    {copiedCode === 'docker run --rm -v %cd%:/w ghcr.io/harshalpatel1972/spectra scan /w' ? 'Copied!' : 'Copy'}
+                  </button>
+                </div>
+              </div>
+
+              {/* Build from Source */}
+              <div>
+                <h3 className="text-lg font-bold text-text-primary mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Build from Source (Go)
+                </h3>
+                <p className="text-text-secondary mb-4 text-[14px]">If you have Go 1.21+ installed, you can compile and install the CLI directly from source.</p>
+                <div className="bg-void border border-border/80 rounded-md p-4 font-mono text-[14px] flex items-center justify-between group">
+                  <span className="text-text-primary">go install github.com/HarshalPatel1972/spectra/cmd/spectra@latest</span>
+                  <button onClick={() => handleCopy('go install github.com/HarshalPatel1972/spectra/cmd/spectra@latest')} className="text-text-muted hover:text-brand transition-colors">
+                    {copiedCode === 'go install github.com/HarshalPatel1972/spectra/cmd/spectra@latest' ? 'Copied!' : 'Copy'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* GLOBAL FOOTER */}
