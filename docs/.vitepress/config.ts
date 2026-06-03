@@ -8,6 +8,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/spectra-mark.svg',
     nav: [
+      { text: '← Back to Website', link: 'https://spectra-security.vercel.app' },
       { text: 'Guide', link: '/guide/' },
       { text: 'Reference', link: '/reference/cli' },
       { text: 'Compliance', link: '/compliance/cnsa-20' },
