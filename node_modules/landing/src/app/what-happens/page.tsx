@@ -24,23 +24,22 @@ export default function WhatHappensPage() {
       const { top, height } = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate progress from 0 to 1 based on how far we've scrolled through the container
-      // top is 0 when the top of the container hits the top of the viewport
       let progress = -top / (height - windowHeight);
-      
-      // Clamp progress between 0 and 1
       progress = Math.max(0, Math.min(1, progress));
       setScrollProgress(progress);
       
-      // Determine stage based on progress (4 acts = 0-0.25, 0.25-0.5, 0.5-0.75, 0.75-1)
-      if (progress < 0.25) setStage(1);
+      // Calculate exact stage based on horizontal track position.
+      // progress 0 = Act 1 is centered.
+      // progress 0.333 = Act 2 is centered.
+      // progress 0.666 = Act 3 is centered.
+      // progress 1 = Act 4 is centered.
+      if (progress < 0.166) setStage(1);
       else if (progress < 0.5) setStage(2);
-      else if (progress < 0.75) setStage(3);
+      else if (progress < 0.833) setStage(3);
       else setStage(4);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Initial calculation
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -58,18 +57,13 @@ export default function WhatHappensPage() {
   return (
     <div className="relative bg-void text-text-primary">
       
-      {/* 
-        Scroll container spanning 400vh to give us plenty of room to scroll down.
-        While scrolling down this container, the sticky element stays on screen,
-        and the content translates from right to left.
-      */}
       <div ref={containerRef} className="relative h-[400vh]">
         
         {/* Sticky Background & Track */}
         <div className="sticky top-0 h-screen w-full overflow-hidden section-grid-bg flex items-center justify-center">
           
-          {/* SVG Animation (Centered) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] max-w-[100vw] max-h-[100vh] z-0 transition-transform duration-700 ease-out" style={{ transform: `translate(-50%, -50%) scale(${1 + scrollProgress * 0.15})` }}>
+          {/* SVG Animation (Centered, No zoom) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] max-w-[100vw] max-h-[100vh] z-0">
             {/* Connecting Paths */}
             <svg className="absolute inset-0 w-full h-full">
               <line x1="50%" y1="50%" x2="20%" y2="20%" stroke={getLineColor()} strokeWidth="2" className={getLineClasses()} opacity="0.6" />
@@ -81,39 +75,39 @@ export default function WhatHappensPage() {
             </svg>
 
             {/* Nodes */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-high p-6 border border-border text-text-primary z-10 shadow-[var(--shadow-float)] rounded-[var(--radius-lg)] transition-all duration-700">
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 border text-text-primary z-10 shadow-[var(--shadow-float)] rounded-[var(--radius-lg)] transition-all duration-700 ${stage === 2 ? 'bg-[#2A0810] border-critical text-critical' : 'bg-high border-border'}`}>
               <Icons.Bank />
-              <div className="text-center mt-3 font-mono text-[10px] text-accent uppercase tracking-widest font-bold">Core API</div>
+              <div className={`text-center mt-3 font-mono text-[10px] uppercase tracking-widest font-bold transition-colors duration-700 ${stage === 2 ? 'text-critical' : 'text-accent'}`}>Core API</div>
             </div>
 
-            <div className={`absolute top-[20%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[20%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.Payment />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Payments</div>
             </div>
-            <div className={`absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.VPN />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Gateway</div>
             </div>
-            <div className={`absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.Cert />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">x509</div>
             </div>
-            <div className={`absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.Auth />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">JWT Auth</div>
             </div>
-            <div className={`absolute top-[50%] left-[10%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[50%] left-[10%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.API />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Service A</div>
             </div>
-            <div className={`absolute top-[50%] left-[90%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)]' : ''}`}>
+            <div className={`absolute top-[50%] left-[90%] -translate-x-1/2 -translate-y-1/2 bg-raised p-4 border border-border text-text-secondary z-10 rounded-[var(--radius-md)] transition-all duration-700 ${stage === 2 ? 'border-critical text-critical shadow-[0_0_20px_rgba(255,69,96,0.3)] bg-[#1A050A]' : ''}`}>
               <Icons.API />
               <div className="text-center mt-2 font-mono text-[10px] uppercase tracking-widest">Service B</div>
             </div>
             
             {/* Terminal Overlay for Act 3/4 */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-40px)] max-w-[500px] z-20 transition-all duration-1000 ${stage >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'}`}>
-              <div className="terminal !mx-0 !shadow-[0_20px_50px_rgba(6,8,16,0.5)]">
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-40px)] max-w-[500px] z-20 transition-all duration-700 ease-out ${stage >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+              <div className="terminal !mx-0 !shadow-[0_20px_50px_rgba(6,8,16,0.8)]">
                 <div className="terminal-titlebar">
                   <div className="traffic-lights">
                     <div className="traffic-light red" />
@@ -151,8 +145,8 @@ export default function WhatHappensPage() {
             <div className="flex w-[400vw] h-auto transition-transform duration-75 ease-linear" style={{ transform: `translateX(-${scrollProgress * 75}%)` }}>
               
               {/* Act 1 */}
-              <div className="w-[100vw] pr-[20vw] flex-shrink-0 pointer-events-auto">
-                <div className="max-w-[420px]">
+              <div className={`w-[100vw] pr-[20vw] flex-shrink-0 transition-opacity duration-500 ${stage === 1 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="max-w-[420px] pointer-events-auto">
                   <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-text-secondary mb-3 uppercase">Act I — The World Changed</h2>
                   <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05]">THE CRYPTOGRAPHIC<br/><span className="text-accent">FOUNDATION</span></h3>
                   <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
@@ -162,8 +156,8 @@ export default function WhatHappensPage() {
               </div>
 
               {/* Act 2 */}
-              <div className="w-[100vw] pr-[20vw] flex-shrink-0 pointer-events-auto">
-                <div className="max-w-[420px]">
+              <div className={`w-[100vw] pr-[20vw] flex-shrink-0 transition-opacity duration-500 ${stage === 2 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="max-w-[420px] pointer-events-auto">
                   <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-critical mb-3 uppercase">Act II — And Nobody Noticed</h2>
                   <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05] text-critical">SHOR'S<br/>ALGORITHM</h3>
                   <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
@@ -173,8 +167,8 @@ export default function WhatHappensPage() {
               </div>
 
               {/* Act 3 */}
-              <div className="w-[100vw] pr-[20vw] flex-shrink-0 pointer-events-auto">
-                <div className="max-w-[420px]">
+              <div className={`w-[100vw] pr-[20vw] flex-shrink-0 transition-opacity duration-500 ${stage === 3 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="max-w-[420px] pointer-events-auto">
                   <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-accent mb-3 uppercase">Act III — The Instrument</h2>
                   <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05]">DISCOVERY<br/>& MAPPING</h3>
                   <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
@@ -184,8 +178,8 @@ export default function WhatHappensPage() {
               </div>
 
               {/* Act 4 */}
-              <div className="w-[100vw] pr-[20vw] flex-shrink-0 pointer-events-auto">
-                <div className="max-w-[420px]">
+              <div className={`w-[100vw] pr-[20vw] flex-shrink-0 transition-opacity duration-500 ${stage === 4 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="max-w-[420px] pointer-events-auto">
                   <h2 className="font-mono text-[var(--body-xs)] font-bold tracking-[0.06em] text-safe mb-3 uppercase">Act IV — The Path Forward</h2>
                   <h3 className="font-heading text-[2.25rem] font-black uppercase mb-4 leading-[1.05] text-safe">PQC<br/>MIGRATION</h3>
                   <p className="text-text-secondary text-[var(--body-sm)] leading-[1.6]">
