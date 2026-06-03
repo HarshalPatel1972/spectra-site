@@ -116,21 +116,8 @@ export default function Home() {
                 brew install harshalpatel1972/tap/spectra
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="mt-20 flex justify-center text-text-muted/60 hover:text-brand transition-colors cursor-default"
-            >
-              <div className="flex flex-col items-center gap-3 animate-bounce">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Scroll</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="6" y="3" width="12" height="18" rx="6" ry="6"></rect>
-                  <line x1="12" y1="7" x2="12" y2="11"></line>
-                </svg>
-              </div>
-            </motion.div>
             
+
           </section>
 
           {/* V2 TERMINAL UI (Glassmorphic) */}
