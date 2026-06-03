@@ -183,33 +183,28 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* THE TOOLCHAIN (Bento Box Grid) */}
+          {/* THE TOOLCHAIN */}
           <section className="pt-32 relative z-10">
             <div className="text-center mb-16">
               <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-gradient mb-6">The Spectra Toolchain</h2>
               <p className="text-text-secondary text-[1.25rem] max-w-2xl mx-auto">A unified suite designed to map, score, and remediate cryptographic risk across the entire software development lifecycle.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
-              {/* CLI (Spans 2 columns) */}
-              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-2 flex flex-col justify-between overflow-hidden relative">
+              {/* CLI */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
-                <div>
-                  <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Spectra CLI</h3>
-                  <p className="text-text-secondary text-[16px] leading-relaxed max-w-md">The core scanning engine. Runs locally in milliseconds. Generates CBOMs, calculates QRS, and integrates seamlessly into shell scripts and local dev environments.</p>
+                <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                 </div>
-                <div className="mt-8 font-mono text-[13px] text-text-muted bg-black/30 p-3 rounded-lg border border-white/5 inline-block self-start">
-                  $ spectra scan ./src
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Spectra CLI</h3>
+                <p className="text-text-secondary text-[16px] leading-relaxed">The core scanning engine. Runs locally in milliseconds. Generates CBOMs, calculates QRS, and integrates seamlessly into shell scripts and local dev environments.</p>
               </div>
 
-              {/* CI (Spans 1 column) */}
-              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-1 flex flex-col relative overflow-hidden">
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand/5 rounded-full blur-2xl translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
+              {/* CI */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group flex flex-col relative overflow-hidden">
+                <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
                 <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                 </div>
@@ -217,8 +212,9 @@ export default function Home() {
                 <p className="text-text-secondary text-[16px] leading-relaxed">Automated pull request scanning. Blocks the merging of new vulnerable cryptographic primitives natively in GitHub.</p>
               </div>
 
-              {/* VS Code (Spans 1 column) */}
-              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-1 flex flex-col relative overflow-hidden">
+              {/* VS Code */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group flex flex-col relative overflow-hidden">
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
                 <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                 </div>
@@ -226,21 +222,14 @@ export default function Home() {
                 <p className="text-text-secondary text-[16px] leading-relaxed">Inline cryptographic risk analysis as you type. Get immediate feedback and migration recommendations before you commit.</p>
               </div>
 
-              {/* Action (Spans 2 columns) */}
-              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group lg:col-span-2 flex flex-col justify-between overflow-hidden relative">
+              {/* Action */}
+              <div className="glass-panel p-10 rounded-2xl hover:border-brand/30 transition-all duration-300 group flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 group-hover:bg-brand/10 transition-colors"></div>
-                <div>
-                  <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Spectra Action</h3>
-                  <p className="text-text-secondary text-[16px] leading-relaxed max-w-md">The official GitHub Action. Perfect for dropping into existing CI/CD pipelines to generate CBOM artifacts and enforce compliance gates on every build.</p>
+                <div className="w-12 h-12 bg-white/5 text-brand rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-brand group-hover:text-void transition-colors shadow-lg shadow-black/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
-                <div className="mt-8">
-                  <Link href="/download" className="text-brand hover:text-white transition-colors font-bold flex items-center gap-2 text-[15px]">
-                    Install Action <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </Link>
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Spectra Action</h3>
+                <p className="text-text-secondary text-[16px] leading-relaxed">The official GitHub Action. Perfect for dropping into existing CI/CD pipelines to generate CBOM artifacts and enforce compliance gates on every build.</p>
               </div>
             </div>
           </section>
