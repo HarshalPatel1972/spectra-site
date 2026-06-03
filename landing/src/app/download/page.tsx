@@ -18,7 +18,7 @@ export default function DownloadPage() {
     const isCopied = copiedCode === command;
 
     const content = (
-      <div className="bg-surface-0 border border-border/80 hover:border-brand hover:scale-105 transition-all duration-300 rounded-[1rem] px-6 py-4 flex items-center gap-5 shadow-2xl w-[320px] text-left cursor-pointer group relative overflow-hidden">
+      <div className="bg-surface-0 border border-border/80 hover:border-brand shadow-[0_4px_0_var(--color-border)] active:shadow-[0_0px_0_var(--color-border)] active:translate-y-[4px] transition-all duration-150 rounded-[1rem] px-6 py-4 flex items-center gap-5 w-[320px] text-left cursor-pointer group relative overflow-hidden">
         {/* Subtle glow effect on hover */}
         <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
         
