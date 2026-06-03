@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-export function Logo({ className = "", withText = true, isHovered = false }: { className?: string, withText?: boolean, isHovered?: boolean }) {
+export function Logo({ className = "", withText = true }: { className?: string, withText?: boolean }) {
   
   const bars = [
     { id: 'bar-1', x: 2, y: 9.6, w: 2, h: 12.8, color: 'currentColor' },
@@ -13,14 +13,13 @@ export function Logo({ className = "", withText = true, isHovered = false }: { c
   ];
 
   return (
-    <div className={`flex items-center gap-3 cursor-pointer group ${className}`}>
+    <div className={`flex items-center gap-3 cursor-pointer ${className}`}>
       
-      {/* HTML-based Logo for LayoutId Animation */}
+      {/* HTML-based Logo */}
       <div className="relative w-[32px] h-[32px] overflow-visible">
-        {!isHovered && bars.map((bar) => (
-          <motion.div 
+        {bars.map((bar) => (
+          <div 
             key={bar.id}
-            layoutId={bar.id}
             className="absolute rounded-sm"
             style={{ 
               left: bar.x, 
@@ -29,14 +28,13 @@ export function Logo({ className = "", withText = true, isHovered = false }: { c
               height: bar.h, 
               backgroundColor: bar.color === 'currentColor' ? '#E8EAF6' : bar.color 
             }}
-            transition={{ type: "spring", stiffness: 200, damping: 25 }}
           />
         ))}
       </div>
       
       {/* The Wordmark */}
       {withText && (
-        <span className="font-serif text-[18px] tracking-[0.05em] text-ink uppercase transition-colors duration-300 group-hover:text-brand">
+        <span className="font-serif text-[18px] tracking-[0.05em] text-ink uppercase">
           SPECTRA
         </span>
       )}
