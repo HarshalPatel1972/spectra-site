@@ -158,13 +158,13 @@ body {
 
 /* Sleek Premium Buttons */
 .btn-premium {
-  @apply relative inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full px-8 py-3 text-[15px];
+  @apply relative inline-flex items-center justify-center font-semibold transition-all duration-150 rounded-full px-8 py-3 text-[15px] active:translate-y-[4px];
 }
 
 .btn-premium-brand {
-  @apply bg-text-primary text-void hover:bg-white hover:scale-105 shadow-[0_0_30px_rgba(46,196,196,0.3)];
+  @apply bg-text-primary text-void hover:bg-white shadow-[0_4px_0_#B0B4C8,0_0_30px_rgba(46,196,196,0.3)] active:shadow-[0_0px_0_#B0B4C8,0_0_15px_rgba(46,196,196,0.3)];
 }
 
 .btn-premium-outline {
-  @apply bg-transparent border border-border/80 text-text-primary hover:bg-surface-1 hover:border-brand/50 backdrop-blur-sm;
+  @apply bg-transparent border border-border/80 text-text-primary hover:bg-surface-1 hover:border-brand/50 shadow-[0_4px_0_var(--color-border)] active:shadow-[0_0px_0_var(--color-border)] backdrop-blur-sm;
 }
