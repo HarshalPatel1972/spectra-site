@@ -240,9 +240,10 @@ export default function Home() {
           </section>
 
           {/* STANDARDS SECTION */}
-          <section className="text-center pt-24 border-t border-border/50">
-            <h2 className="font-serif text-[clamp(1.75rem,2.5vw,2.5rem)] font-bold text-text-primary mb-12">Every finding is grounded in published standards.</h2>
-            <div className="flex flex-wrap justify-center gap-x-12 gap-y-10 font-sans text-[14px] text-text-secondary max-w-4xl mx-auto">
+          <section className="text-center pt-32 pb-16 relative">
+            <div className="absolute inset-0 bg-brand/5 blur-[100px] rounded-full w-1/2 mx-auto h-1/2 -z-10 opacity-50"></div>
+            <h2 className="font-serif text-[clamp(1.75rem,2.5vw,2.5rem)] font-bold text-white mb-16">Every finding is grounded in published standards.</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 { title: "NIST FIPS 203", desc: "ML-KEM — Key Establishment" },
                 { title: "NIST FIPS 204", desc: "ML-DSA — Digital Signatures" },
@@ -251,50 +252,52 @@ export default function Home() {
                 { title: "PCI DSS v4.0", desc: "Req 4.2.1: Strong Cryptography" },
                 { title: "CycloneDX 1.7", desc: "CBOM Specification" }
               ].map((std, i) => (
-                <div key={i} className="flex flex-col items-center group cursor-default">
-                  <span className="text-text-primary font-bold mb-1 group-hover:text-brand transition-colors">{std.title}</span>
-                  <span className="text-[13px]">{std.desc}</span>
+                <div key={i} className="glass-panel py-6 px-4 rounded-xl flex flex-col items-center justify-center group hover:border-brand/40 transition-colors">
+                  <span className="text-white font-bold mb-2 group-hover:text-brand transition-colors text-[16px]">{std.title}</span>
+                  <span className="text-[13px] text-text-secondary text-center">{std.desc}</span>
                 </div>
               ))}
             </div>
           </section>
 
           {/* TRUST SECTION */}
-          <section className="border-t border-border/50 pt-24 pb-24">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 font-sans text-[1rem] leading-[1.6] text-text-secondary">
-              <div className="flex flex-col gap-6">
-                <div className="inline-flex w-12 h-12 bg-brand/10 border border-brand/20 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
+          <section className="pt-24 pb-32">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-sans text-[1rem] leading-[1.6] text-text-secondary max-w-6xl mx-auto">
+              <div className="glass-panel p-8 rounded-2xl flex flex-col gap-6">
+                <div className="inline-flex w-12 h-12 bg-white/5 border border-white/10 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                 </div>
-                <p>Spectra has <strong className="text-text-primary font-medium">no telemetry</strong>. No accounts. No analytics. Your code never leaves your machine during a local scan. The API deletes submitted code immediately.</p>
+                <p>Spectra has <strong className="text-white font-medium">no telemetry</strong>. No accounts. No analytics. Your code never leaves your machine during a local scan. The API deletes submitted code immediately.</p>
               </div>
-              <div className="flex flex-col gap-6">
-                <div className="inline-flex w-12 h-12 bg-brand/10 border border-brand/20 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
+              <div className="glass-panel p-8 rounded-2xl flex flex-col gap-6">
+                <div className="inline-flex w-12 h-12 bg-white/5 border border-white/10 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </div>
-                <p>We scan Spectra itself. Our own QRS is 8/100. <br/><a href="https://github.com/HarshalPatel1972/spectra" className="text-brand hover:text-brand-dim transition-colors font-semibold mt-2 inline-block">View our CBOM &rarr;</a></p>
+                <p>We scan Spectra itself. Our own QRS is 8/100. <br/><a href="https://github.com/HarshalPatel1972/spectra" className="text-brand hover:text-white transition-colors font-semibold mt-2 inline-flex items-center gap-1">View our CBOM <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></p>
               </div>
-              <div className="flex flex-col gap-6">
-                <div className="inline-flex w-12 h-12 bg-brand/10 border border-brand/20 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
+              <div className="glass-panel p-8 rounded-2xl flex flex-col gap-6">
+                <div className="inline-flex w-12 h-12 bg-white/5 border border-white/10 items-center justify-center rounded-xl text-brand shadow-[0_0_15px_rgba(46,196,196,0.1)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
                 </div>
-                <p>Every finding links to the specific NIST, NSA, or IETF document that defines it as a vulnerability. Not our opinion. <strong className="text-text-primary font-medium">The standard.</strong></p>
+                <p>Every finding links to the specific NIST, NSA, or IETF document that defines it as a vulnerability. Not our opinion. <strong className="text-white font-medium">The standard.</strong></p>
               </div>
             </div>
           </section>
         </main>
         
-        {/* BOTTOM CTA SECTION (GAMIFIED FLOATING DESIGN) */}
-        <section className="bg-surface-0 border-t border-brand/20 relative py-32 flex flex-col items-center justify-center overflow-hidden">
+        {/* BOTTOM CTA SECTION */}
+        <section className="bg-surface-0 border-t border-white/5 relative py-32 flex flex-col items-center justify-center overflow-hidden">
           <HeroHolograms />
-          <div className="z-10 text-center relative max-w-2xl mx-auto px-8">
-            <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-text-primary mb-6 drop-shadow-sm">
+          <div className="absolute inset-0 bg-brand/10 blur-[120px] rounded-full w-[800px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          
+          <div className="z-10 text-center relative max-w-3xl mx-auto px-8 glass-panel p-16 rounded-3xl border border-white/10">
+            <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-extrabold text-white mb-6 drop-shadow-sm">
               Ready to secure your cryptography?
             </h2>
-            <p className="font-sans text-[1.125rem] text-text-secondary leading-[1.6] mb-10">
+            <p className="font-sans text-[1.25rem] text-text-secondary leading-[1.6] mb-12">
               Join the teams using Spectra to map, score, and remediate cryptographic risk across their entire software development lifecycle.
             </p>
-            <Link href="/download" className="btn-push btn-push-solid px-14 py-5 text-[16px]">
+            <Link href="/download" className="btn-premium btn-premium-brand px-14 py-5 text-[16px]">
               GET STARTED
             </Link>
           </div>
