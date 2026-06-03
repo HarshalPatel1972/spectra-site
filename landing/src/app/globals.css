@@ -358,3 +358,13 @@ body {
   .tab-row { gap: 4px; padding: 4px; }
   .tab-item { padding: 6px 12px; font-size: 0.65rem; }
 }
+
+/* Hide scrollbars globally */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
