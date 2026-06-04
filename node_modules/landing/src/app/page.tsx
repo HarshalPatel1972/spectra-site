@@ -114,7 +114,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-16 pb-10 flex flex-col items-center text-center overflow-hidden  ">
+      <section className="relative pt-32 pb-10 flex flex-col items-center text-center overflow-hidden  ">
         {/* Globe wireframe bg */}
 
 
