@@ -115,7 +115,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 flex flex-col items-center text-center overflow-hidden bg-deep section-grid-bg">
+      <section className="relative pt-32 pb-20 flex flex-col items-center text-center overflow-hidden bg-void section-grid-bg">
         {/* Globe wireframe bg */}
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,90vw)] h-[min(900px,90vw)] opacity-[0.06] pointer-events-none z-0 text-text-primary" />
 
@@ -239,7 +239,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 4 — TAB FEATURE SECTION
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 lg:py-32 bg-void relative overflow-hidden fade-up">
+      <section className="py-20 md:py-28 lg:py-32 bg-deep relative overflow-hidden fade-up">
         <div className="absolute inset-0 section-grid-bg-fine pointer-events-none opacity-50" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <div className="text-center mb-12">
@@ -289,7 +289,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 5 — STATS BAR
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-12 bg-deep fade-up">
+      <section className="py-12 bg-void fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="bg-raised border border-border rounded-[var(--radius-xl)] p-10 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-8 md:gap-0">
             {[
@@ -313,7 +313,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 6 — INTEGRATIONS
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
+      <section className="py-20 md:py-28 lg:py-32 bg-deep fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-20 items-center">
             <div>
@@ -561,7 +561,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 12 — CTA
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 lg:py-32 bg-void text-center relative overflow-hidden">
+      <section className="py-20 md:py-28 lg:py-32 bg-deep text-center relative overflow-hidden">
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.06] pointer-events-none text-text-primary" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <h2 className="display-xl text-text-primary max-w-[700px] mx-auto mb-10">KNOW YOUR<br/>CRYPTOGRAPHY<br/>BEFORE <span className="text-accent">QUANTUM</span><br/>KNOWS IT FOR YOU</h2>
