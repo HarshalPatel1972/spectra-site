@@ -18,9 +18,8 @@ export function Header() {
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] h-[60px] flex items-center px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)]">
-        <div className="max-w-[var(--max-width)] mx-auto w-full flex items-center justify-between gap-8">
-          
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] flex items-center justify-between gap-4 pointer-events-none">
+        <nav className="pointer-events-auto w-full md:w-auto h-[60px] flex items-center justify-between md:justify-start px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)] gap-8">
           {/* Logo */}
           <Link href="/" className="relative z-20 flex items-center no-underline">
             <Logo />
@@ -47,18 +46,6 @@ export function Header() {
             })}
           </div>
 
-          {/* Right actions */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a href="https://github.com/HarshalPatel1972/spectra" target="_blank" rel="noopener noreferrer"
-              className="btn-secondary !py-[10px] !px-[20px] !text-[var(--body-xs)]"
-            >
-              Star on GitHub
-            </a>
-            <Link href="/download" className="btn-primary btn-hydrogen !py-[10px] !px-[20px] !text-[var(--body-xs)]">
-              Get Started
-            </Link>
-          </div>
-
           {/* Mobile hamburger */}
           <button
             className="flex md:hidden flex-col gap-[5px] cursor-pointer p-2 bg-transparent border-none"
@@ -69,8 +56,20 @@ export function Header() {
             <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-opacity duration-200 ${drawerOpen ? 'opacity-0' : ''}`} />
             <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-transform duration-200 ${drawerOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
           </button>
+        </nav>
+
+        {/* Right actions (Buttons placed outside the pill but on the same plane) */}
+        <div className="hidden md:flex items-center gap-3 shrink-0 pointer-events-auto">
+          <a href="https://github.com/HarshalPatel1972/spectra" target="_blank" rel="noopener noreferrer"
+            className="btn-secondary !py-[10px] !px-[20px] !text-[var(--body-xs)]"
+          >
+            Star on GitHub
+          </a>
+          <Link href="/download" className="btn-primary btn-hydrogen !py-[10px] !px-[20px] !text-[var(--body-xs)]">
+            Get Started
+          </Link>
         </div>
-      </nav>
+      </header>
 
       {/* Mobile drawer */}
       {drawerOpen && (
