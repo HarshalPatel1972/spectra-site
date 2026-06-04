@@ -318,9 +318,23 @@ export default function Home() {
               <Link href="/download" className="btn-primary">Get Started</Link>
             </div>
             <div className="grid grid-cols-4 md:grid-cols-6 gap-2 bg-raised border border-border rounded-[var(--radius-lg)] p-6 relative">
-              {['GitHub Actions', 'VS Code', 'Docker', 'GitLab CI', 'Pre-commit', 'Homebrew', 'npm', 'Terminal', 'Go', 'Python', 'Java', 'JavaScript'].map(name => (
-                <div key={name} className="aspect-square flex items-center justify-center bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)]">
-                  <span className="font-mono text-[0.6rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em]">{name}</span>
+              {Object.entries({
+                'GitHub Actions': 'githubactions',
+                'VS Code': 'visualstudiocode',
+                'Docker': 'docker',
+                'GitLab CI': 'gitlab',
+                'Pre-commit': 'precommit',
+                'Homebrew': 'homebrew',
+                'npm': 'npm',
+                'Terminal': 'gnometerminal',
+                'Go': 'go',
+                'Python': 'python',
+                'Java': 'openjdk',
+                'JavaScript': 'javascript'
+              }).map(([name, slug]) => (
+                <div key={name} className="aspect-square flex flex-col items-center justify-center gap-2 bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)] group">
+                  <img src={`https://cdn.simpleicons.org/${slug}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
+                  <span className="font-mono text-[0.55rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em] group-hover:text-text-primary transition-colors duration-150">{name}</span>
                 </div>
               ))}
             </div>
