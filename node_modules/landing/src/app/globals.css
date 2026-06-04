@@ -190,15 +190,15 @@ body {
 }
 
 .btn-hydrogen {
-  background: #2EC4C4 !important;
-  color: #060810 !important;
-  box-shadow: 0 4px 0 #1A8080 !important;
+  background: #006B6B !important;
+  color: #FDFCF7 !important;
+  box-shadow: 0 4px 0 #004B4B !important;
 }
 .btn-hydrogen:hover {
-  box-shadow: 0 6px 0 #1A8080 !important;
+  box-shadow: 0 6px 0 #004B4B !important;
 }
 .btn-hydrogen:active {
-  box-shadow: 0 0px 0 #1A8080 !important;
+  box-shadow: 0 0px 0 #004B4B !important;
 }
 
 .btn-secondary {
