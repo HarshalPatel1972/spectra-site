@@ -237,7 +237,7 @@ body {
 /* ── Terminal ── */
 .terminal {
   background: #2B2B2B;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
   text-align: left;
