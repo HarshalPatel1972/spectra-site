@@ -198,20 +198,16 @@ export default function PlaygroundPage() {
           </div>
 
           {/* Results Terminal Window */}
-          <div className="flex flex-col bg-void border border-border rounded-[var(--radius-lg)] overflow-hidden relative min-h-[400px] lg:min-h-0">
-            <div className="h-12 bg-high border-b border-border flex items-center px-4 justify-between shrink-0">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+          <div className="terminal flex flex-col relative min-h-[400px] lg:min-h-0 h-full">
+            <div className="terminal-titlebar shrink-0">
+              <div className="traffic-lights">
+                <div className="traffic-light red" />
+                <div className="traffic-light amber" />
+                <div className="traffic-light green" />
               </div>
-              <div className="font-mono text-[var(--body-xs)] text-text-muted absolute left-1/2 -translate-x-1/2">
-                spectra scan main.{language}
-              </div>
-              <div></div>
             </div>
 
-            <div className="flex-1 overflow-auto p-6 relative">
+            <div className="terminal-body flex-1 overflow-auto relative">
               {!result ? (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 opacity-60">
                   <div className="w-16 h-16 mb-4 text-accent opacity-50">
@@ -255,8 +251,8 @@ export default function PlaygroundPage() {
                         if (f.risk_band === 'LOW') badgeBg = 'bg-[rgba(16,185,129,0.15)] text-safe';
                         
                         return (
-                          <div key={i} className="flex gap-4 opacity-0 animate-[float_1s_ease-out_forwards]" style={{ animationDelay: `${i * 100}ms` }}>
-                            <div className="flex-1 bg-raised p-4 rounded-[var(--radius-md)] border border-border">
+                          <div key={i} className="flex gap-4 opacity-0 animate-[type-in_0.4s_ease-out_forwards]" style={{ animationDelay: `${i * 100}ms` }}>
+                            <div className="flex-1 bg-[var(--color-void)] p-4 rounded-[var(--radius-md)] border border-border">
                               <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                                 <div className="flex items-center gap-3">
                                   <span className={`inline-block px-[10px] py-[3px] rounded-[var(--radius-pill)] font-mono text-[0.65rem] font-bold tracking-[0.06em] uppercase ${badgeBg}`}>
