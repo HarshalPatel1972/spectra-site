@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Syne, IBM_Plex_Sans, JetBrains_Mono, Barlow_Condensed } from "next/font/google";
+import { Syne, Frances, JetBrains_Mono, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -16,8 +16,8 @@ const syne = Syne({
   display: "swap",
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
+const frances = Frances({
+  variable: "--font-frances",
   weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${frances.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
         <Header />
         {children}
