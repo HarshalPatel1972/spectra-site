@@ -527,7 +527,7 @@ export default function Home() {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-3 mb-6 no-underline">
-                <div className="flex items-end gap-[3px] h-[20px]">
+                <div className="flex items-center gap-[3px] h-[20px]">
                   <span className="block w-[2px] h-[8px] rounded-[1px] bg-[rgba(6,8,16,0.5)]" />
                   <span className="block w-[2px] h-[12px] rounded-[1px] bg-[rgba(6,8,16,0.5)]" />
                   <span className="block w-[2px] h-[20px] rounded-[1px] bg-[rgba(6,8,16,0.9)]" />
