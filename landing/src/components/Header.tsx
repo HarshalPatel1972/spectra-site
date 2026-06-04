@@ -50,11 +50,11 @@ export function Header() {
           {/* Right actions */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a href="https://github.com/HarshalPatel1972/spectra" target="_blank" rel="noopener noreferrer"
-              className="btn-secondary !py-[8px] !px-[16px] !text-[var(--body-xs)] !rounded-[var(--radius-sm)] !border-[1px]"
+              className="btn-secondary !py-[10px] !px-[20px] !text-[var(--body-xs)]"
             >
               Star on GitHub
             </a>
-            <Link href="/download" className="btn-primary !py-[8px] !px-[16px] !text-[var(--body-xs)] !rounded-[var(--radius-sm)] !border-[1px]">
+            <Link href="/download" className="btn-primary btn-hydrogen !py-[10px] !px-[20px] !text-[var(--body-xs)]">
               Get Started
             </Link>
           </div>
