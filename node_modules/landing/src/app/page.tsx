@@ -172,7 +172,6 @@ export default function Home() {
                 <div className="traffic-light amber" />
                 <div className="traffic-light green" />
               </div>
-              <span className="terminal-filename">spectra — bash</span>
             </div>
             <div className="terminal-body" ref={termRef}>
               <div className="line"><span className="t-cmd">$</span> <span className="t-path">spectra scan</span> <span className="t-flag">./payment-service</span></div>
