@@ -36,10 +36,11 @@
   --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Code block colors */
-  --vp-code-bg:    #1A1A1A;
-  --vp-code-color: #2EC4C4;
-  --vp-code-tab-bg: #1A1A1A;
-  --vp-code-tab-text-color: #2EC4C4;
+  --vp-code-bg:    rgba(0, 0, 0, 0.05);
+  --vp-code-color: #006B6B;
+  --vp-code-block-bg: #FDFCF7;
+  --vp-code-tab-bg: rgba(0, 0, 0, 0.02);
+  --vp-code-tab-text-color: #1A1A1A;
 }
 
 body {
