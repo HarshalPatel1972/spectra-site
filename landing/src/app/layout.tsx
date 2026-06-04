@@ -46,10 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${barlowCondensed.variable} ${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased">
         <Header />
         {children}
       </body>
