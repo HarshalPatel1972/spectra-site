@@ -141,16 +141,6 @@ body {
   line-height: 1.05;
 }
 
-/* ── Section overline ("/" prefix pattern) ── */
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: var(--body-xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-overline);
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-4);
-}
 
 /* ── Feature badge pill ── */
 .feature-badge {
