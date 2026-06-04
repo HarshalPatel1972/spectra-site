@@ -30,7 +30,7 @@
   /* ── Typography ── */
   --font-display: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
   --font-heading: var(--font-syne), 'Syne', sans-serif;
-  --font-body: var(--font-frances), 'Frances', serif;
+  --font-body: var(--font-fraunces), 'Fraunces', serif;
   --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 }
 
