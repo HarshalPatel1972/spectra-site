@@ -13,7 +13,7 @@ export function Logo({ className = "" }: { className?: string }) {
       </div>
       {/* Wordmark */}
       <span
-        className="font-heading font-[800] text-[1.1rem] tracking-[0.06em] uppercase text-text-primary"
+        className="font-heading font-[800] text-[1.1rem] tracking-[0.06em] uppercase text-text-primary leading-normal py-1"
       >
         SPECTRA
       </span>

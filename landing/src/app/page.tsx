@@ -534,7 +534,7 @@ export default function Home() {
                   <span className="block w-[2px] h-[15px] rounded-[1px] bg-[rgba(6,8,16,0.5)]" />
                   <span className="block w-[2px] h-[10px] rounded-[1px] bg-[rgba(6,8,16,0.5)]" />
                 </div>
-                <span className="font-heading font-[800] text-[1.1rem] tracking-[0.06em] uppercase text-[rgba(6,8,16,0.9)]">SPECTRA</span>
+                <span className="font-heading font-[800] text-[1.1rem] tracking-[0.06em] uppercase text-[rgba(6,8,16,0.9)] leading-normal py-1">SPECTRA</span>
               </div>
               <p className="font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] uppercase text-[rgba(6,8,16,0.6)] leading-[1.6] mb-6">Cryptographic intelligence<br/>for the post-quantum era</p>
               <a href="https://github.com/HarshalPatel1972/spectra" className="font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] uppercase text-[rgba(6,8,16,0.7)] no-underline">
