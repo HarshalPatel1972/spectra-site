@@ -118,10 +118,6 @@ export default function Home() {
         {/* Globe wireframe bg */}
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,90vw)] h-[min(900px,90vw)] opacity-[0.06] pointer-events-none z-0 text-text-primary" />
 
-        {/* Decorative teal curve */}
-        <svg className="absolute right-[10%] top-[45%] w-[200px] h-[80px] pointer-events-none z-[1]" viewBox="0 0 200 80">
-          <path d="M 0 60 Q 100 0 200 40" stroke="#2EC4C4" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.8"/>
-        </svg>
 
         {/* Floating algorithm chips */}
         <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block">
