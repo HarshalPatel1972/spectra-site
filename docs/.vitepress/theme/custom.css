@@ -37,9 +37,9 @@
 
   /* Code block colors */
   --vp-code-bg:    #1A1A1A;
-  --vp-code-color: #FDFCF7;
+  --vp-code-color: #2EC4C4;
   --vp-code-tab-bg: #1A1A1A;
-  --vp-code-tab-text-color: #FDFCF7;
+  --vp-code-tab-text-color: #2EC4C4;
 }
 
 body {
@@ -60,6 +60,14 @@ h1, h2, h3, .VPHero .name, .VPHero .text {
 
 .vp-doc h1, .vp-doc h2, .vp-doc h3 {
   font-weight: 800;
+}
+
+/* Fix for inline code inside headings disappearing */
+.vp-doc h1 code,
+.vp-doc h2 code,
+.vp-doc h3 code,
+.vp-doc h4 code {
+  color: var(--vp-code-color) !important;
 }
 
 .vp-doc {
