@@ -63,7 +63,7 @@ export default function PlaygroundPage() {
   const [code, setCode] = useState(EXAMPLES.go.code)
   const [isScanning, setIsScanning] = useState(false)
   const [result, setResult] = useState<any>(null)
-  const [mode, setMode] = useState<'server' | 'wasm'>('server')
+  const [mode, setMode] = useState<'server' | 'wasm'>('wasm')
   const [wasmReady, setWasmReady] = useState(false)
 
   useEffect(() => {
@@ -131,14 +131,25 @@ export default function PlaygroundPage() {
 
         <div className="flex-1 grid lg:grid-cols-2 gap-6 min-h-[600px]">
           {/* Editor Window */}
-          <div className="flex flex-col bg-raised border border-border rounded-[var(--radius-lg)] overflow-hidden">
-            <div className="h-12 bg-high border-b border-border flex items-center justify-between px-4 shrink-0">
+          <div className="flex flex-col bg-raised border border-border rounded-[var(--radius-lg)] overflow-hidden min-h-[400px] lg:min-h-0">
+            <div className="h-12 bg-high border-b border-border flex items-center justify-between px-4 shrink-0 flex-wrap gap-2">
               <div className="flex items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 <span className="font-mono text-[var(--body-xs)] text-text-secondary">main.{language}</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <div className="flex bg-void border border-border rounded-[var(--radius-sm)] p-1 mr-2 hidden sm:flex">
+                  <button 
+                    onClick={() => setMode('server')}
+                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-sm)] uppercase transition-colors ${mode === 'server' ? 'bg-raised text-text-primary border border-border' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
+                  >Server</button>
+                  <button 
+                    onClick={() => setMode('wasm')}
+                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-sm)] uppercase transition-colors ${mode === 'wasm' ? 'bg-raised text-accent border border-[rgba(46,196,196,0.2)]' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
+                  >WASM</button>
+                </div>
+
                 <select 
                   value={language}
                   onChange={(e) => {
@@ -147,7 +158,7 @@ export default function PlaygroundPage() {
                     setCode(EXAMPLES[lang].code);
                     setResult(null);
                   }}
-                  className="bg-void border border-border text-text-secondary font-mono text-[var(--body-xs)] px-3 py-[6px] rounded-[var(--radius-sm)] outline-none focus:border-accent transition-colors cursor-pointer"
+                  className="bg-void border border-border text-text-secondary font-mono text-[var(--body-xs)] px-2 py-[6px] rounded-[var(--radius-sm)] outline-none focus:border-accent transition-colors cursor-pointer"
                 >
                   <option value="go">Go</option>
                   <option value="python">Python</option>
@@ -157,7 +168,7 @@ export default function PlaygroundPage() {
                 <button 
                   onClick={handleScan}
                   disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-                  className="btn-primary !py-[6px] !px-4 !text-[var(--body-xs)] !rounded-[var(--radius-sm)] flex items-center gap-2 disabled:opacity-50"
+                  className="btn-primary !py-[6px] !px-3 !text-[var(--body-xs)] !rounded-[var(--radius-sm)] flex items-center gap-2 disabled:opacity-50"
                 >
                   {isScanning ? (
                     <>
@@ -167,7 +178,7 @@ export default function PlaygroundPage() {
                   ) : (
                     <>
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                      Run Scan
+                      Run
                     </>
                   )}
                 </button>
@@ -187,7 +198,7 @@ export default function PlaygroundPage() {
           </div>
 
           {/* Results Terminal Window */}
-          <div className="flex flex-col bg-void border border-border rounded-[var(--radius-lg)] overflow-hidden relative">
+          <div className="flex flex-col bg-void border border-border rounded-[var(--radius-lg)] overflow-hidden relative min-h-[400px] lg:min-h-0">
             <div className="h-12 bg-high border-b border-border flex items-center px-4 justify-between shrink-0">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
