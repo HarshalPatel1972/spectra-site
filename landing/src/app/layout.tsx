@@ -6,24 +6,28 @@ const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow-condensed",
   weight: ["700", "800", "900"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const syne = Syne({
   variable: "--font-syne",
   weight: ["700", "800"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex-sans",
   weight: ["400", "500", "600"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
