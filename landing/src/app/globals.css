@@ -168,7 +168,7 @@ body {
   background: var(--color-accent);
   color: var(--color-text-on-accent);
   border: none;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: var(--body-sm);
   font-weight: 800;
@@ -176,16 +176,16 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 6px 0 var(--color-accent-dim);
+  box-shadow: 0 4px 0 var(--color-accent-dim);
   transform: translateY(0);
   transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-primary:hover { 
   transform: translateY(2px); 
-  box-shadow: 0 4px 0 var(--color-accent-dim);
+  box-shadow: 0 2px 0 var(--color-accent-dim);
 }
 .btn-primary:active {
-  transform: translateY(6px);
+  transform: translateY(4px);
   box-shadow: 0 0px 0 var(--color-accent-dim);
 }
 
@@ -198,7 +198,7 @@ body {
   background: #EBE8DA;
   color: #1A1A1A;
   border: none;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: var(--body-sm);
   font-weight: 800;
@@ -206,16 +206,16 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 6px 0 #D1CDBC;
+  box-shadow: 0 4px 0 #D1CDBC;
   transform: translateY(0);
   transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-secondary:hover { 
   transform: translateY(2px);
-  box-shadow: 0 4px 0 #D1CDBC;
+  box-shadow: 0 2px 0 #D1CDBC;
 }
 .btn-secondary:active {
-  transform: translateY(6px);
+  transform: translateY(4px);
   box-shadow: 0 0px 0 #D1CDBC;
 }
 
