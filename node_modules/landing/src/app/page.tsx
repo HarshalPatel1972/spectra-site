@@ -194,15 +194,19 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 2 — TRUST BAR
           ═══════════════════════════════════════════════════════════ */}
-      <section className="py-12 border-t border-border-subtle border-b border-b-border-subtle bg-deep">
-        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 flex items-center gap-12 flex-wrap">
-          <span className="font-mono text-[var(--body-xs)] font-medium tracking-[var(--tracking-overline)] uppercase text-text-muted whitespace-nowrap shrink-0">Trusted foundation</span>
-          <div className="flex items-center gap-8 flex-wrap flex-1">
-            {['MIT License', 'No Telemetry', 'CycloneDX 1.7', 'CNSA 2.0', 'Open Source', 'NIST SP 800-131A'].map(badge => (
-              <span key={badge} className="inline-flex items-center gap-2 font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] text-text-secondary px-4 py-2 bg-raised border border-border rounded-[var(--radius-pill)] whitespace-nowrap">
-                <span className="text-accent text-[0.9em]">✓</span> {badge}
-              </span>
-            ))}
+      <section className="py-12 border-t border-border-subtle border-b border-b-border-subtle bg-deep overflow-hidden">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 flex items-center gap-12">
+          <span className="font-mono text-[var(--body-xs)] font-medium tracking-[var(--tracking-overline)] uppercase text-text-muted whitespace-nowrap shrink-0 relative z-10 bg-deep pr-8 shadow-[16px_0_16px_var(--color-deep)] hidden md:block">
+            Trusted foundation
+          </span>
+          <div className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]">
+            <div className="flex w-max animate-marquee items-center gap-8 pr-8 hover:animation-play-state-paused">
+              {[...['MIT License', 'No Telemetry', 'CycloneDX 1.7', 'CNSA 2.0', 'Open Source', 'NIST SP 800-131A'], ...['MIT License', 'No Telemetry', 'CycloneDX 1.7', 'CNSA 2.0', 'Open Source', 'NIST SP 800-131A']].map((badge, idx) => (
+                <span key={`${badge}-${idx}`} className="inline-flex items-center gap-2 font-mono text-[var(--body-xs)] font-medium tracking-[0.04em] text-text-secondary px-4 py-2 bg-raised border border-border rounded-[var(--radius-pill)] whitespace-nowrap shrink-0 transition-colors hover:text-text-primary hover:border-text-muted">
+                  <span className="text-accent text-[0.9em]">✓</span> {badge}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
