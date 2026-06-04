@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { GlobeWireframe } from '@/components/GlobeWireframe'
 import { Code, Terminal, Coffee, GitCommit } from 'lucide-react'
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -117,7 +116,6 @@ export default function Home() {
           ═══════════════════════════════════════════════════════════ */}
       <section className="relative pt-32 pb-20 flex flex-col items-center text-center overflow-hidden  ">
         {/* Globe wireframe bg */}
-        <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,90vw)] h-[min(900px,90vw)] opacity-[0.06] pointer-events-none z-0 text-text-primary" />
 
 
         {/* Floating algorithm chips */}
@@ -390,7 +388,6 @@ export default function Home() {
           SECTION 7 — TESTIMONIALS
           ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 lg:py-32  relative overflow-hidden fade-up">
-        <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.05] pointer-events-none text-text-primary" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <div className="font-display font-[900] text-[clamp(1.75rem,3.5vw,3.25rem)] uppercase leading-[1.05] text-text-primary text-center max-w-[860px] mx-auto mb-10">
             {testimonials[activeTestimonial].quote}
@@ -562,7 +559,6 @@ export default function Home() {
           SECTION 12 — CTA
           ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 lg:py-32  text-center relative overflow-hidden">
-        <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.06] pointer-events-none text-text-primary" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <h2 className="display-xl text-text-primary max-w-[700px] mx-auto mb-10">KNOW YOUR<br/>CRYPTOGRAPHY<br/>BEFORE <span className="text-accent">QUANTUM</span><br/>KNOWS IT FOR YOU</h2>
           <div className="flex justify-center gap-4 flex-wrap">
