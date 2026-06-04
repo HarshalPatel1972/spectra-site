@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { GlobeWireframe } from '@/components/GlobeWireframe'
+import { Code, Terminal, Coffee, GitCommit } from 'lucide-react'
 
 /* ═══════════════════════════════════════════════════════════════════
    SPECTRA LANDING — Phase 5 Koyeb-Pattern Implementation
@@ -320,20 +321,24 @@ export default function Home() {
             <div className="grid grid-cols-4 md:grid-cols-6 gap-2 bg-raised border border-border rounded-[var(--radius-lg)] p-6 relative">
               {Object.entries({
                 'GitHub Actions': 'githubactions',
-                'VS Code': 'visualstudiocode',
+                'VS Code': <Code className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
                 'Docker': 'docker',
                 'GitLab CI': 'gitlab',
-                'Pre-commit': 'precommit',
+                'Pre-commit': <GitCommit className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
                 'Homebrew': 'homebrew',
                 'npm': 'npm',
-                'Terminal': 'gnometerminal',
+                'Terminal': <Terminal className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
                 'Go': 'go',
                 'Python': 'python',
-                'Java': 'openjdk',
+                'Java': <Coffee className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
                 'JavaScript': 'javascript'
-              }).map(([name, slug]) => (
+              }).map(([name, icon]) => (
                 <div key={name} className="aspect-square flex flex-col items-center justify-center gap-2 bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)] group">
-                  <img src={`https://cdn.simpleicons.org/${slug}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
+                  {typeof icon === 'string' ? (
+                    <img src={`https://cdn.simpleicons.org/${icon}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
+                  ) : (
+                    icon
+                  )}
                   <span className="font-mono text-[0.55rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em] group-hover:text-text-primary transition-colors duration-150">{name}</span>
                 </div>
               ))}
