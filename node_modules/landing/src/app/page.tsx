@@ -321,30 +321,66 @@ export default function Home() {
               <p className="text-text-secondary leading-[1.7] mb-8">Spectra integrates with the tools you already use. Scan locally, in CI/CD, or as a pre-commit hook. Output to terminal, JSON, HTML, or CycloneDX CBOM.</p>
               <Link href="/download" className="btn-primary">Get Started</Link>
             </div>
-            <div className="grid grid-cols-4 md:grid-cols-6 gap-2 bg-raised border border-border rounded-[var(--radius-lg)] p-6 relative">
-              {Object.entries({
-                'GitHub Actions': 'githubactions',
-                'VS Code': <Code className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
-                'Docker': 'docker',
-                'GitLab CI': 'gitlab',
-                'Pre-commit': <GitCommit className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
-                'Homebrew': 'homebrew',
-                'npm': 'npm',
-                'Terminal': <Terminal className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
-                'Go': 'go',
-                'Python': 'python',
-                'Java': <Coffee className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
-                'JavaScript': 'javascript'
-              }).map(([name, icon]) => (
-                <div key={name} className="aspect-square flex flex-col items-center justify-center gap-2 bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)] group">
-                  {typeof icon === 'string' ? (
-                    <img src={`https://cdn.simpleicons.org/${icon}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
-                  ) : (
-                    icon
-                  )}
-                  <span className="font-mono text-[0.55rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em] group-hover:text-text-primary transition-colors duration-150">{name}</span>
-                </div>
-              ))}
+            <div className="flex flex-col gap-3 bg-raised border border-border rounded-[var(--radius-lg)] p-6 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_64px,black_calc(100%-64px),transparent_100%)]">
+              <div className="flex w-max animate-marquee items-center gap-3 hover:animation-play-state-paused">
+                {[
+                  ...Object.entries({
+                    'GitHub Actions': 'githubactions',
+                    'VS Code': <Code className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Docker': 'docker',
+                    'GitLab CI': 'gitlab',
+                    'Pre-commit': <GitCommit className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Homebrew': 'homebrew'
+                  }),
+                  ...Object.entries({
+                    'GitHub Actions': 'githubactions',
+                    'VS Code': <Code className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Docker': 'docker',
+                    'GitLab CI': 'gitlab',
+                    'Pre-commit': <GitCommit className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Homebrew': 'homebrew'
+                  })
+                ].map(([name, icon], idx) => (
+                  <div key={`${name}-${idx}`} className="w-[120px] aspect-square shrink-0 flex flex-col items-center justify-center gap-2 bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)] group">
+                    {typeof icon === 'string' ? (
+                      <img src={`https://cdn.simpleicons.org/${icon}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
+                    ) : (
+                      icon
+                    )}
+                    <span className="font-mono text-[0.55rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em] group-hover:text-text-primary transition-colors duration-150">{name}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex w-max animate-marquee-reverse items-center gap-3 hover:animation-play-state-paused">
+                {[
+                  ...Object.entries({
+                    'npm': 'npm',
+                    'Terminal': <Terminal className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Go': 'go',
+                    'Python': 'python',
+                    'Java': <Coffee className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'JavaScript': 'javascript'
+                  }),
+                  ...Object.entries({
+                    'npm': 'npm',
+                    'Terminal': <Terminal className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'Go': 'go',
+                    'Python': 'python',
+                    'Java': <Coffee className="w-8 h-8 text-[#E8EAF6] opacity-70 group-hover:opacity-100 transition-opacity duration-150" strokeWidth={1.5} />,
+                    'JavaScript': 'javascript'
+                  })
+                ].map(([name, icon], idx) => (
+                  <div key={`${name}-${idx}`} className="w-[120px] aspect-square shrink-0 flex flex-col items-center justify-center gap-2 bg-high border border-border rounded-[var(--radius-md)] p-3 transition-all duration-150 hover:border-[var(--accent-border)] hover:bg-[var(--accent-glow)] group">
+                    {typeof icon === 'string' ? (
+                      <img src={`https://cdn.simpleicons.org/${icon}/E8EAF6`} alt={name} className="w-8 h-8 opacity-70 group-hover:opacity-100 transition-opacity duration-150" />
+                    ) : (
+                      icon
+                    )}
+                    <span className="font-mono text-[0.55rem] text-text-secondary text-center leading-tight uppercase tracking-[0.04em] group-hover:text-text-primary transition-colors duration-150">{name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

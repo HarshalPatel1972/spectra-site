@@ -355,6 +355,13 @@ body {
   animation-play-state: paused;
 }
 
+.animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+}
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   :root { --section-padding-x: 32px; }
