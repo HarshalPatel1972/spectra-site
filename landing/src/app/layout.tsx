@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${anton.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased bg-void section-grid-bg min-h-screen">
         <Header />
         {children}
       </body>
