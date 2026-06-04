@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Syne, Fraunces, JetBrains_Mono, Barlow_Condensed } from "next/font/google";
+import { Syne, Anton, JetBrains_Mono, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -16,9 +16,9 @@ const syne = Syne({
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  weight: ["400", "500", "600"],
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${barlowCondensed.variable} ${syne.variable} ${anton.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
         <Header />
         {children}
