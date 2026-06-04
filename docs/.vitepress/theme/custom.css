@@ -1,42 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
 
-:root, .dark {
-  /* Override VitePress defaults with Spectra Phase 4 tokens */
-  --color-void:        #060810;
-  --color-surface-0:   #0C0F1E;
-  --color-surface-1:   #131728;
-  --color-brand:       #2EC4C4;
-  --color-brand-dim:   #1A7A7A;
-  --color-text-primary:#E8EAF6;
-  --color-text-secondary:#7A80AA;
-  --color-border:      #1F2444;
+:root {
+  /* Spectra Phase 5 - Light Paper Theme tokens */
+  --color-void:        #FDFCF7;
+  --color-surface-0:   #FDFCF7;
+  --color-surface-1:   #F2EFDC;
+  --color-brand:       #006B6B;
+  --color-brand-dim:   #004B4B;
+  --color-text-primary:#1A1A1A;
+  --color-text-secondary:#5A5A5A;
+  --color-border:      #1A1A1A;
 
+  /* VitePress Overrides */
   --vp-c-bg:          var(--color-void);
-  --vp-c-bg-soft:     var(--color-surface-0);
-  --vp-c-bg-muted:    var(--color-surface-1);
+  --vp-c-bg-soft:     var(--color-surface-1);
+  --vp-c-bg-muted:    #EBE8DA;
   --vp-c-brand-1:     var(--color-brand);
   --vp-c-brand-2:     var(--color-brand-dim);
   --vp-c-text-1:      var(--color-text-primary);
   --vp-c-text-2:      var(--color-text-secondary);
-  --vp-c-divider:     var(--color-border);
+  --vp-c-divider:     rgba(0, 0, 0, 0.1);
+  
+  --vp-button-brand-border: var(--color-text-primary);
+  --vp-button-brand-text: var(--color-void);
+  --vp-button-brand-bg: var(--color-text-primary);
+  --vp-button-brand-hover-border: var(--color-text-primary);
+  --vp-button-brand-hover-text: var(--color-void);
+  --vp-button-brand-hover-bg: var(--color-text-secondary);
+  --vp-button-brand-active-border: var(--color-text-primary);
+  --vp-button-brand-active-text: var(--color-void);
+  --vp-button-brand-active-bg: var(--color-text-primary);
 
   /* Typography overrides */
   --vp-font-family-base: 'IBM Plex Sans', system-ui, sans-serif;
   --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Code block colors */
-  --vp-code-bg:    var(--color-surface-0);
-  --vp-code-color: var(--color-text-primary);
+  --vp-code-bg:    #1A1A1A;
+  --vp-code-color: #FDFCF7;
+  --vp-code-tab-bg: #1A1A1A;
+  --vp-code-tab-text-color: #FDFCF7;
 }
 
-/* Load Syne for headings */
-h1, h2, h3 {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+body {
+  background-color: var(--vp-c-bg);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
 }
 
-h1 { font-weight: 800; }
+/* Load Fraunces for headings */
+h1, h2, h3, .VPHero .name, .VPHero .text {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h1, .vp-doc h2, .vp-doc h3 {
+  font-weight: 800;
+}
 
 .vp-doc {
   /* Restrict line-length to 68 characters for optimal reading */
@@ -44,17 +68,98 @@ h1 { font-weight: 800; }
   margin: 0 auto;
 }
 
+/* Structural Updates */
+.VPNavBar {
+  background-color: rgba(253,252,247,0.85) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.VPSidebar {
+  background-color: rgba(253,252,247,0.85) !important;
+  border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.VPHero .image-bg {
+  display: none;
+}
+
+.VPButton.brand {
+  border-radius: 8px;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--color-brand);
+  color: #FDFCF7;
+  box-shadow: 0 4px 0 var(--color-brand-dim);
+  border: none;
+  transform: translateY(0);
+  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPButton.brand:hover {
+  background: var(--color-brand) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--color-brand-dim);
+  border: none !important;
+  color: #FDFCF7 !important;
+}
+
+.VPButton.brand:active {
+  background: var(--color-brand) !important;
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 var(--color-brand-dim);
+  border: none !important;
+  color: #FDFCF7 !important;
+}
+
+.VPButton.alt {
+  border-radius: 8px;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #DEDBC7;
+  color: #1A1A1A;
+  box-shadow: 0 4px 0 #B8B4A2;
+  border: none;
+  transform: translateY(0);
+  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPButton.alt:hover {
+  background: #DEDBC7 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #B8B4A2;
+  border: none !important;
+  color: #1A1A1A !important;
+}
+
+.VPButton.alt:active {
+  background: #DEDBC7 !important;
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 #B8B4A2;
+  border: none !important;
+  color: #1A1A1A !important;
+}
+
 /* Callout Styling Overrides */
+.custom-block {
+  border-radius: 2px !important;
+  border: 1px solid var(--color-border);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
 .custom-block.warning {
-  border-color: rgba(255, 69, 96, 0.3); /* CRITICAL dim */
-  background-color: rgba(255, 69, 96, 0.08); /* CRITICAL bg */
-  color: #FF4560; /* CRITICAL */
-  border-radius: 0;
-  border-left-width: 4px;
+  border-color: #D32F2F;
+  background-color: #FFEBEE;
+  color: #B71C1C;
+  box-shadow: 2px 2px 0 #D32F2F;
 }
 
 .custom-block.warning .custom-block-title {
-  color: #FF4560;
+  color: #D32F2F;
   font-family: var(--vp-font-family-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -62,13 +167,14 @@ h1 { font-weight: 800; }
 
 .custom-block.info {
   border-color: var(--color-border);
-  background-color: var(--color-surface-0);
-  border-radius: 0;
-  border-left-width: 4px;
+  background-color: var(--vp-c-bg-soft);
+  color: var(--color-text-primary);
 }
 
 .custom-block.info .custom-block-title {
+  color: var(--color-text-primary);
   font-family: var(--vp-font-family-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
