@@ -140,7 +140,6 @@ export default function Home() {
         </div>
 
         <div className="relative z-[2] max-w-[900px] w-full px-6 md:px-12 mx-auto">
-          <p className="overline mb-6">Cryptographic Intelligence Platform</p>
 
           <h1 className="display-headline mb-8">
             SEE EVERY<br/>
@@ -218,7 +217,6 @@ export default function Home() {
       <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <p className="overline">What Spectra Scans</p>
             <h2 className="display-xl text-text-primary">FOUR SCANNERS.<br/><span className="text-accent">ONE COMMAND.</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-border rounded-[var(--radius-lg)] overflow-hidden">
@@ -245,7 +243,6 @@ export default function Home() {
         <div className="absolute inset-0 section-grid-bg-fine pointer-events-none opacity-50" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <div className="text-center mb-12">
-            <p className="overline">Built For Every Role</p>
             <h2 className="display-xl text-text-primary mb-8">SPECTRA<br/>WORKS FOR</h2>
             <div className="flex justify-center mb-16">
               <div className="tab-row">
@@ -320,7 +317,6 @@ export default function Home() {
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-20 items-center">
             <div>
-              <p className="overline">Integrations</p>
               <h2 className="font-heading text-[var(--heading-xl)] font-[800] text-text-primary mb-5 leading-[1.2]">Works with your<br/>existing toolchain</h2>
               <p className="text-text-secondary leading-[1.7] mb-8">Spectra integrates with the tools you already use. Scan locally, in CI/CD, or as a pre-commit hook. Output to terminal, JSON, HTML, or CycloneDX CBOM.</p>
               <Link href="/download" className="btn-primary">Get Started</Link>
@@ -342,7 +338,6 @@ export default function Home() {
       <section className="py-20 md:py-28 lg:py-32 bg-void relative overflow-hidden fade-up">
         <GlobeWireframe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.05] pointer-events-none text-text-primary" />
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
-          <p className="overline text-center mb-10">What Our Users Say</p>
           <div className="font-display font-[900] text-[clamp(1.75rem,3.5vw,3.25rem)] uppercase leading-[1.05] text-text-primary text-center max-w-[860px] mx-auto mb-10">
             {testimonials[activeTestimonial].quote}
           </div>
@@ -371,7 +366,6 @@ export default function Home() {
       <section className="py-20 md:py-28 lg:py-32 bg-deep fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <p className="overline">Capabilities</p>
             <h2 className="display-xl text-text-primary mb-4">EVERYTHING IN<br/><span className="text-accent">ONE SCAN</span></h2>
             <p className="text-text-secondary text-[var(--body-lg)]">Every output format you need, from CLI to boardroom.</p>
           </div>
@@ -406,7 +400,6 @@ export default function Home() {
           ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
-          <p className="overline mb-12">Compliance Coverage</p>
           <div className="flex flex-col border border-border rounded-[var(--radius-lg)] overflow-hidden">
             {[
               { icon: 'NSA', title: 'NSA CNSA 2.0', body: 'Commercial National Security Algorithm Suite — quantum-resistant requirements for national security systems.' },
@@ -434,7 +427,6 @@ export default function Home() {
       <section className="py-20 md:py-28 lg:py-32 bg-deep fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <p className="overline">Pricing</p>
             <h2 className="display-xl text-text-primary">START FREE.<br/><span className="text-accent">SCALE WHEN READY.</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -482,7 +474,6 @@ export default function Home() {
       <section className="py-20 md:py-28 lg:py-32 bg-void fade-up">
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <p className="overline">Changelog</p>
             <h2 className="display-xl text-text-primary">LATEST FROM<br/><span className="text-accent">SPECTRA</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

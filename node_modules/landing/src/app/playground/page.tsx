@@ -123,7 +123,6 @@ export default function PlaygroundPage() {
       <main className="flex-1 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-32 flex flex-col min-h-0 relative z-10">
         
         <div className="mb-12 text-center max-w-[700px] mx-auto">
-          <p className="overline mb-4">Interactive Analysis</p>
           <h1 className="display-xl mb-6">SPECTRA<br/><span className="text-accent">PLAYGROUND</span></h1>
           <p className="text-text-secondary text-[var(--body-lg)] leading-[1.6]">
             Write, paste, or select an example implementation below. The Spectra engine will parse the AST, identify cryptographic primitives, and calculate the exact Quantum Risk Score in milliseconds.

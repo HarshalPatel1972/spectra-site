@@ -142,7 +142,6 @@ body {
 }
 
 /* ── Section overline ("/" prefix pattern) ── */
-.overline {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: var(--body-xs);
@@ -152,7 +151,6 @@ body {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
 }
-.overline::before { content: '/'; color: var(--color-accent); margin-right: 4px; }
 
 /* ── Feature badge pill ── */
 .feature-badge {

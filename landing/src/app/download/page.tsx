@@ -70,7 +70,6 @@ export default function DownloadPage() {
         
         {/* FOREGROUND CTA */}
         <div className="text-center max-w-4xl mx-auto px-6 md:px-12 w-full flex flex-col items-center">
-          <p className="overline mb-6">Install Spectra</p>
           <h1 className="display-headline mb-16">
             SECURE ANYWHERE.<br/><span className="text-accent">ANYTIME.</span>
           </h1>
