@@ -317,7 +317,7 @@ export default function Home() {
             <div>
               <h2 className="font-heading text-[var(--heading-xl)] font-[800] text-text-primary mb-5 leading-[1.2]">Works with your<br/>existing toolchain</h2>
               <p className="text-text-secondary leading-[1.7] mb-8">Spectra integrates with the tools you already use. Scan locally, in CI/CD, or as a pre-commit hook. Output to terminal, JSON, HTML, or CycloneDX CBOM.</p>
-              <Link href="/download" className="btn-primary">Get Started</Link>
+              <Link href="/download" className="btn-primary btn-hydrogen">Get Started</Link>
             </div>
             <div className="flex flex-col gap-3 bg-raised border border-border rounded-[var(--radius-lg)] p-6 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_64px,black_calc(100%-64px),transparent_100%)]">
               <div className="flex w-max animate-marquee items-center gap-3 hover:animation-play-state-paused">
@@ -562,7 +562,7 @@ export default function Home() {
         <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 relative z-[1]">
           <h2 className="display-xl text-text-primary max-w-[700px] mx-auto mb-10">KNOW YOUR<br/>CRYPTOGRAPHY<br/>BEFORE <span className="text-accent">QUANTUM</span><br/>KNOWS IT FOR YOU</h2>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link href="/download" className="btn-primary">Get Started</Link>
+            <Link href="/download" className="btn-primary btn-hydrogen">Get Started</Link>
             <Link href="/playground" className="btn-secondary">Try in Browser</Link>
           </div>
         </div>
