@@ -181,7 +181,7 @@ body {
   background: var(--color-accent);
   color: var(--color-text-on-accent);
   border: none;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: var(--body-sm);
   font-weight: 800;
@@ -205,6 +205,7 @@ body {
 .btn-hydrogen {
   background: #006B6B !important;
   color: #FDFCF7 !important;
+  border-radius: var(--radius-pill) !important;
   /* Clean physical 3D bevel */
   box-shadow: 0 4px 0 #004B4B !important;
   transform: translateY(0);
@@ -227,7 +228,7 @@ body {
   background: #DEDBC7;
   color: #1A1A1A;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.9rem;

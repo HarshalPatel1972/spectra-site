@@ -142,11 +142,11 @@ export default function PlaygroundPage() {
                 <div className="flex bg-void border border-border rounded-[var(--radius-sm)] p-1 mr-2 hidden sm:flex">
                   <button 
                     onClick={() => setMode('server')}
-                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-sm)] uppercase transition-colors ${mode === 'server' ? 'bg-raised text-text-primary border border-border' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
+                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-pill)] uppercase transition-colors ${mode === 'server' ? 'bg-raised text-text-primary border border-border' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
                   >Server</button>
                   <button 
                     onClick={() => setMode('wasm')}
-                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-sm)] uppercase transition-colors ${mode === 'wasm' ? 'bg-raised text-accent border border-[rgba(46,196,196,0.2)]' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
+                    className={`px-3 py-1 text-[0.65rem] font-mono rounded-[var(--radius-pill)] uppercase transition-colors ${mode === 'wasm' ? 'bg-raised text-accent border border-[rgba(46,196,196,0.2)]' : 'text-text-muted hover:text-text-secondary border border-transparent'}`}
                   >WASM</button>
                 </div>
 
@@ -168,7 +168,7 @@ export default function PlaygroundPage() {
                 <button 
                   onClick={handleScan}
                   disabled={isScanning || (mode === 'wasm' && !wasmReady)}
-                  className="btn-primary !py-[6px] !px-3 !text-[var(--body-xs)] !rounded-[var(--radius-sm)] flex items-center gap-2 disabled:opacity-50"
+                  className="btn-primary !py-[6px] !px-3 !text-[var(--body-xs)] flex items-center gap-2 disabled:opacity-50"
                 >
                   {isScanning ? (
                     <>
