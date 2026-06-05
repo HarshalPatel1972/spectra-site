@@ -22,17 +22,15 @@ export function LiquidAbsorber({ children, color, className = '', id }: LiquidAb
     offset: ["start 60px", "end 0px"] // 60px is the navbar height
   });
 
-  // Calculate absorption level (0 to 1)
-  // When it hits 60px from top, it starts absorbing.
-  // We use a spring to make it feel fluid and natural.
-  const rawAbsorb = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-  const absorbLevel = useSpring(rawAbsorb, { stiffness: 100, damping: 20 });
+  // Linear absorption: 0 to 1 as it scrolls past the 60px boundary
+  const absorbLevel = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
 
-  // Visual stretch effect for the "sucked in" look
-  const scaleY = useTransform(absorbLevel, [0, 1], [1, 1.8]);
-  const translateY = useTransform(absorbLevel, [0, 1], [0, -80]);
-  const opacity = useTransform(absorbLevel, [0, 1], [1, 0]);
-  const filter = useTransform(absorbLevel, [0, 1], ['blur(0px)', 'blur(10px)']);
+  // Literal suck effect: squeeze horizontally, stretch vertically, pull up violently, and fade out
+  const scaleX = useTransform(absorbLevel, [0, 1], [1, 0.4]);
+  const scaleY = useTransform(absorbLevel, [0, 1], [1, 2.5]);
+  const translateY = useTransform(absorbLevel, [0, 1], [0, -120]);
+  const opacity = useTransform(absorbLevel, [0, 0.8, 1], [1, 1, 0]); // stays visible until the very end of the suck
+  const filter = useTransform(absorbLevel, [0, 1], ['blur(0px)', 'blur(12px)']);
 
   // Sync to global store
   useEffect(() => {
@@ -56,6 +54,7 @@ export function LiquidAbsorber({ children, color, className = '', id }: LiquidAb
       className={className}
       id={id}
       style={{ 
+        scaleX,
         scaleY, 
         y: translateY,
         opacity,
