@@ -114,22 +114,23 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 pb-10 flex flex-col items-center text-center overflow-hidden  ">
-        {/* Globe wireframe bg */}
-
+      <section className="relative pt-32 pb-10 flex flex-col items-center text-center overflow-hidden">
+        {/* 3D Perspective Grid Floor */}
+        <div className="hero-3d-grid" />
 
         {/* Floating algorithm chips */}
         <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block">
-          <div className="absolute top-[28%] left-[8%] flex items-center bg-raised border border-border rounded-[var(--radius-md)] shadow-[var(--shadow-float)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite]">
+          {/* 3D Extruded & Angled Pills */}
+          <div className="absolute top-[28%] left-[8%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[-4px_4px_0_#ccc,-10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite] style={{ transform: 'rotateZ(-8deg) rotateX(20deg) rotateY(10deg)' }}">
             RSA-2048 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,69,96,0.15)] text-critical">QRS: 90</span>
           </div>
-          <div className="absolute top-[20%] right-[10%] flex items-center bg-raised border border-border rounded-[var(--radius-md)] shadow-[var(--shadow-float)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_1.5s]">
+          <div className="absolute top-[20%] right-[10%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[4px_4px_0_#ccc,10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_1.5s] style={{ transform: 'rotateZ(5deg) rotateX(15deg) rotateY(-10deg)' }}">
             ECDSA/P-256 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.15)] text-high-risk">QRS: 85</span>
           </div>
-          <div className="absolute top-[65%] left-[6%] flex items-center bg-raised border border-border rounded-[var(--radius-md)] shadow-[var(--shadow-float)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_0.8s]">
+          <div className="absolute top-[65%] left-[6%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[-4px_4px_0_#ccc,-10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_0.8s] style={{ transform: 'rotateZ(-5deg) rotateX(20deg) rotateY(5deg)' }}">
             SHA-1 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.15)] text-high-risk">QRS: 70</span>
           </div>
-          <div className="absolute top-[60%] right-[8%] flex items-center bg-raised border border-border rounded-[var(--radius-md)] shadow-[var(--shadow-float)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_2.2s]">
+          <div className="absolute top-[60%] right-[8%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[4px_4px_0_#ccc,10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_2.2s] style={{ transform: 'rotateZ(8deg) rotateX(15deg) rotateY(-5deg)' }}">
             AES-128 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(245,200,66,0.15)] text-medium">QRS: 25</span>
           </div>
         </div>
