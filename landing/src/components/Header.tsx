@@ -94,7 +94,7 @@ export function Header() {
             <span className={`block w-[22px] h-[2px] bg-text-primary rounded-[2px] transition-transform duration-200 ${drawerOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
           </button>
         </div>
-      </nav>
+      </header>
 
       {/* Mobile drawer */}
       {drawerOpen && (
