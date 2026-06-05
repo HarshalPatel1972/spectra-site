@@ -115,8 +115,7 @@ export default function Home() {
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
       <section className="relative pt-32 pb-10 flex flex-col items-center text-center overflow-hidden">
-        {/* 3D Perspective Grid Floor */}
-        <div className="hero-3d-grid" />
+        {/* Global 3D Grid handles the background now */}
 
         <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block" style={{ perspective: '1200px' }}>
           {/* Left Card: Closer to camera */}
