@@ -118,20 +118,49 @@ export default function Home() {
         {/* 3D Perspective Grid Floor */}
         <div className="hero-3d-grid" />
 
-        {/* Floating algorithm chips */}
-        <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block">
-          {/* 3D Extruded & Angled Pills */}
-          <div className="absolute top-[28%] left-[8%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[-4px_4px_0_#ccc,-10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite] style={{ transform: 'rotateZ(-8deg) rotateX(20deg) rotateY(10deg)' }}">
-            RSA-2048 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,69,96,0.15)] text-critical">QRS: 90</span>
+        <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block" style={{ perspective: '1200px' }}>
+          {/* Left Card: Closer to camera */}
+          <div 
+            className="absolute top-[30%] left-[5%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-4 py-3 whitespace-nowrap animate-[float_8s_ease-in-out_infinite]"
+            style={{ 
+              transform: 'rotateX(20deg) rotateY(15deg) translateZ(100px) scale(1.1)',
+              boxShadow: '-10px 40px 40px -10px rgba(0,0,0,0.08), -2px 10px 15px -3px rgba(0,0,0,0.04)'
+            }}
+          >
+            RSA-2048 <span className="ml-3 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,69,96,0.1)] text-critical border border-[rgba(255,69,96,0.2)]">QRS: 90</span>
           </div>
-          <div className="absolute top-[20%] right-[10%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[4px_4px_0_#ccc,10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_1.5s] style={{ transform: 'rotateZ(5deg) rotateX(15deg) rotateY(-10deg)' }}">
-            ECDSA/P-256 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.15)] text-high-risk">QRS: 85</span>
+
+          {/* Right Card: Farther away */}
+          <div 
+            className="absolute top-[20%] right-[8%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_9s_ease-in-out_infinite_1.5s]"
+            style={{ 
+              transform: 'rotateX(15deg) rotateY(-15deg) translateZ(-100px) scale(0.9)',
+              boxShadow: '10px 20px 25px -5px rgba(0,0,0,0.05), 2px 5px 10px -2px rgba(0,0,0,0.03)'
+            }}
+          >
+            ECDSA/P-256 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 85</span>
           </div>
-          <div className="absolute top-[65%] left-[6%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[-4px_4px_0_#ccc,-10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_0.8s] style={{ transform: 'rotateZ(-5deg) rotateX(20deg) rotateY(5deg)' }}">
-            SHA-1 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.15)] text-high-risk">QRS: 70</span>
+          
+          {/* Lower Left Card: Very far */}
+          <div 
+            className="absolute top-[70%] left-[10%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_10s_ease-in-out_infinite_0.8s]"
+            style={{ 
+              transform: 'rotateX(10deg) rotateY(10deg) translateZ(-200px) scale(0.85)',
+              boxShadow: '-5px 15px 20px -5px rgba(0,0,0,0.04)'
+            }}
+          >
+            SHA-1 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 70</span>
           </div>
-          <div className="absolute top-[60%] right-[8%] flex items-center bg-raised border-2 border-border rounded-[var(--radius-sm)] shadow-[4px_4px_0_#ccc,10px_15px_20px_rgba(0,0,0,0.15)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_6s_ease-in-out_infinite_2.2s] style={{ transform: 'rotateZ(8deg) rotateX(15deg) rotateY(-5deg)' }}">
-            AES-128 <span className="ml-2 px-[6px] py-[2px] rounded-[var(--radius-pill)] text-[0.7rem] font-semibold bg-[rgba(245,200,66,0.15)] text-medium">QRS: 25</span>
+
+          {/* Lower Right Card: Medium distance */}
+          <div 
+            className="absolute top-[65%] right-[12%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_8s_ease-in-out_infinite_2.2s]"
+            style={{ 
+              transform: 'rotateX(25deg) rotateY(-20deg) translateZ(50px) scale(1.05)',
+              boxShadow: '15px 30px 30px -8px rgba(0,0,0,0.06), 3px 8px 12px -3px rgba(0,0,0,0.03)'
+            }}
+          >
+            AES-128 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(245,200,66,0.1)] text-medium border border-[rgba(245,200,66,0.2)]">QRS: 25</span>
           </div>
         </div>
 
