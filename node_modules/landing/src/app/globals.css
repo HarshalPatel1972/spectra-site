@@ -127,8 +127,7 @@ body {
   font-weight: 900;
   font-size: var(--display-hero);
   text-transform: uppercase;
-  letter-spacing: var(--tracking-tighter);
-  word-spacing: -0.15em;
+  letter-spacing: var(--tracking-display);
   line-height: 1.0;
   color: var(--color-text-primary);
 }
