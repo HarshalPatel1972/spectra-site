@@ -45,11 +45,26 @@
 
 body {
   background-color: var(--vp-c-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+  pointer-events: none;
   background-image: 
     linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px));
   background-size: 96px 96px;
-  background-position: -1px -1px;
+  background-position: center center;
+  transform: perspective(100vh) rotateX(60deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, transparent 20%, black 80%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 80%);
 }
 
 /* Load Fraunces for headings */

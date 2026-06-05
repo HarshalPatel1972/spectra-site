@@ -104,12 +104,30 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Background grid pattern ── */
+/* ── Background grid pattern (3D Z-Axis) ── */
 .section-grid-bg {
+  /* Ensure the body or container can house the pseudo-element properly */
+}
+
+.section-grid-bg::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+  pointer-events: none;
   background-image:
     linear-gradient(to top right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px));
   background-size: 144px 144px;
+  background-position: center center;
+  transform: perspective(100vh) rotateX(60deg);
+  transform-origin: center top;
+  /* Add a subtle fade at the horizon */
+  mask-image: linear-gradient(to bottom, transparent 20%, black 80%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 80%);
 }
 
 .section-grid-bg-fine {
