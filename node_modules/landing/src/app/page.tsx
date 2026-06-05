@@ -178,7 +178,7 @@ export default function Home() {
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap mb-6">
-            <button onClick={copyInstall} className="inline-flex items-center gap-3 px-6 py-[14px] bg-raised border border-[var(--accent-border)] rounded-[var(--radius-sm)] font-mono text-[var(--code-md)] text-accent cursor-pointer transition-all duration-[120ms] select-all hover:bg-[var(--accent-glow)] hover:border-accent">
+            <button onClick={copyInstall} className="btn-code">
               {copied ? 'Copied!' : 'brew install HarshalPatel1972/tap/spectra'}
               {!copied && <span className="opacity-60 text-[0.8em]">⊕</span>}
             </button>
