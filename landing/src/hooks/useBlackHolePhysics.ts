@@ -36,10 +36,22 @@ export function useBlackHolePhysics() {
         const el = elements[i];
         const rect = el.getBoundingClientRect();
         
-        // Track the top edge of the element, not the center, so it never overshoots
-        const elementTop = rect.top;
+        let isActive = el.dataset.bhActive === 'true';
+        let absoluteY = parseFloat(el.dataset.bhY || '0');
+        
+        // If it's active, compute its un-transformed top using our cached absolute position.
+        // If it's not active, its rect.top is pure, so we use it directly.
+        let elementTop = isActive ? absoluteY - window.scrollY : rect.top;
 
         if (elementTop < NAVBAR_BOTTOM + SUCK_DISTANCE) {
+          // It just crossed the event horizon. Cache its pure absolute position!
+          if (!isActive) {
+            absoluteY = rect.top + window.scrollY;
+            el.dataset.bhY = absoluteY.toString();
+            el.dataset.bhActive = 'true';
+            elementTop = absoluteY - window.scrollY; // Re-sync
+          }
+
           // 0 = just entered suck zone, 1 = fully inside navbar
           let progress = (NAVBAR_BOTTOM + SUCK_DISTANCE - elementTop) / SUCK_DISTANCE;
           
@@ -50,20 +62,10 @@ export function useBlackHolePhysics() {
             totalSuckedMass += progress;
 
             // Black Hole Physics:
-            // - Squeeze horizontally to 0.1x (looks like a spaghetti string)
-            // - Stretch vertically to 2.5x
-            // - Pull upwards just enough to hit the center of the navbar, NEVER overshoot.
-            // - Fade to 0 by the time progress is 0.9.
             const scaleX = 1 - (progress * 0.9); 
             const scaleY = 1 + (progress * 1.5); 
-            
-            // Limit translateY so it never pulls the element higher than the navbar itself
-            // At progress=1, we pull it up by max 60px
             const translateY = -(progress * 60); 
-            
             const blur = progress * 16;
-            
-            // Aggressive fade out: completely invisible before it can overshoot
             const opacity = Math.max(0, 1 - (progress * 1.2));
 
             el.style.transform = `scale(${scaleX}, ${scaleY}) translateY(${translateY}px)`;
@@ -77,8 +79,9 @@ export function useBlackHolePhysics() {
             }
           }
         } else {
-          // Reset elements outside the horizon to save memory and ensure they return if scrolled back down
-          if (el.style.transform !== '') {
+          // Element is safely outside the horizon. Release the cached state and revert physics.
+          if (isActive || el.style.transform !== '') {
+            el.dataset.bhActive = 'false';
             el.style.transform = '';
             el.style.opacity = '1';
             el.style.filter = '';
