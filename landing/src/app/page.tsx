@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { Code, Terminal, Coffee, GitCommit } from 'lucide-react'
+import { LiquidAbsorber } from '@/components/LiquidAbsorber'
 
 /* ═══════════════════════════════════════════════════════════════════
    SPECTRA LANDING — Phase 5 Koyeb-Pattern Implementation
@@ -120,46 +121,70 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block" style={{ perspective: '1200px' }}>
           {/* Left Card: Closer to camera */}
           <div 
-            className="absolute top-[30%] left-[5%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-4 py-3 whitespace-nowrap animate-[float_8s_ease-in-out_infinite]"
+            className="absolute top-[30%] left-[5%] animate-[float_8s_ease-in-out_infinite]"
             style={{ 
               transform: 'rotateX(20deg) rotateY(15deg) translateZ(100px) scale(1.1)',
-              boxShadow: '-10px 40px 40px -10px rgba(0,0,0,0.08), -2px 10px 15px -3px rgba(0,0,0,0.04)'
             }}
           >
-            RSA-2048 <span className="ml-3 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,69,96,0.1)] text-critical border border-[rgba(255,69,96,0.2)]">QRS: 90</span>
+            <LiquidAbsorber color="#FF4560">
+              <div 
+                className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-4 py-3 whitespace-nowrap"
+                style={{ boxShadow: '-10px 40px 40px -10px rgba(0,0,0,0.08), -2px 10px 15px -3px rgba(0,0,0,0.04)' }}
+              >
+                RSA-2048 <span className="ml-3 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,69,96,0.1)] text-critical border border-[rgba(255,69,96,0.2)]">QRS: 90</span>
+              </div>
+            </LiquidAbsorber>
           </div>
 
           {/* Right Card: Farther away */}
           <div 
-            className="absolute top-[20%] right-[8%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_9s_ease-in-out_infinite_1.5s]"
+            className="absolute top-[20%] right-[8%] animate-[float_9s_ease-in-out_infinite_1.5s]"
             style={{ 
               transform: 'rotateX(15deg) rotateY(-15deg) translateZ(-100px) scale(0.9)',
-              boxShadow: '10px 20px 25px -5px rgba(0,0,0,0.05), 2px 5px 10px -2px rgba(0,0,0,0.03)'
             }}
           >
-            ECDSA/P-256 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 85</span>
+            <LiquidAbsorber color="#FF8F40">
+              <div 
+                className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
+                style={{ boxShadow: '10px 20px 25px -5px rgba(0,0,0,0.05), 2px 5px 10px -2px rgba(0,0,0,0.03)' }}
+              >
+                ECDSA/P-256 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 85</span>
+              </div>
+            </LiquidAbsorber>
           </div>
           
           {/* Lower Left Card: Very far */}
           <div 
-            className="absolute top-[70%] left-[10%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_10s_ease-in-out_infinite_0.8s]"
+            className="absolute top-[70%] left-[10%] animate-[float_10s_ease-in-out_infinite_0.8s]"
             style={{ 
               transform: 'rotateX(10deg) rotateY(10deg) translateZ(-200px) scale(0.85)',
-              boxShadow: '-5px 15px 20px -5px rgba(0,0,0,0.04)'
             }}
           >
-            SHA-1 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 70</span>
+            <LiquidAbsorber color="#FF8F40">
+              <div 
+                className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
+                style={{ boxShadow: '-5px 15px 20px -5px rgba(0,0,0,0.04)' }}
+              >
+                SHA-1 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(255,143,64,0.1)] text-high-risk border border-[rgba(255,143,64,0.2)]">QRS: 70</span>
+              </div>
+            </LiquidAbsorber>
           </div>
 
           {/* Lower Right Card: Medium distance */}
           <div 
-            className="absolute top-[65%] right-[12%] flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap animate-[float_8s_ease-in-out_infinite_2.2s]"
+            className="absolute top-[65%] right-[12%] animate-[float_8s_ease-in-out_infinite_2.2s]"
             style={{ 
               transform: 'rotateX(25deg) rotateY(-20deg) translateZ(50px) scale(1.05)',
-              boxShadow: '15px 30px 30px -8px rgba(0,0,0,0.06), 3px 8px 12px -3px rgba(0,0,0,0.03)'
             }}
           >
-            AES-128 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(245,200,66,0.1)] text-medium border border-[rgba(245,200,66,0.2)]">QRS: 25</span>
+            <LiquidAbsorber color="#F5C842">
+              <div 
+                className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
+                style={{ boxShadow: '15px 30px 30px -8px rgba(0,0,0,0.06), 3px 8px 12px -3px rgba(0,0,0,0.03)' }}
+              >
+                AES-128 <span className="ml-2 px-2 py-[2px] rounded-full text-[0.7rem] font-semibold bg-[rgba(245,200,66,0.1)] text-medium border border-[rgba(245,200,66,0.2)]">QRS: 25</span>
+              </div>
+            </LiquidAbsorber>
           </div>
         </div>
 

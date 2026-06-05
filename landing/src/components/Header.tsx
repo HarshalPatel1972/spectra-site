@@ -4,10 +4,13 @@ import Link from 'next/link'
 import { Logo } from './Logo'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useLiquidStore } from '@/store/useLiquidStore'
 
 export function Header() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { liquidColor, fillLevel } = useLiquidStore();
 
   const navItems = [
     { text: 'The Quantum Threat', href: '/what-happens' },
@@ -18,8 +21,30 @@ export function Header() {
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] h-[60px] flex items-center px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)]">
-        <div className="max-w-[var(--max-width)] mx-auto w-full flex items-center justify-between gap-8">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] h-[60px] flex items-center px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)] overflow-hidden transition-colors duration-300">
+        
+        {/* LIQUID FILL LAYER */}
+        <AnimatePresence>
+          {liquidColor && (
+            <motion.div
+              className="absolute left-0 right-0 bottom-0 z-0 pointer-events-none"
+              initial={{ height: "0%", opacity: 0 }}
+              animate={{ 
+                height: `${fillLevel * 100}%`,
+                opacity: fillLevel > 0.05 ? Math.min(1, fillLevel * 2) : 0,
+                backgroundColor: liquidColor
+              }}
+              exit={{ height: "0%", opacity: 0 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              style={{
+                boxShadow: `0 -10px 20px ${liquidColor}40`,
+                borderTop: `1px solid ${liquidColor}80`
+              }}
+            />
+          )}
+        </AnimatePresence>
+
+        <div className="max-w-[var(--max-width)] mx-auto w-full flex items-center justify-between gap-8 relative z-10">
           {/* Logo */}
           <Link href="/" className="relative z-20 flex items-center no-underline">
             <Logo />
