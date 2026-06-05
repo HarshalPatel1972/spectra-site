@@ -126,7 +126,7 @@ export default function Home() {
               transform: 'rotateX(20deg) rotateY(15deg) translateZ(100px) scale(1.1)',
             }}
           >
-            <LiquidAbsorber color="#FF4560">
+            <LiquidAbsorber id="card1" color="#FF4560">
               <div 
                 className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-4 py-3 whitespace-nowrap"
                 style={{ boxShadow: '-10px 40px 40px -10px rgba(0,0,0,0.08), -2px 10px 15px -3px rgba(0,0,0,0.04)' }}
@@ -143,7 +143,7 @@ export default function Home() {
               transform: 'rotateX(15deg) rotateY(-15deg) translateZ(-100px) scale(0.9)',
             }}
           >
-            <LiquidAbsorber color="#FF8F40">
+            <LiquidAbsorber id="card2" color="#FF8F40">
               <div 
                 className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
                 style={{ boxShadow: '10px 20px 25px -5px rgba(0,0,0,0.05), 2px 5px 10px -2px rgba(0,0,0,0.03)' }}
@@ -160,7 +160,7 @@ export default function Home() {
               transform: 'rotateX(10deg) rotateY(10deg) translateZ(-200px) scale(0.85)',
             }}
           >
-            <LiquidAbsorber color="#FF8F40">
+            <LiquidAbsorber id="card3" color="#FF8F40">
               <div 
                 className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
                 style={{ boxShadow: '-5px 15px 20px -5px rgba(0,0,0,0.04)' }}
@@ -177,7 +177,7 @@ export default function Home() {
               transform: 'rotateX(25deg) rotateY(-20deg) translateZ(50px) scale(1.05)',
             }}
           >
-            <LiquidAbsorber color="#F5C842">
+            <LiquidAbsorber id="card4" color="#F5C842">
               <div 
                 className="flex items-center bg-[#fdfdfc] border border-border/60 rounded-[var(--radius-sm)] font-mono text-[var(--body-xs)] text-text-secondary px-3 py-2 whitespace-nowrap"
                 style={{ boxShadow: '15px 30px 30px -8px rgba(0,0,0,0.06), 3px 8px 12px -3px rgba(0,0,0,0.03)' }}
