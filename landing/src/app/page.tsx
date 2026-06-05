@@ -114,7 +114,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-[121px] pb-10 flex flex-col items-center text-center overflow-hidden">
+      <section className="relative pt-[115px] pb-10 flex flex-col items-center text-center overflow-hidden">
         {/* Global 3D Grid handles the background now */}
 
         <div className="absolute inset-0 pointer-events-none z-[1] hidden md:block" style={{ perspective: '1200px' }}>
