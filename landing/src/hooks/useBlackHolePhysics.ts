@@ -23,7 +23,7 @@ export function useBlackHolePhysics() {
 
     // Configuration
     const NAVBAR_BOTTOM = 76; // Physical bottom edge of the navbar
-    const SUCK_DISTANCE = 100; // Start sucking only 100px below the navbar (very tight event horizon)
+    const SUCK_DISTANCE = 30; // 30px distance so the event horizon is 106px (below hero pt-115px padding)
     const MAX_CAPACITY = elements.length || 1; 
 
     let animationFrameId: number;
