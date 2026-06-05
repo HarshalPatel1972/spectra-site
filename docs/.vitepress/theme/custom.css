@@ -48,7 +48,7 @@ body {
   background-image: 
     linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-  background-size: 48px 48px;
+  background-size: 96px 96px;
   background-position: -1px -1px;
 }
 

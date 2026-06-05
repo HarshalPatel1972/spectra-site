@@ -109,14 +109,14 @@ body {
   background-image:
     linear-gradient(to top right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-  background-size: 72px 72px;
+  background-size: 144px 144px;
 }
 
 .section-grid-bg-fine {
   background-image:
     linear-gradient(to top right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
     linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--grid-line) calc(50% - 0.5px), var(--grid-line) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-  background-size: 36px 36px;
+  background-size: 72px 72px;
 }
 
 /* ── Container classes removed in favor of Tailwind utility classes ── */
