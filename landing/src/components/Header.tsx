@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] h-[60px] flex items-center px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)] overflow-hidden transition-colors duration-300">
+      <header id="global-header" className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[1280px] z-[100] h-[60px] flex items-center px-6 bg-[rgba(253,252,247,0.85)] backdrop-blur-[16px] border border-border-subtle shadow-card rounded-[var(--radius-xl)] overflow-hidden transition-colors duration-300">
         
         {/* LIQUID FILL LAYER */}
         <AnimatePresence>

@@ -10,9 +10,11 @@ export function useBlackHolePhysics() {
     const rawArray = Array.from(rawNodes) as HTMLElement[];
 
     // Prevent nested physics: if a parent (like a card) is sucked, its children shouldn't be independently sucked.
+    // Also, explicitly ignore any elements inside the global navbar so it doesn't suck itself!
     const elements = rawArray.filter(el => {
       let parent = el.parentElement;
       while (parent) {
+        if (parent.id === 'global-header') return false;
         if (rawArray.includes(parent)) return false;
         parent = parent.parentElement;
       }
@@ -21,7 +23,7 @@ export function useBlackHolePhysics() {
 
     // Configuration
     const NAVBAR_BOTTOM = 76; // Physical bottom edge of the navbar
-    const SUCK_DISTANCE = 250; // Start sucking 250px below the navbar
+    const SUCK_DISTANCE = 100; // Start sucking only 100px below the navbar (very tight event horizon)
     const MAX_CAPACITY = elements.length || 1; 
 
     let animationFrameId: number;
