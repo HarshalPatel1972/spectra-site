@@ -109,14 +109,14 @@ body {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: 72px 48px;
 }
 
 .section-grid-bg-fine {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 36px 24px;
 }
 
 /* ── Container classes removed in favor of Tailwind utility classes ── */
