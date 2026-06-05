@@ -107,11 +107,11 @@ body {
 /* ── 3D Perspective Grid Floor ── */
 /* ── Global 3D Perspective Grid Floor ── */
 .global-3d-grid {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   pointer-events: none;
   background-color: #f6f4ef;
@@ -121,9 +121,7 @@ body {
   background-size: 80px 80px;
   background-position: center top;
   transform: perspective(1200px) rotateX(75deg);
-  transform-origin: center 25%;
-  mask-image: linear-gradient(to bottom, transparent 20%, black 60%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 60%);
+  transform-origin: center top;
 }
 
 .section-grid-bg-fine {
