@@ -3,11 +3,21 @@ import { useLiquidStore } from '@/store/useLiquidStore';
 
 export function useBlackHolePhysics() {
   useEffect(() => {
-    // Collect all suckable elements on the page.
-    // We target paragraphs, headers, list items, buttons, and specific targets.
-    // We avoid generic 'div' or 'span' to prevent shattering layout containers.
-    const rawElements = document.querySelectorAll('h1, h2, h3, h4, p, button, li, .suck-target, .feature-badge');
-    const elements = Array.from(rawElements) as HTMLElement[];
+    // Collect rigorously EVERY block/text element on the page
+    const rawNodes = document.querySelectorAll(
+      'h1, h2, h3, h4, h5, h6, p, button, a, img, svg, li, .bg-raised, .terminal, .font-display, .font-mono, .feature-badge, .traffic-light, .w-\\[120px\\], .tab-item, .suck-target'
+    );
+    const rawArray = Array.from(rawNodes) as HTMLElement[];
+
+    // Prevent nested physics: if a parent (like a card) is sucked, its children shouldn't be independently sucked.
+    const elements = rawArray.filter(el => {
+      let parent = el.parentElement;
+      while (parent) {
+        if (rawArray.includes(parent)) return false;
+        parent = parent.parentElement;
+      }
+      return true;
+    });
 
     // Configuration
     const NAVBAR_BOTTOM = 76; // Physical bottom edge of the navbar
