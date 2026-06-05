@@ -46,9 +46,9 @@
 body {
   background-color: var(--vp-c-bg);
   background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 48px 32px;
+    linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% - 0.5px), rgba(0, 0, 0, 0.04) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+  background-size: 48px 48px;
   background-position: -1px -1px;
 }
 
